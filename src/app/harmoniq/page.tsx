@@ -195,7 +195,7 @@ export default function HarmoniqPage() {
               <div className="flex flex-col items-start leading-none">
                 <span className="text-[8px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-0.5 md:mb-1">Next Stage</span>
                 <span className="text-xs md:text-sm font-bold tracking-wide text-white group-hover:text-blue-50 group-hover:translate-x-0.5 transition-all">
-                  {stages[currentStage + 1].label}
+                  {stages[currentStage + 1]?.label}
                 </span>
               </div>
 
