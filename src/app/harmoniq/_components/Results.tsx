@@ -207,7 +207,7 @@ export default function Results() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-6xl mx-auto w-full space-y-16 md:y-24 pb-24"
+        className="max-w-6xl mx-auto w-full space-y-16 md:space-y-24 pb-24"
       >
         
         {/* --- SECTION 1: EXECUTIVE SUMMARY --- */}
