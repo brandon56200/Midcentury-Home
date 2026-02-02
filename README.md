@@ -1,29 +1,32 @@
-# Create T3 App
+# Midcentury Main
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Infrastructure and discovery platform for multimodal data intelligence.
 
-## What's next? How do I make an app with this?
+## Harmoniq Benchmark
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Harmoniq is a specialized benchmarking suite designed to evaluate the next generation of Speech-to-Speech (STS) AI models. Unlike traditional benchmarks that measure ASR or TTS in isolation, Harmoniq audits the complete voice interaction loop across three core intelligence pillars:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### Research Pillars
+* **Speech Understanding**: Foundation-level comprehension of spoken content and semantic accuracy.
+* **Voice Understanding**: Granular paralinguistic perception including emotion, identity, and speaker characteristics.
+* **Speech Reasoning**: Cognitive fidelity testing to determine if logical reasoning survives the transition to audio-native modalities.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Technical Architecture
 
-## Learn More
+The platform is built for high-fidelity data presentation and research-grade analysis:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+* **Framework**: Next.js 15 (App Router)
+* **Visualizations**: High-performance data auditing via ECharts
+* **Animations**: Industrial-grade, looping technical graphics powered by Framer Motion
+* **Type Safety**: Full-stack type safety with tRPC and TypeScript
+* **Styling**: Specialized industrial aesthetic using Tailwind CSS
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Deployment
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+The application is optimized for the Vercel Edge Runtime. 
 
-## How do I deploy this?
+### Version Control
+This repository is configured for automated deployments. Standardized metadata, including dynamic Favicon generation and OpenGraph social sharing assets, are handled at the root level via `src/app/icon.tsx` and `src/app/opengraph-image.tsx`.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+---
+© 2025 Midcentury Labs. Establishing the next standard for Voice AI.
