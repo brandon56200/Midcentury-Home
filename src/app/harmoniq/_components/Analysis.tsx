@@ -63,7 +63,23 @@ const pillars = [
   }
 ];
 
-const findings = [
+interface FindingClaim {
+  id: string;
+  title: string;
+  text: string;
+  metric: string;
+  implication: string;
+  inverted?: boolean;
+  highlight?: boolean;
+}
+
+interface FindingGroup {
+  id: string;
+  group: string;
+  claims: FindingClaim[];
+}
+
+const findings: FindingGroup[] = [
   {
     id: "reasoning-revolution",
     group: "The Reasoning Revolution",
