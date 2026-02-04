@@ -158,7 +158,13 @@ export default function HarmoniqPage() {
             className="absolute inset-0 w-full h-full flex flex-col pt-40 md:pt-24 z-10"
           >
             {currentStage === 0 && <Hero onNext={() => paginate(1)} />}
-            {currentStage === 1 && <Results />}
+            {currentStage === 1 && <Results onNavigate={(stageId: string) => {
+              const index = stages.findIndex(s => s.id === stageId);
+              if (index !== -1) {
+                setDirection(index > currentStage ? 1 : -1);
+                setCurrentStage(index);
+              }
+            }} />}
             {currentStage === 2 && <Analysis />}
             {currentStage === 3 && <Experiment />}
             {currentStage === 4 && <Future />}

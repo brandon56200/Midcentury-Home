@@ -63,7 +63,7 @@ const pillars = [
   }
 ];
 
-interface FindingClaim {
+interface Claim {
   id: string;
   title: string;
   text: string;
@@ -76,7 +76,7 @@ interface FindingClaim {
 interface FindingGroup {
   id: string;
   group: string;
-  claims: FindingClaim[];
+  claims: Claim[];
 }
 
 const findings: FindingGroup[] = [
