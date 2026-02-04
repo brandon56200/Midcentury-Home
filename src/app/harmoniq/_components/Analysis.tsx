@@ -21,14 +21,14 @@ import {
   ArrowRight
 } from "lucide-react";
 
-// --- CONSISTENT THEME (Exact Copy from Results.tsx) ---
+// --- CONSISTENT THEME ---
 const THEME = {
-  blue: ["#172554", "#1e3a8a", "#1e40af", "#1d4ed8", "#2563eb"], 
-  slate: ["#020617", "#0f172a", "#1e293b", "#334155", "#475569"],
+  blue: ["#eff6ff", "#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa"], 
+  slate: ["#f8fafc", "#f1f5f9", "#e2e8f0", "#cbd5e1", "#94a3b8"],
   primary: "#2563eb",
-  bg: "#050505",
-  border: "rgba(37, 99, 235, 0.08)",
-  textDim: "#475569"
+  bg: "transparent",
+  border: "rgba(0, 0, 0, 0.05)",
+  textDim: "#64748b"
 };
 
 // --- DATA ADAPTED FROM HARMONIQ_INSIGHTS_ANALYSIS.md ---
@@ -326,9 +326,9 @@ const getRadarOptions = (data: number[]) => ({
     shape: 'circle',
     splitNumber: 4,
     axisName: { color: THEME.textDim, fontSize: 9, fontWeight: '700' },
-    splitLine: { lineStyle: { color: 'rgba(255, 255, 255, 0.05)' } },
+    splitLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.05)' } },
     splitArea: { show: false },
-    axisLine: { lineStyle: { color: 'rgba(255, 255, 255, 0.05)' } }
+    axisLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.05)' } }
   },
   series: [{
     type: 'radar',
@@ -354,8 +354,8 @@ const getModelRingOptions = (accuracyStr: string, isActive: boolean, isVisible: 
       center: ["50%", "50%"], 
       radius: "100%",
       pointer: { show: false }, 
-      progress: { show: true, roundCap: true, width: 3, itemStyle: { color: isActive ? THEME.primary : "rgba(255,255,255,0.05)" } }, 
-      axisLine: { lineStyle: { width: 3, color: [[1, "rgba(255,255,255,0.03)"]] } }, 
+      progress: { show: true, roundCap: true, width: 3, itemStyle: { color: isActive ? THEME.primary : "rgba(0,0,0,0.05)" } }, 
+      axisLine: { lineStyle: { width: 3, color: [[1, "rgba(0,0,0,0.02)"]] } }, 
       splitLine: { show: false }, 
       axisTick: { show: false }, 
       axisLabel: { show: false }, 
@@ -363,7 +363,7 @@ const getModelRingOptions = (accuracyStr: string, isActive: boolean, isVisible: 
       animationDuration: 1500,
       detail: { 
         formatter: (value: number) => `${Math.round(value)}%`,
-        color: (isActive ? '#fff' : THEME.textDim) as string, 
+        color: (isActive ? '#0f172a' : THEME.textDim) as string, 
         fontSize: 10, 
         fontWeight: '800' as const, 
         offsetCenter: [0, 0] 
@@ -389,7 +389,7 @@ export default function Analysis() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 md:p-10 overflow-y-auto custom-scrollbar bg-transparent relative selection:bg-blue-600/30">
+    <div className="flex-1 flex flex-col p-4 md:p-10 bg-transparent relative selection:bg-blue-600/10">
       <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-6xl mx-auto w-full space-y-16 md:space-y-24 pb-24">
         
         {/* SECTION 1: THE THREE PILLARS */}
@@ -410,8 +410,8 @@ export default function Analysis() {
             {findings.map(group => (
               <div key={group.id} className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <h3 className="text-[10px] font-bold text-blue-500 uppercase tracking-[0.3em]">{group.group}</h3>
-                  <div className="h-px flex-1 bg-white/5" />
+                  <h3 className="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em]">{group.group}</h3>
+                  <div className="h-px flex-1 bg-slate-100" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {group.claims.map(claim => (
@@ -425,8 +425,8 @@ export default function Analysis() {
                       className="h-[300px]"
                     >
                       <div className="flex flex-col items-center justify-center gap-4 text-center px-6">
-                        <p className={`text-5xl font-bold tracking-tighter text-white`}>{claim.metric}</p>
-                        <p className={`text-xs font-medium leading-relaxed ${claim.inverted ? 'text-white/60' : 'text-slate-400'}`}>{claim.text}</p>
+                        <p className={`text-5xl font-bold tracking-tighter ${claim.inverted ? 'text-white' : 'text-slate-900'}`}>{claim.metric}</p>
+                        <p className={`text-xs font-medium leading-relaxed ${claim.inverted ? 'text-white/60' : 'text-slate-500'}`}>{claim.text}</p>
                       </div>
                     </ChartCard>
                   ))}
@@ -446,24 +446,23 @@ export default function Analysis() {
                  key={model.id} 
                  variants={itemVariants} 
                  onClick={() => setSelectedProfileId(model.id)} 
-                 className={`bg-white/1 border border-white/5 rounded-xl p-3 md:p-4 flex flex-col items-center group transition-colors relative ${selectedProfileId === model.id ? 'bg-white/3' : 'hover:bg-white/2'}`}
+                 className={`bg-white border border-slate-100 rounded-xl p-3 md:p-4 flex flex-col items-center group transition-colors relative shadow-sm ${selectedProfileId === model.id ? 'bg-slate-50' : 'hover:bg-slate-50'}`}
                >
                   {selectedProfileId === model.id && (
                     <>
-                      <motion.div layoutId="active-outline" className="absolute inset-0 border border-blue-600/50 rounded-xl z-20 pointer-events-none" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                      <motion.div layoutId="active-glow" className="absolute inset-0 bg-blue-600/10 blur-xl rounded-xl z-0 pointer-events-none" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
+                      <motion.div layoutId="active-outline" className="absolute inset-0 border border-blue-600/30 rounded-xl z-20 pointer-events-none" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
+                      <motion.div layoutId="active-glow" className="absolute inset-0 bg-blue-600/5 blur-xl rounded-xl z-0 pointer-events-none" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
                     </>
                   )}
                   <div className="h-10 w-10 md:h-14 md:w-14 mb-2 relative z-10">
                      <ReactECharts 
                        option={getModelRingOptions(model.overall, selectedProfileId === model.id, isModelSelectorInView)} 
                        style={{ height: "100%", width: "100%" }} 
-                       theme="dark" 
                        notMerge={true} 
                      />
                   </div>
-                  <p className="text-[7px] md:text-[8px] font-bold tracking-wider text-slate-500 uppercase mb-0.5 relative z-10">{model.provider}</p>
-                  <h4 className="font-semibold text-[9px] md:text-[10px] tracking-tight relative z-10 text-white">{model.name}</h4>
+                  <p className="text-[7px] md:text-[8px] font-bold tracking-wider text-slate-400 uppercase mb-0.5 relative z-10">{model.provider}</p>
+                  <h4 className="font-semibold text-[9px] md:text-[10px] tracking-tight relative z-10 text-slate-900">{model.name}</h4>
                </motion.button>
              ))}
           </div>
@@ -474,23 +473,23 @@ export default function Analysis() {
                 <motion.div 
                   key={selectedProfileId} 
                   initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-                  className="bg-linear-to-br from-blue-950/20 via-[#050505] to-black border border-white/10 rounded-2xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 relative overflow-hidden shadow-[0_0_50px_rgba(23,37,84,0.1)]"
+                  className="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 relative overflow-hidden shadow-sm"
                 >
                   <div className="lg:col-span-7 space-y-8 relative z-10">
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center">
-                          <TrendingUp className="w-4 h-4 text-blue-500" />
+                        <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
+                          <TrendingUp className="w-4 h-4 text-blue-600" />
                         </div>
-                        <h3 className="text-3xl font-bold text-white tracking-tight">{modelProfiles[selectedProfileId]?.name}</h3>
+                        <h3 className="text-3xl font-bold text-slate-900 tracking-tight">{modelProfiles[selectedProfileId]?.name}</h3>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-8 border-y border-white/5">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-8 border-y border-slate-100">
                       {modelProfiles[selectedProfileId]?.pillars.map(p => (
                         <div key={p.label} className="space-y-1">
-                          <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em]">{p.label}</p>
-                          <p className="text-2xl font-bold text-white">{p.val}</p>
+                          <p className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">{p.label}</p>
+                          <p className="text-2xl font-bold text-slate-900">{p.val}</p>
                         </div>
                       ))}
                     </div>
@@ -498,13 +497,13 @@ export default function Analysis() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
-                          <p className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Core Strengths</p>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                          <p className="text-[10px] font-bold text-slate-900 uppercase tracking-[0.2em]">Core Strengths</p>
                         </div>
                         <ul className="space-y-3">
                           {modelProfiles[selectedProfileId]?.strengths.map(s => (
-                            <li key={s} className="text-xs text-slate-400 font-medium leading-relaxed flex items-start gap-2">
-                              <span className="w-1 h-1 rounded-full bg-blue-500/50 mt-1.5 shrink-0" />
+                            <li key={s} className="text-xs text-slate-500 font-medium leading-relaxed flex items-start gap-2">
+                              <span className="w-1 h-1 rounded-full bg-blue-200 mt-1.5 shrink-0" />
                               {s}
                             </li>
                           ))}
@@ -512,13 +511,13 @@ export default function Analysis() {
                       </div>
                       <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                          <Ban className="w-3.5 h-3.5 text-slate-500" />
-                          <p className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Limitations</p>
+                          <Ban className="w-3.5 h-3.5 text-slate-400" />
+                          <p className="text-[10px] font-bold text-slate-900 uppercase tracking-[0.2em]">Limitations</p>
                         </div>
                         <ul className="space-y-3">
                           {modelProfiles[selectedProfileId]?.weaknesses.map(w => (
-                            <li key={w} className="text-xs text-slate-400 font-medium leading-relaxed flex items-start gap-2">
-                              <span className="w-1 h-1 rounded-full bg-slate-500/50 mt-1.5 shrink-0" />
+                            <li key={w} className="text-xs text-slate-500 font-medium leading-relaxed flex items-start gap-2">
+                              <span className="w-1 h-1 rounded-full bg-slate-200 mt-1.5 shrink-0" />
                               {w}
                             </li>
                           ))}
@@ -528,15 +527,14 @@ export default function Analysis() {
                   </div>
 
                   <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-8 relative z-10">
-                    <div className="bg-white/1 border border-white/5 rounded-2xl p-6 w-full text-center backdrop-blur-md">
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-1">Overall Accuracy</p>
-                      <p className="text-5xl font-bold text-white tracking-tighter">{modelProfiles[selectedProfileId]?.overall}</p>
+                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 w-full text-center">
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Overall Accuracy</p>
+                      <p className="text-5xl font-bold text-slate-900 tracking-tighter">{modelProfiles[selectedProfileId]?.overall}</p>
                     </div>
                     <div className="w-full aspect-square md:h-[300px]">
-                      <ReactECharts option={getRadarOptions(modelProfiles[selectedProfileId]?.radarData ?? [])} style={{ height: "100%", width: "100%" }} theme="dark" />
+                      <ReactECharts option={getRadarOptions(modelProfiles[selectedProfileId]?.radarData ?? [])} style={{ height: "100%", width: "100%" }} />
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-grid-white opacity-[0.005] pointer-events-none" />
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -548,8 +546,8 @@ export default function Analysis() {
           <SectionHeader number="04" title="The Verdict" description="What these results mean for researchers, developers, and builders." />
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="md:col-span-5 bg-white/1 border border-white/5 rounded-2xl p-8 space-y-8 group hover:bg-white/2 transition-colors h-full">
-              <h4 className="text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">Decision Matrix</h4>
+            <div className="md:col-span-5 bg-white border border-slate-200 rounded-2xl p-8 space-y-8 group hover:bg-slate-50 transition-colors h-full shadow-sm">
+              <h4 className="text-slate-400 font-bold uppercase tracking-[0.3em] text-[10px]">Decision Matrix</h4>
               <div className="space-y-4">
                 <MatrixRow label="Highest Accuracy" value="Gemini" reason="91.2% reasoning IQ." />
                 <MatrixRow label="Perfect Reliability" value="Ultravox / Grok" reason="100% success rate." />
@@ -567,7 +565,7 @@ export default function Analysis() {
                >
                  <div className="flex flex-col items-center justify-center text-center space-y-3 px-2">
                     <p className="text-white font-bold text-lg md:text-2xl leading-tight tracking-tight">The Era of Native Audio Intelligence</p>
-                    <p className="text-white/60 text-[11px] md:text-sm leading-relaxed font-medium max-w-lg">
+                    <p className="text-blue-50 text-[11px] md:text-sm leading-relaxed font-medium max-w-lg">
                       Harmoniq establishes that we have entered a new epoch of AI: one where audio is a primary, high-IQ modality. The benchmark reveals that native audio models now rival text-level reasoning and specialist transcription, while beginning to decode the complex paralinguistic signals of human interaction. The future of AI lies in this unified architecture where comprehension, reasoning, and emotional intelligence converge.
                     </p>
                  </div>
@@ -585,45 +583,45 @@ export default function Analysis() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }} 
-            className="fixed inset-0 z-100 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-start pt-36 md:pt-40 pb-20 overflow-y-auto custom-scrollbar"
+            className="fixed inset-0 z-100 bg-white/95 backdrop-blur-xl flex flex-col items-center justify-start pt-36 md:pt-40 pb-20 overflow-y-auto custom-scrollbar"
           >
             <div className="w-full max-w-5xl px-6 md:px-10 space-y-12">
               {/* Header */}
-              <div className="flex justify-between items-start border-b border-white/5 pb-10">
+              <div className="flex justify-between items-start border-b border-slate-100 pb-10">
                 <div className="space-y-2">
                   <h3 className="text-blue-600 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold">Intelligence Report</h3>
-                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">{expandedContent[selectedClaimId]?.title}</h2>
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">{expandedContent[selectedClaimId]?.title}</h2>
                 </div>
                 <button 
                   onClick={() => setSelectedClaimId(null)} 
-                  className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition-all shrink-0 ml-4 group"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center hover:bg-slate-100 transition-all shrink-0 ml-4 group shadow-sm"
                 >
-                  <X className="w-5 h-5 md:w-6 md:h-6 text-slate-400 group-hover:text-white" />
+                  <X className="w-5 h-5 md:w-6 md:h-6 text-slate-400 group-hover:text-slate-900" />
                 </button>
               </div>
 
               {/* Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
                 <div className="lg:col-span-7 space-y-12">
-                  <p className="text-xl md:text-2xl text-slate-300 font-bold leading-relaxed">{expandedContent[selectedClaimId]?.subtitle}</p>
+                  <p className="text-xl md:text-2xl text-slate-600 font-bold leading-relaxed">{expandedContent[selectedClaimId]?.subtitle}</p>
                   
                   <div className="space-y-8">
-                    <div className="bg-white/1 border border-white/5 p-8 rounded-3xl relative overflow-hidden group">
+                    <div className="bg-white border border-slate-100 p-8 rounded-3xl relative overflow-hidden group shadow-sm">
                       <div className="absolute top-0 left-0 w-1 h-full bg-blue-600" />
-                      <p className="text-white font-bold mb-3 uppercase tracking-[0.2em] text-[10px]">Primary Insight</p>
-                      <p className="text-slate-200 text-base md:text-lg leading-relaxed font-medium">{expandedContent[selectedClaimId]?.insight}</p>
+                      <p className="text-slate-900 font-bold mb-3 uppercase tracking-[0.2em] text-[10px]">Primary Insight</p>
+                      <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium">{expandedContent[selectedClaimId]?.insight}</p>
                     </div>
 
                     <div className="space-y-6">
-                      <h4 className="text-white font-bold text-[10px] uppercase tracking-widest flex items-center gap-3">
-                        <div className="w-8 h-px bg-white/10" />
+                      <h4 className="text-slate-400 font-bold text-[10px] uppercase tracking-widest flex items-center gap-3">
+                        <div className="w-8 h-px bg-slate-100" />
                         Key Discoveries
                       </h4>
                       <div className="space-y-6">
                         {expandedContent[selectedClaimId]?.details.map((detail, idx) => (
                           <div key={idx} className="flex gap-6 group">
                             <span className="text-blue-600 font-mono font-bold text-2xl leading-none">0{idx + 1}</span>
-                            <p className="text-slate-400 text-sm md:text-base leading-relaxed font-medium group-hover:text-slate-200 transition-colors">{detail}</p>
+                            <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium group-hover:text-slate-900 transition-colors">{detail}</p>
                           </div>
                         ))}
                       </div>
@@ -631,9 +629,9 @@ export default function Analysis() {
                   </div>
 
                   {expandedContent[selectedClaimId]?.context && (
-                    <div className="bg-white/1 border border-white/5 p-6 rounded-2xl">
-                       <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest mb-2">Historical Context</p>
-                       <p className="text-slate-400 text-xs leading-relaxed italic font-medium">
+                    <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl">
+                       <p className="text-slate-400 text-[9px] font-bold uppercase tracking-widest mb-2">Historical Context</p>
+                       <p className="text-slate-500 text-xs leading-relaxed italic font-medium">
                         "{expandedContent[selectedClaimId]?.context}"
                        </p>
                     </div>
@@ -641,30 +639,29 @@ export default function Analysis() {
                 </div>
 
                 <div className="lg:col-span-5 space-y-8">
-                <div className="bg-linear-to-br from-blue-950/20 via-[#050505] to-black border border-white/10 rounded-[2.5rem] p-8 md:p-12 text-center space-y-4 shadow-2xl relative overflow-hidden">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em]">Aggregate Metric</p>
+                <div className="bg-linear-to-br from-blue-600 to-indigo-700 border border-blue-500 rounded-[2.5rem] p-8 md:p-12 text-center space-y-4 shadow-xl relative overflow-hidden">
+                  <p className="text-[10px] font-bold text-blue-100 uppercase tracking-[0.3em]">Aggregate Metric</p>
                   <p className="text-6xl md:text-7xl font-bold text-white tracking-tighter">{expandedContent[selectedClaimId]?.metric}</p>
                   <div className="pt-4">
-                    <span className="px-3 py-1 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-500 text-[9px] font-bold uppercase tracking-widest">Benchmark Confirmed</span>
+                    <span className="px-3 py-1 rounded-full bg-white/20 text-white text-[9px] font-bold uppercase tracking-widest border border-white/30">Benchmark Confirmed</span>
                   </div>
-                  <div className="absolute inset-0 bg-grid-white opacity-[0.005] pointer-events-none" />
                 </div>
 
                   {expandedContent[selectedClaimId]?.table && (
-                    <div className="bg-white/1 border border-white/5 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md">
+                    <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-white/5">
+                          <tr className="bg-slate-50">
                             {expandedContent[selectedClaimId]?.table?.headers.map(h => (
-                              <th key={h} className="p-4 text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em]">{h}</th>
+                              <th key={h} className="p-4 text-[9px] font-bold text-slate-400 uppercase tracking-[0.3em]">{h}</th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
                           {expandedContent[selectedClaimId]?.table?.rows.map((row, i) => (
-                            <tr key={i} className="border-t border-white/5 hover:bg-white/2 transition-colors">
+                            <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
                               {row.map((cell, j) => (
-                                <td key={j} className={`p-4 text-xs md:text-sm font-medium ${j === 0 ? 'text-white' : 'text-slate-400'} ${cell.toString().includes('+') || cell.toString().includes('-0.8') ? 'text-blue-400' : ''}`}>{cell}</td>
+                                <td key={j} className={`p-4 text-xs md:text-sm font-medium ${j === 0 ? 'text-slate-900' : 'text-slate-500'} ${cell.toString().includes('+') || cell.toString().includes('-0.8') ? 'text-blue-600' : ''}`}>{cell}</td>
                               ))}
                             </tr>
                           ))}
@@ -682,7 +679,7 @@ export default function Analysis() {
   );
 }
 
-// --- SUB-COMPONENTS (Exact Copy from Results.tsx patterns) ---
+// --- SUB-COMPONENTS ---
 
 function MiniStat({ icon: Icon, label, value, detail, className }: any) {
   const itemVariants: Variants = {
@@ -691,14 +688,14 @@ function MiniStat({ icon: Icon, label, value, detail, className }: any) {
   };
 
   return (
-    <motion.div variants={itemVariants} className={`bg-white/1 border border-white/5 rounded-2xl p-8 flex flex-col justify-center group hover:bg-white/2 transition-colors relative overflow-hidden h-full ${className}`}>
-       <div className={`w-8 h-8 md:w-10 md:h-10 bg-blue-900/10 rounded-xl flex items-center justify-center mb-3 md:mb-4 border border-blue-900/20`}>
+    <motion.div variants={itemVariants} className={`bg-white border border-slate-100 rounded-2xl p-8 flex flex-col justify-center group hover:bg-slate-50 transition-colors relative overflow-hidden h-full shadow-sm ${className}`}>
+       <div className={`w-8 h-8 md:w-10 md:h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3 md:mb-4 border border-blue-100`}>
           <Icon className={`w-4 h-4 md:w-5 md:h-5 text-blue-600`} />
        </div>
-       <p className="text-[8px] md:text-[9px] font-bold tracking-[0.2em] text-slate-500 uppercase mb-1 md:mb-1.5">{label}</p>
+       <p className="text-[8px] md:text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-1 md:mb-1.5">{label}</p>
        <div className="flex items-baseline gap-2">
-          <p className="text-xl md:text-2xl font-bold tracking-tight text-white">{value}</p>
-          <p className="text-[8px] md:text-[9px] font-bold text-slate-600 uppercase">{detail}</p>
+          <p className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">{value}</p>
+          <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">{detail}</p>
        </div>
     </motion.div>
   );
@@ -707,22 +704,22 @@ function MiniStat({ icon: Icon, label, value, detail, className }: any) {
 function PillarCard({ pillar }: { pillar: any }) {
   const Icon = pillar.icon;
   return (
-    <div className="bg-white/1 border border-white/5 rounded-2xl p-8 flex flex-col h-full group hover:bg-white/2 transition-colors relative overflow-hidden">
-      <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-900/10 rounded-xl flex items-center justify-center mb-6 border border-blue-900/20 group-hover:scale-110 transition-transform">
+    <div className="bg-white border border-slate-100 rounded-2xl p-8 flex flex-col h-full group hover:bg-slate-50 transition-colors relative overflow-hidden shadow-sm">
+      <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 border border-blue-100 group-hover:scale-110 transition-transform">
         <Icon className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
       </div>
       <div className="space-y-2 mb-6">
-        <h4 className="text-2xl font-bold text-white tracking-tight">{pillar.title}</h4>
-        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] leading-none">{pillar.tagline}</p>
+        <h4 className="text-2xl font-bold text-slate-900 tracking-tight">{pillar.title}</h4>
+        <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] leading-none">{pillar.tagline}</p>
       </div>
-      <p className="text-slate-400 text-sm leading-relaxed mb-8 grow font-medium">{pillar.desc}</p>
+      <p className="text-slate-500 text-sm leading-relaxed mb-8 grow font-medium">{pillar.desc}</p>
       
-      <div className="mt-auto p-4 rounded-xl bg-blue-600/5 border border-blue-500/10 backdrop-blur-sm">
+      <div className="mt-auto p-4 rounded-xl bg-blue-50 border border-blue-100 backdrop-blur-sm">
         <div className="flex items-center gap-2 mb-1.5">
-          <Sparkles className="w-3 h-3 text-blue-500" />
-          <p className="text-blue-500 font-bold uppercase tracking-[0.2em] text-[9px]">{pillar.status}</p>
+          <Sparkles className="w-3 h-3 text-blue-600" />
+          <p className="text-blue-600 font-bold uppercase tracking-[0.2em] text-[9px]">{pillar.status}</p>
         </div>
-        <p className="text-slate-300 text-[11px] font-medium leading-relaxed italic">"{pillar.statusDesc}"</p>
+        <p className="text-slate-500 text-[11px] font-medium leading-relaxed italic">"{pillar.statusDesc}"</p>
       </div>
     </div>
   );
@@ -734,10 +731,10 @@ function SectionHeader({ number, title, description }: any) {
     visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
   return (
-    <motion.div variants={itemVariants} className="flex flex-col gap-2 border-b border-white/5 pb-4 md:pb-6 w-full">
+    <motion.div variants={itemVariants} className="flex flex-col gap-2 border-b border-slate-100 pb-4 md:pb-6 w-full">
       <div className="flex items-center gap-3">
         <span className="text-blue-600 font-mono text-[10px] md:text-xs font-bold">[{number}]</span>
-        <h2 className="text-lg md:text-xl font-bold tracking-tight uppercase text-white">{title}</h2>
+        <h2 className="text-lg md:text-xl font-bold tracking-tight uppercase text-slate-900">{title}</h2>
       </div>
       <p className="text-slate-500 font-medium text-[10px] md:text-[11px] max-w-xl">{description}</p>
     </motion.div>
@@ -752,18 +749,18 @@ function ChartCard({ title, className, description, onExpand, highlight, childre
   return (
     <motion.div variants={itemVariants} className={`relative border rounded-2xl overflow-hidden group transition-colors flex flex-col items-center justify-center ${className} 
         ${inverted 
-          ? 'bg-linear-to-br from-blue-950 via-[#050505] to-black border-white/10 shadow-[0_0_50px_rgba(23,37,84,0.2)]' 
-          : 'bg-white/1 border-white/5 hover:border-white/8'
-        } ${highlight && !inverted ? 'bg-white/2 border-white/8' : ''}`}>
+          ? 'bg-linear-to-br from-blue-600 to-indigo-700 border-blue-500 shadow-xl' 
+          : 'bg-white border-slate-100 hover:bg-slate-50 shadow-sm'
+        } ${highlight && !inverted ? 'bg-slate-50 border-slate-200' : ''}`}>
       <div className="absolute top-6 md:top-8 left-6 md:left-8 right-6 md:right-8 flex justify-between items-start z-20 pointer-events-none">
         <div className="space-y-1 pointer-events-auto flex-1 mr-4">
-          <h3 className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] ${inverted ? 'text-white/60' : 'text-slate-500'}`}>{title}</h3>
-          {description && <p className={`text-[8px] md:text-[9px] font-semibold uppercase tracking-tight line-clamp-2 ${inverted ? 'text-white/40' : 'text-slate-600'}`}>{description}</p>}
+          <h3 className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] ${inverted ? 'text-white/60' : 'text-slate-400'}`}>{title}</h3>
+          {description && <p className={`text-[8px] md:text-[9px] font-semibold uppercase tracking-tight line-clamp-2 ${inverted ? 'text-white/40' : 'text-slate-500'}`}>{description}</p>}
         </div>
         {onExpand && (
-          <button onClick={onExpand} className={`w-7 h-7 md:w-8 md:h-8 border rounded-lg flex items-center justify-center hover:scale-105 transition-all pointer-events-auto shadow-xl backdrop-blur-md shrink-0 
-              ${inverted ? 'bg-white/10 border-white/20' : 'bg-white/3 border-white/10 hover:bg-white/10'}`}>
-            <Maximize2 className={`w-3.5 h-3.5 transition-colors ${inverted ? 'text-white/60 group-hover:text-white' : 'text-slate-500 group-hover:text-white'}`} />
+          <button onClick={onExpand} className={`w-7 h-7 md:w-8 md:h-8 border rounded-lg flex items-center justify-center hover:scale-105 transition-all pointer-events-auto shadow-sm backdrop-blur-md shrink-0 
+              ${inverted ? 'bg-white/10 border-white/20' : 'bg-slate-50 border-slate-200 hover:bg-slate-100'}`}>
+            <Maximize2 className={`w-3.5 h-3.5 transition-colors ${inverted ? 'text-white/60 group-hover:text-white' : 'text-slate-400 group-hover:text-slate-900'}`} />
           </button>
         )}
       </div>
@@ -774,20 +771,19 @@ function ChartCard({ title, className, description, onExpand, highlight, childre
             {children}
         </div>
       </div>
-
-      <div className="absolute inset-0 bg-grid-white opacity-[0.005] pointer-events-none" />
     </motion.div>
   );
 }
 
 function MatrixRow({ label, value, reason }: any) {
   return (
-    <div className="flex justify-between items-center border-b border-white/5 pb-3">
+    <div className="flex justify-between items-center border-b border-slate-100 pb-3 last:border-0">
       <div>
-        <p className="text-[8px] font-bold text-blue-500 uppercase tracking-[0.2em]">{label}</p>
-        <p className="text-white font-bold text-base tracking-tight">{value}</p>
+        <p className="text-[8px] font-bold text-blue-600 uppercase tracking-[0.2em]">{label}</p>
+        <p className="text-slate-900 font-bold text-base tracking-tight">{value}</p>
       </div>
       <p className="text-[10px] text-slate-500 font-medium italic">"{reason}"</p>
     </div>
   );
 }
+

@@ -77,9 +77,9 @@ export default function ProfessionalSpotlightRadar({
                 key={r}
                 d={rPoints}
                 fill="none"
-                stroke="white"
+                stroke="#cbd5e1"
                 strokeWidth="1"
-                className="opacity-5 transition-opacity group-hover/radar:opacity-10"
+                className="opacity-60 transition-opacity group-hover/radar:opacity-80"
               />
             );
           })}
@@ -92,11 +92,12 @@ export default function ProfessionalSpotlightRadar({
               y1={center}
               x2={center + radius * Math.cos(p.angle)}
               y2={center + radius * Math.sin(p.angle)}
-              stroke="white"
+              stroke="#cbd5e1"
               strokeWidth="1"
-              className="opacity-5"
+              className="opacity-40"
             />
           ))}
+
 
           {/* Inner Glow Polygon */}
           <motion.path
@@ -114,11 +115,10 @@ export default function ProfessionalSpotlightRadar({
             animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
             transition={{ duration: 2, ease: "easeInOut" }}
             d={pathData}
-            fill="rgba(255, 255, 255, 0.02)"
+            fill="rgba(0, 0, 0, 0.02)"
             stroke="url(#spotlight-grad)"
             strokeWidth="3"
-            filter="url(#spotlight-glow)"
-            style={{ filter: `drop-shadow(0 0 20px ${colors[0]}60)` }}
+            style={{ filter: `drop-shadow(0 0 10px ${colors[0]}40)` }}
           />
 
           {/* Axis Labels & Points */}
@@ -135,7 +135,7 @@ export default function ProfessionalSpotlightRadar({
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: hoveredIdx === i ? 1.8 : 1 } : { scale: 0 }}
                 transition={{ duration: 0.3 }}
-                className="fill-white drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+                className="fill-slate-900 shadow-sm"
                 r="4"
               />
               <motion.text
@@ -146,7 +146,7 @@ export default function ProfessionalSpotlightRadar({
                 transition={{ delay: 1 }}
                 textAnchor="middle"
                 alignmentBaseline="middle"
-                className={`font-mono font-black uppercase text-[9px] tracking-[0.2em] transition-all duration-300 ${hoveredIdx === i ? 'fill-white' : 'fill-white/30'}`}
+                className={`font-mono font-black uppercase text-[9px] tracking-[0.2em] transition-all duration-300 ${hoveredIdx === i ? 'fill-slate-900' : 'fill-slate-400'}`}
               >
                 {p.name}
               </motion.text>
@@ -166,9 +166,9 @@ export default function ProfessionalSpotlightRadar({
                 className="space-y-1"
               >
                 <div className="flex flex-col items-center">
-                   <p className="text-[9px] font-black uppercase tracking-[0.4em] text-white/40 mb-1">Mean Score</p>
-                   <p className="text-5xl md:text-6xl font-black text-white tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                     {averageValue}<span className="text-xl text-white/30 ml-1">%</span>
+                   <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mb-1">Mean Score</p>
+                   <p className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter">
+                     {averageValue}<span className="text-xl text-slate-400 ml-1">%</span>
                    </p>
                 </div>
               </motion.div>
@@ -180,16 +180,17 @@ export default function ProfessionalSpotlightRadar({
                 exit={{ opacity: 0, y: -10, scale: 0.9 }}
                 className="space-y-1"
               >
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60 mb-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 mb-1">
                   {points[hoveredIdx]?.name}
                 </p>
-                <p className="text-6xl md:text-7xl font-black text-white tracking-tighter drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-                  {points[hoveredIdx]?.value.toFixed(1)}<span className="text-2xl text-white/30 ml-1">%</span>
+                <p className="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter">
+                  {points[hoveredIdx]?.value.toFixed(1)}<span className="text-2xl text-slate-400 ml-1">%</span>
                 </p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
+
 
         {/* Triple Atmospheric Glow Layers */}
         <motion.div

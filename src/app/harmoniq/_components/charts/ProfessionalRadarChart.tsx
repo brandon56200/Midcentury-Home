@@ -62,23 +62,24 @@ export default function ProfessionalRadarChart({
               exit={{ opacity: 0, scale: 0.9, y: 10 }}
               className="absolute top-0 right-0 z-50 pointer-events-none hidden lg:block"
             >
-              <div className="bg-black/95 backdrop-blur-2xl border border-white/20 p-5 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] space-y-3 min-w-[210px]">
+              <div className="bg-white/95 backdrop-blur-2xl border border-slate-200 p-5 rounded-2xl shadow-xl space-y-3 min-w-[210px]">
                 <div className="flex items-center gap-3 mb-1">
-                  <div className="w-3 h-3 rounded-full shadow-[0_0_15px_currentColor]" style={{ backgroundColor: datasets[hoveredIndex].color }} />
-                  <span className="text-sm font-black text-white uppercase tracking-[0.1em]">
+                  <div className="w-3 h-3 rounded-full shadow-sm" style={{ backgroundColor: datasets[hoveredIndex].color }} />
+                  <span className="text-sm font-black text-slate-900 uppercase tracking-[0.1em]">
                     {datasets[hoveredIndex].name}
                   </span>
                 </div>
-                <div className="space-y-2.5 border-t border-white/10 pt-3">
+                <div className="space-y-2.5 border-t border-slate-100 pt-3">
                   {datasets[hoveredIndex].data.map((item) => (
                     <div key={item.name} className="flex justify-between items-center gap-8">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-tight">{item.name}</span>
-                      <span className="text-sm font-mono font-black text-white">{item.value.toFixed(1)}%</span>
+                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-tight">{item.name}</span>
+                      <span className="text-sm font-mono font-black text-slate-900">{item.value.toFixed(1)}%</span>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
+
           )}
         </AnimatePresence>
 
@@ -107,9 +108,9 @@ export default function ProfessionalRadarChart({
                 key={r}
                 d={rPoints}
                 fill="none"
-                stroke="white"
+                stroke="#cbd5e1"
                 strokeWidth="1"
-                className="opacity-5"
+                className="opacity-60"
               />
             );
           })}
@@ -124,12 +125,14 @@ export default function ProfessionalRadarChart({
                 y1={center + vOffset}
                 x2={center + radius * Math.cos(angle)}
                 y2={center + vOffset + radius * Math.sin(angle)}
-                stroke="white"
+                stroke="#cbd5e1"
                 strokeWidth="1"
-                className="opacity-10"
+                className="opacity-80"
               />
             );
           })}
+
+
 
           {/* Datasets */}
           {datasets.map((dataset, idx) => {
@@ -182,7 +185,7 @@ export default function ProfessionalRadarChart({
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                       transition={{ delay: 1.5 + (idx * 0.1) + (i * 0.05) }}
                       fill={dataset.color}
-                      className="drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] stroke-black/20"
+                      className="shadow-sm stroke-white/20"
                       strokeWidth="1"
                     />
                   );
@@ -207,12 +210,13 @@ export default function ProfessionalRadarChart({
                 transition={{ delay: 2 }}
                 textAnchor="middle"
                 alignmentBaseline="middle"
-                className="font-mono font-black uppercase text-[11px] tracking-[0.2em] fill-white"
+                className="font-mono font-black uppercase text-[11px] tracking-[0.2em] fill-slate-900"
               >
                 {p.name}
               </motion.text>
             );
           })}
+
         </svg>
       </div>
     </div>

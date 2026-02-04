@@ -180,26 +180,26 @@ export default function Results({ onNavigate }: ResultsProps) {
       });
 
   return (
-    <div className="flex-1 flex flex-col overflow-y-auto custom-scrollbar bg-transparent selection:bg-blue-500/30">
+    <div className="flex-1 flex flex-col bg-transparent selection:bg-blue-600/10">
       <div className="pb-32 space-y-0">
         
         {/* BLOCK 1: THE NARRATIVE & PROBLEM STATEMENT */}
-        <section className="relative pt-32 pb-48 px-6 overflow-hidden min-h-[800px] flex flex-col justify-center bg-black">
+        <section className="relative pt-32 pb-48 px-6 overflow-hidden min-h-[800px] flex flex-col justify-center bg-[#fcfcfc]">
            {/* Refined Technical Spotlight Grid */}
            <div className="absolute inset-0 pointer-events-none select-none">
               <div 
                 className="absolute inset-0" 
                 style={{ 
-                  backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+                  backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)`,
                   backgroundSize: '50px 50px',
                   maskImage: 'radial-gradient(circle at 50% 50%, white 0%, transparent 70%)',
                   WebkitMaskImage: 'radial-gradient(circle at 50% 50%, white 0%, transparent 70%)'
                 }} 
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl aspect-square bg-white/5 blur-[120px] rounded-full" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl aspect-square bg-white/2 blur-[160px] rounded-full" />
-              <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
-              <div className="absolute inset-0 bg-linear-to-r from-black via-transparent to-black" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl aspect-square bg-blue-50/40 blur-[120px] rounded-full" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl aspect-square bg-slate-50/30 blur-[160px] rounded-full" />
+              <div className="absolute inset-0 bg-linear-to-b from-white via-transparent to-white" />
+              <div className="absolute inset-0 bg-linear-to-r from-white via-transparent to-white" />
            </div>
 
            <div className="max-w-5xl mx-auto relative z-10 space-y-24">
@@ -211,10 +211,10 @@ export default function Results({ onNavigate }: ResultsProps) {
                    transition={{ duration: 1.2, ease: "easeOut" }}
                    className="space-y-6"
                  >
-                    <h2 className="text-xs font-mono font-black text-blue-400 uppercase tracking-[0.5em] mb-4">Establishing the Standard</h2>
-                    <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9] max-w-4xl mx-auto">
+                    <h2 className="text-xs font-mono font-black text-blue-600 uppercase tracking-[0.5em] mb-4">Establishing the Standard</h2>
+                    <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.9] max-w-4xl mx-auto">
                        Voice AI lacked a <br />
-                       <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">De Facto.</span> Until now.
+                       <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">De Facto.</span> Until now.
                     </h1>
                  </motion.div>
 
@@ -225,10 +225,10 @@ export default function Results({ onNavigate }: ResultsProps) {
                    transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
                    className="max-w-3xl mx-auto space-y-8"
                  >
-                    <p className="text-xl md:text-3xl text-white font-semibold tracking-tight leading-tight">
+                    <p className="text-xl md:text-3xl text-slate-900 font-semibold tracking-tight leading-tight">
                        The leap to native audio left a critical void in how we measure success. While evaluation has improved, we saw the need for a standard that rigorously tests the depth and logic of the next generation of Voice AI.
                     </p>
-                    <p className="text-lg md:text-xl text-slate-400 font-bold leading-relaxed">
+                    <p className="text-lg md:text-xl text-slate-500 font-bold leading-relaxed">
                        Harmoniq is our answer. A deep-dive audit into the paralinguistic, logical, and perceived intelligence of the world&apos;s leading speech-to-speech models.
                     </p>
                  </motion.div>
@@ -244,12 +244,12 @@ export default function Results({ onNavigate }: ResultsProps) {
               >
                  <div className="text-center space-y-8">
                     <div className="flex items-center justify-center gap-6">
-                       <span className="font-mono text-sm md:text-base font-black text-blue-400 bg-blue-400/10 px-3 py-1.5 rounded-lg border border-blue-400/20">
+                       <span className="font-mono text-sm md:text-base font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
                          OVERVIEW
                        </span>
-                       <h3 className="text-[11px] md:text-xs font-mono font-black text-white/70 uppercase tracking-[0.5em]">The Three Pillars Framework</h3>
+                       <h3 className="text-[11px] md:text-xs font-mono font-black text-slate-400 uppercase tracking-[0.5em]">The Three Pillars Framework</h3>
                     </div>
-                    <p className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9]">The Core Pillars</p>
+                    <p className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase leading-[0.9]">The Core Pillars</p>
                  </div>
                  
                  <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -276,24 +276,24 @@ export default function Results({ onNavigate }: ResultsProps) {
                         color: "cyan" 
                       }
                     ].map((p) => (
-                      <div key={p.title} className="bg-white/1 border border-white/5 p-10 rounded-2xl space-y-8 hover:bg-white/2 transition-colors relative overflow-hidden group h-full shadow-2xl">
-                         <div className={`w-14 h-14 rounded-2xl bg-${p.color}-600/10 border border-${p.color}-500/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                            <p.icon className={`w-7 h-7 text-${p.color}-500`} />
+                      <div key={p.title} className="bg-white border border-slate-100 p-10 rounded-2xl space-y-8 hover:shadow-md transition-all relative overflow-hidden group h-full shadow-sm">
+                         <div className={`w-14 h-14 rounded-2xl bg-${p.color}-50 border border-${p.color}-100 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                            <p.icon className={`w-7 h-7 text-${p.color}-600`} />
                          </div>
                          <div className="space-y-3">
-                            <h4 className="text-2xl font-black text-white tracking-tight uppercase leading-none">{p.title}</h4>
-                            <p className={`text-${p.color}-400 text-xs font-black uppercase tracking-[0.2em] leading-relaxed`}>{p.subtitle}</p>
+                            <h4 className="text-2xl font-black text-slate-900 tracking-tight uppercase leading-none">{p.title}</h4>
+                            <p className={`text-${p.color}-600 text-xs font-black uppercase tracking-[0.2em] leading-relaxed`}>{p.subtitle}</p>
                          </div>
-                         <div className="pt-6 border-t border-white/10">
-                            <p className="text-sm font-mono font-black text-white uppercase tracking-[0.3em]">{p.desc}</p>
+                         <div className="pt-6 border-t border-slate-100">
+                            <p className="text-sm font-mono font-black text-slate-400 uppercase tracking-[0.3em]">{p.desc}</p>
                          </div>
-                         <div className="absolute inset-0 bg-grid-white opacity-[0.005] pointer-events-none" />
                       </div>
                     ))}
             </div>
               </motion.div>
           </div>
         </section>
+
 
         {/* BLOCK 3: THE RANKINGS */}
         <ProfessionalArticleSection
@@ -304,7 +304,7 @@ export default function Results({ onNavigate }: ResultsProps) {
           stacked={true}
         >
           <div className="space-y-20">
-             <div className="bg-[#050505] border border-white/10 px-8 md:px-14 pt-4 md:pt-6 pb-7 md:pb-8 rounded-2xl shadow-2xl relative overflow-hidden">
+             <div className="bg-white border border-slate-200 px-8 md:px-14 pt-4 md:pt-6 pb-7 md:pb-8 rounded-2xl shadow-sm relative overflow-hidden">
                <div className="pt-4">
                  <ProfessionalBarChart
                    data={executiveData}
@@ -312,43 +312,43 @@ export default function Results({ onNavigate }: ResultsProps) {
                    isCenterpiece={true}
                  />
                </div>
-               <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-indigo-500/5 pointer-events-none" />
+               <div className="absolute inset-0 bg-linear-to-br from-blue-50/5 via-transparent to-indigo-50/5 pointer-events-none" />
              </div>
 
              {/* Rankings Table */}
              <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse min-w-[600px]">
                    <thead>
-                      <tr className="border-b border-white/20">
-                         <th className="py-4 px-6 text-xs font-mono font-black text-white/40 uppercase tracking-widest">Rank</th>
-                         <th className="py-4 px-6 text-xs font-mono font-black text-white/40 uppercase tracking-widest">Model</th>
-                         <th className="py-4 px-6 text-xs font-mono font-black text-white/40 uppercase tracking-widest">Accuracy</th>
-                         <th className="py-4 px-6 text-xs font-mono font-black text-white/40 uppercase tracking-widest">Naturalness</th>
-                         <th className="py-4 px-6 text-xs font-mono font-black text-white/40 uppercase tracking-widest">Reliability</th>
+                      <tr className="border-b border-slate-300">
+                         <th className="py-4 px-6 text-xs font-mono font-black text-slate-500 uppercase tracking-widest">Rank</th>
+                         <th className="py-4 px-6 text-xs font-mono font-black text-slate-500 uppercase tracking-widest">Model</th>
+                         <th className="py-4 px-6 text-xs font-mono font-black text-slate-500 uppercase tracking-widest">Accuracy</th>
+                         <th className="py-4 px-6 text-xs font-mono font-black text-slate-500 uppercase tracking-widest">Naturalness</th>
+                         <th className="py-4 px-6 text-xs font-mono font-black text-slate-500 uppercase tracking-widest">Reliability</th>
                       </tr>
                    </thead>
                    <tbody>
                       {rankings.map((r, i) => {
                         const model = models.find(m => m.id === r.modelId);
                         return (
-                          <tr key={r.modelId} className="border-b border-white/10 group hover:bg-white/3 transition-colors">
+                          <tr key={r.modelId} className="border-b border-slate-200 group hover:bg-slate-50 transition-colors">
                              <td className="py-6 px-6">
-                                <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm ${i === 0 ? 'bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]' : 'bg-white/10 text-white/60'}`}>
+                                <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm ${i === 0 ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-100 text-slate-400'}`}>
                                    {r.rank}
                                 </span>
                              </td>
                              <td className="py-6 px-6">
                                 <div className="flex items-center gap-3">
-                                   <BrandIcon brandId={r.modelId} size={18} className="text-white" />
+                                   <BrandIcon brandId={r.modelId} size={18} className="text-slate-900" />
                                    <div className="flex flex-col">
-                                      <span className="font-black text-white uppercase tracking-tight text-base leading-none mb-1">{model?.fullName ?? "Unknown"}</span>
-                                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{model?.provider ?? "Unknown"}</span>
+                                      <span className="font-black text-slate-900 uppercase tracking-tight text-base leading-none mb-1">{model?.fullName ?? "Unknown"}</span>
+                                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{model?.provider ?? "Unknown"}</span>
                                    </div>
                                 </div>
                              </td>
-                             <td className="py-6 px-6 font-mono font-black text-white text-xl">{r.accuracy}%</td>
-                             <td className="py-6 px-6 font-mono font-bold text-slate-300 text-base">{r.naturalness} MOS</td>
-                             <td className="py-6 px-6 font-mono font-bold text-slate-300 text-base">{r.reliability}%</td>
+                             <td className="py-6 px-6 font-mono font-black text-slate-900 text-xl">{r.accuracy}%</td>
+                             <td className="py-6 px-6 font-mono font-bold text-slate-500 text-base">{r.naturalness} MOS</td>
+                             <td className="py-6 px-6 font-mono font-bold text-slate-500 text-base">{r.reliability}%</td>
                           </tr>
                         );
                       })}
@@ -366,18 +366,18 @@ export default function Results({ onNavigate }: ResultsProps) {
           description="While basic speech-to-text transcription has become an industry commodity, the true architectural divide in native Voice AI is found in the 'Frontier Pillars': Voice Understanding and Speech Reasoning. The ability to perceive human paralinguistics and think natively in audio—without the crutch of text-only logic—remains the primary differentiator between models that merely transcribe and those that truly comprehend."
           stacked={true}
         >
-          <div className="bg-[#050505] border border-white/10 rounded-3xl shadow-3xl relative">
+          <div className="bg-white border border-slate-200 rounded-3xl shadow-sm relative">
              <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                 {/* Left Side: Title & Selector */}
-                <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
+                <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-slate-100 flex flex-col rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
                    <div className="space-y-8">
                       <div className="space-y-2">
-                         <h4 className="text-xl font-mono font-black text-white uppercase tracking-widest leading-tight">Multi-Model Capability Map</h4>
+                         <h4 className="text-xl font-mono font-black text-slate-900 uppercase tracking-widest leading-tight">Multi-Model Capability Map</h4>
                          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Normalizing performance across the three pillars</p>
                       </div>
 
                       <div className="space-y-3">
-                         <h5 className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] mb-4">Select Model Focus</h5>
+                         <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Select Model Focus</h5>
                          <div className="grid grid-cols-1 gap-2.5">
                             {radarDatasets.map((ds, idx) => (
                                <motion.div 
@@ -386,13 +386,13 @@ export default function Results({ onNavigate }: ResultsProps) {
                                   onMouseLeave={() => setHoveredRadarIdx(null)}
                                   className={`flex items-center justify-between p-4 rounded-xl border transition-all duration-300 cursor-pointer group ${
                                      hoveredRadarIdx === idx 
-                                     ? 'bg-white/10 border-white/20 shadow-xl translate-x-1' 
-                                     : 'bg-white/2 border-white/5 hover:bg-white/5'
+                                     ? 'bg-slate-50 border-slate-200 shadow-sm translate-x-1' 
+                                     : 'bg-white border-slate-100 hover:bg-slate-50'
                                   }`}
                                >
                                   <div className="flex items-center gap-4">
-                                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${hoveredRadarIdx === idx ? 'scale-125 shadow-[0_0_15px_currentColor]' : ''}`} style={{ backgroundColor: ds.color }} />
-                                     <span className={`text-[11px] font-mono font-black uppercase tracking-widest transition-colors ${hoveredRadarIdx === idx ? 'text-white' : 'text-white/40'}`}>
+                                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${hoveredRadarIdx === idx ? 'scale-125 shadow-sm' : ''}`} style={{ backgroundColor: ds.color }} />
+                                     <span className={`text-[11px] font-mono font-black uppercase tracking-widest transition-colors ${hoveredRadarIdx === idx ? 'text-slate-900' : 'text-slate-400'}`}>
                                         {ds.name}
                                      </span>
                                   </div>
@@ -405,7 +405,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                 </div>
 
                 {/* Right Side: Chart */}
-                <div className="lg:col-span-7 p-6 md:p-12 flex flex-col items-center justify-center bg-white/1 rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl relative min-h-[500px]">
+                <div className="lg:col-span-7 p-6 md:p-12 flex flex-col items-center justify-center bg-white rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl relative min-h-[500px]">
                    <ProfessionalRadarChart
                      datasets={radarDatasets}
                      size={480}
@@ -417,6 +417,7 @@ export default function Results({ onNavigate }: ResultsProps) {
           </div>
         </ProfessionalArticleSection>
 
+
         {/* BLOCK 5: THE FULL PICTURE (HEATMAP) */}
         <ProfessionalArticleSection
           number="03"
@@ -425,7 +426,7 @@ export default function Results({ onNavigate }: ResultsProps) {
           description="Decomposing models into specific sub-tasks reveals that low-performing models struggle significantly with paralinguistic identity and complex logic traps like 'Web of Lies'."
           stacked={true}
         >
-          <div className="bg-[#050505] border border-white/10 p-4 md:p-12 rounded-2xl shadow-2xl relative">
+          <div className="bg-white border border-slate-200 p-4 md:p-12 rounded-2xl shadow-sm relative">
             <ProfessionalHeatmap
               models={models.map(m => ({ id: m.id, name: m.shortName, brandId: m.id }))}
               tasks={tasks}
@@ -434,11 +435,11 @@ export default function Results({ onNavigate }: ResultsProps) {
             />
             
             {/* Legend Footer */}
-            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-8 pt-8 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                {tasks.map(t => (
                  <div key={t.id} className="flex items-start gap-3">
-                    <span className="font-mono font-black text-blue-400 text-xs mt-0.5">{t.abbreviation}</span>
-                    <span className="text-xs text-slate-400 font-bold leading-tight">{t.name}</span>
+                    <span className="font-mono font-black text-blue-600 text-xs mt-0.5">{t.abbreviation}</span>
+                    <span className="text-xs text-slate-500 font-bold leading-tight">{t.name}</span>
                  </div>
                ))}
             </div>
@@ -456,10 +457,10 @@ export default function Results({ onNavigate }: ResultsProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
              
              {/* Insight 1: Reasoning Gap */}
-             <div className="bg-white/3 border border-white/10 p-8 md:p-12 rounded-2xl space-y-8 flex flex-col shadow-2xl">
+             <div className="bg-white border border-slate-200 p-8 md:p-12 rounded-2xl space-y-8 flex flex-col shadow-sm">
                 <div className="space-y-4">
-                   <h4 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">The Reasoning Frontier</h4>
-                   <p className="text-slate-400 text-base leading-relaxed font-bold">
+                   <h4 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight">The Reasoning Frontier</h4>
+                   <p className="text-slate-500 text-base leading-relaxed font-bold">
                       While most models incur a massive 'modality tax' when processing audio, the lead model proves that native speech-to-speech architectures can maintain full cognitive parity with text.
                    </p>
                 </div>
@@ -469,53 +470,54 @@ export default function Results({ onNavigate }: ResultsProps) {
                      data={reasoningGapData} 
                      unit="%" 
                      maxValue={100}
-                     referenceLine={{ value: 66, label: "Market Baseline", color: "#64748b" }}
+                     referenceLine={{ value: 66, label: "Market Baseline", color: "#94a3b8" }}
                    />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                    <div>
-                      <p className="text-3xl font-black text-white">91.2%</p>
-                      <p className="text-xs font-mono font-black text-white/40 uppercase tracking-widest mt-1">Frontier Peak</p>
+                      <p className="text-3xl font-black text-slate-900">91.2%</p>
+                      <p className="text-xs font-mono font-black text-slate-400 uppercase tracking-widest mt-1">Frontier Peak</p>
                    </div>
                    <div>
                       <p className="text-3xl font-black text-slate-400">66%</p>
-                      <p className="text-xs font-mono font-black text-white/40 uppercase tracking-widest mt-1">Market Avg</p>
+                      <p className="text-xs font-mono font-black text-slate-400 uppercase tracking-widest mt-1">Market Avg</p>
                    </div>
                 </div>
-                    </div>
+             </div>
 
              {/* Insight 2: Voice Understanding */}
-             <div className="bg-white/3 border border-white/10 p-8 md:p-12 rounded-2xl space-y-8 flex flex-col shadow-2xl">
+             <div className="bg-white border border-slate-200 p-8 md:p-12 rounded-2xl space-y-8 flex flex-col shadow-sm">
                 <div className="space-y-4">
-                   <h4 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">The Perception Barrier</h4>
-                   <p className="text-slate-400 text-base leading-relaxed font-bold">
+                   <h4 className="text-2xl md:text-3xl font-black text-slate-900 uppercase tracking-tight">The Perception Barrier</h4>
+                   <p className="text-slate-500 text-base leading-relaxed font-bold">
                       Paralinguistic awareness remains the ultimate differentiator. Outside of the top performers, models fail to perceive basic speaker attributes better than random chance.
-                        </p>
-                    </div>
+                   </p>
+                </div>
 
                 <div className="flex-1 min-h-[300px] flex flex-col justify-center">
                    <ProfessionalBarChart 
                      data={genderRecognitionData} 
                      unit="%" 
                      maxValue={100}
-                     referenceLine={{ value: 50, label: "Random Chance", color: "#64748b" }}
+                     referenceLine={{ value: 50, label: "Random Chance", color: "#94a3b8" }}
                    />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
                    <div>
-                      <p className="text-3xl font-black text-white">98.8%</p>
-                      <p className="text-xs font-mono font-black text-white/40 uppercase tracking-widest mt-1">Peak Perception</p>
+                      <p className="text-3xl font-black text-slate-900">98.8%</p>
+                      <p className="text-xs font-mono font-black text-slate-400 uppercase tracking-widest mt-1">Peak Perception</p>
                    </div>
                    <div>
                       <p className="text-3xl font-black text-slate-400">50%</p>
-                      <p className="text-xs font-mono font-black text-white/40 uppercase tracking-widest mt-1">Blind Guessing</p>
+                      <p className="text-xs font-mono font-black text-slate-400 uppercase tracking-widest mt-1">Blind Guessing</p>
                    </div>
                 </div>
-            </div>
+             </div>
           </div>
         </ProfessionalArticleSection>
+
 
         {/* BLOCK 7: MODULAR COMPARISONS */}
         <ProfessionalArticleSection
@@ -527,23 +529,23 @@ export default function Results({ onNavigate }: ResultsProps) {
         >
           <div className="space-y-12">
              {/* 1. ASR WER: Functional Parity */}
-             <div className="bg-[#050505] border border-white/10 rounded-2xl shadow-3xl overflow-hidden">
+             <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                   <div className="lg:col-span-4 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center space-y-10">
+                   <div className="lg:col-span-4 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-slate-100 flex flex-col justify-center space-y-10">
                       <div className="space-y-4">
                          <div className="flex items-center gap-3">
-                            <Search className="w-5 h-5 text-blue-400" />
-                            <h4 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Functional Parity</h4>
+                            <Search className="w-5 h-5 text-blue-600" />
+                            <h4 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">Functional Parity</h4>
                          </div>
-                         <p className="text-slate-400 text-base leading-relaxed font-bold">
+                         <p className="text-slate-500 text-base leading-relaxed font-bold">
                             Integrated neural bundles now achieve Word Error Rates that rival or beat enterprise STT specialists, rendering modular transcription layers obsolete.
                          </p>
                   </div>
 
-                      <div className="space-y-6 pt-6 border-t border-white/10">
+                      <div className="space-y-6 pt-6 border-t border-slate-100">
                          {/* View Controls */}
                          <div className="space-y-3">
-                            <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-[0.2em]">View Controls</p>
+                            <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.2em]">View Controls</p>
                             <div className="flex flex-wrap gap-2">
                                {[
                                  { id: 'sort', label: 'Sort by Score', icon: TrendingUp },
@@ -554,34 +556,34 @@ export default function Results({ onNavigate }: ResultsProps) {
                                    onClick={() => setModularViewMode(mode.id as 'sort' | 'group')}
                                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-black uppercase tracking-widest transition-all ${
                                      modularViewMode === mode.id 
-                                       ? 'bg-blue-500 border-blue-400 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]' 
-                                       : 'bg-white/5 border-white/10 text-white/40 hover:bg-white/10 hover:text-white'
+                                       ? 'bg-linear-to-br from-blue-600 to-indigo-600 border-blue-400 text-white shadow-md' 
+                                       : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100 hover:text-slate-900'
                                    }`}
                                  >
                                    <mode.icon className="w-3 h-3" />
                                    {mode.label}
                                  </button>
-             ))}
+                               ))}
                             </div>
-          </div>
+                         </div>
 
                          {/* Color Key */}
                     <div className="space-y-3">
-                            <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-[0.2em]">Color Key</p>
+                            <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.2em]">Color Key</p>
                             <div className="space-y-2">
                                <div className="flex items-center gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-blue-500" />
-                                  <span className="text-[10px] font-black text-white/60 uppercase">Native STS Models</span>
+                                  <div className="w-2 h-2 rounded-full bg-blue-600" />
+                                  <span className="text-[10px] font-black text-slate-500 uppercase">Native STS Models</span>
                                </div>
                                <div className="flex items-center gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                                  <span className="text-[10px] font-black text-white/60 uppercase">Specialized Layers</span>
+                                  <div className="w-2 h-2 rounded-full bg-indigo-600" />
+                                  <span className="text-[10px] font-black text-slate-500 uppercase">Specialized Layers</span>
                                </div>
                             </div>
                          </div>
                       </div>
                    </div>
-                   <div className="lg:col-span-8 p-6 md:p-12 flex flex-col items-center justify-center bg-white/1">
+                   <div className="lg:col-span-8 p-6 md:p-12 flex flex-col items-center justify-center bg-white/10 backdrop-blur-sm">
                       <ProfessionalBarChart 
                         data={asrWerChartData} 
                         unit="%" 
@@ -598,25 +600,25 @@ export default function Results({ onNavigate }: ResultsProps) {
                     </div>
 
              {/* 2. Naturalness: The Aesthetic Gap */}
-             <div className="bg-[#050505] border border-white/10 rounded-2xl shadow-3xl overflow-hidden">
+             <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                   <div className="lg:col-span-4 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center space-y-10">
+                   <div className="lg:col-span-4 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-slate-100 flex flex-col justify-center space-y-10">
                     <div className="space-y-4">
                          <div className="flex items-center gap-3">
-                            <Headphones className="w-5 h-5 text-indigo-400" />
-                            <h4 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">The Aesthetic Gap</h4>
+                            <Headphones className="w-5 h-5 text-indigo-600" />
+                            <h4 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">The Aesthetic Gap</h4>
                          </div>
-                         <p className="text-slate-400 text-base leading-relaxed font-bold">
+                         <p className="text-slate-500 text-base leading-relaxed font-bold">
                             Elite TTS layers still lead the race to beat the Uncanny Valley. STS models struggle to match the prosodic nuance of modular audio specialists.
                          </p>
                       </div>
 
-                      <div className="space-y-6 pt-6 border-t border-white/10">
+                      <div className="space-y-6 pt-6 border-t border-slate-100">
                          {/* View Controls (Shared State) */}
                          <div className="space-y-3">
-                            <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-[0.2em]">View Controls</p>
+                            <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.2em]">View Controls</p>
                             <div className="flex flex-wrap gap-2">
-                               <div className="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                               <div className="px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-sm">
                                   {modularViewMode === 'sort' ? <TrendingUp className="w-3 h-3" /> : <Layers className="w-3 h-3" />}
                                   Sync View: {modularViewMode === 'sort' ? 'Sorted' : 'Grouped'}
                                </div>
@@ -625,21 +627,21 @@ export default function Results({ onNavigate }: ResultsProps) {
 
                          {/* Color Key (Unified) */}
                          <div className="space-y-3">
-                            <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-[0.2em]">Color Key</p>
+                            <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-[0.2em]">Color Key</p>
                             <div className="space-y-2">
                                <div className="flex items-center gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-blue-500" />
-                                  <span className="text-[10px] font-black text-white/60 uppercase">Native STS Models</span>
+                                  <div className="w-2 h-2 rounded-full bg-blue-600" />
+                                  <span className="text-[10px] font-black text-slate-500 uppercase">Native STS Models</span>
                                </div>
                                <div className="flex items-center gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                                  <span className="text-[10px] font-black text-white/60 uppercase">Specialized Layers</span>
+                                  <div className="w-2 h-2 rounded-full bg-indigo-600" />
+                                  <span className="text-[10px] font-black text-slate-500 uppercase">Specialized Layers</span>
                                </div>
-                        </div>
-                        </div>
+                            </div>
+                         </div>
                       </div>
-                    </div>
-                   <div className="lg:col-span-8 p-6 md:p-12 flex flex-col items-center justify-center bg-white/1">
+                   </div>
+                   <div className="lg:col-span-8 p-6 md:p-12 flex flex-col items-center justify-center bg-slate-50/50">
                       <ProfessionalBarChart 
                         data={naturalnessData} 
                         unit=" MOS" 
@@ -665,15 +667,15 @@ export default function Results({ onNavigate }: ResultsProps) {
           description="Our analysis confirms a critical disjoint: vocal naturalness and logical accuracy are uncorrelated traits. This opens a dangerous frontier for 'reward hacking'—where a model's human-like delivery can mask systemic reasoning failures, potentially deceiving human evaluators and creating a false sense of production readiness."
           stacked={true}
         >
-          <div className="bg-[#050505] border border-white/10 p-6 md:p-8 rounded-3xl shadow-3xl overflow-hidden relative">
+          <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl shadow-sm overflow-hidden relative">
             <ProfessionalScatterPlot 
               data={scatterData} 
               title="Accuracy vs. Naturalness" 
             />
             
             {/* Atmospheric Glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[150px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/30 blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/20 blur-[150px] rounded-full pointer-events-none" />
           </div>
         </ProfessionalArticleSection>
 
@@ -734,25 +736,25 @@ export default function Results({ onNavigate }: ResultsProps) {
                  model2: "N/A", reason2: "Ultravox is the only open-weight model in the current production STS cohort."
                },
              ].map((r) => (
-               <div key={r.need} className="bg-white/3 border border-white/15 p-8 md:p-10 rounded-2xl space-y-6 hover:bg-white/5 transition-all shadow-xl flex flex-col justify-between">
+               <div key={r.need} className="bg-white border border-slate-100 p-8 md:p-10 rounded-2xl space-y-6 hover:shadow-md transition-all shadow-sm flex flex-col justify-between">
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                       <p className="text-xs font-mono font-black text-blue-400 uppercase tracking-widest">Target Scenario</p>
+                       <p className="text-xs font-mono font-black text-blue-600 uppercase tracking-widest">Target Scenario</p>
                     </div>
-                    <h4 className="text-2xl font-black text-white uppercase tracking-tight leading-tight">{r.need}</h4>
+                    <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight leading-tight">{r.need}</h4>
                     
-                    <div className="pt-6 border-t border-white/10 space-y-4">
+                    <div className="pt-6 border-t border-slate-100 space-y-4">
                   <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                             <p className="text-sm font-black text-white">1st: {r.model1}</p>
-                             <div className="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[9px] font-black text-blue-400 uppercase tracking-widest">Recommended</div>
+                             <p className="text-sm font-black text-slate-900">1st: {r.model1}</p>
+                             <div className="px-2 py-0.5 rounded bg-blue-50 border border-blue-100 text-[9px] font-black text-blue-600 uppercase tracking-widest">Recommended</div>
                   </div>
-                          <p className="text-xs text-slate-400 font-bold leading-relaxed">{r.reason1}</p>
+                          <p className="text-xs text-slate-500 font-bold leading-relaxed">{r.reason1}</p>
                 </div>
 
-                       <div className="pt-4 border-t border-white/5 space-y-2">
-                          <p className="text-sm font-black text-white/60">2nd: {r.model2}</p>
-                          <p className="text-xs text-slate-500 font-bold leading-relaxed">{r.reason2}</p>
+                       <div className="pt-4 border-t border-slate-50 space-y-2">
+                          <p className="text-sm font-black text-slate-400">2nd: {r.model2}</p>
+                          <p className="text-xs text-slate-400 font-bold leading-relaxed">{r.reason2}</p>
                 </div>
                     </div>
                 </div>
@@ -764,10 +766,10 @@ export default function Results({ onNavigate }: ResultsProps) {
         {/* BLOCK 10: GO DEEPER */}
         <div className="pt-48 pb-48 max-w-4xl mx-auto px-6 text-center space-y-16">
            <div className="space-y-6">
-              <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase">
+              <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
                  Explore the methodology.
               </h3>
-              <p className="text-base md:text-lg text-slate-400 font-bold leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-slate-500 font-bold leading-relaxed max-w-2xl mx-auto">
                  For structural breakdowns and technical find-logs, proceed to our analysis or experiment sections.
               </p>
       </div>
@@ -775,31 +777,32 @@ export default function Results({ onNavigate }: ResultsProps) {
            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
               <button 
                 onClick={() => onNavigate?.('analysis')}
-                className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30 transition-all font-black text-xs uppercase tracking-widest text-white flex items-center gap-3"
+                className="px-8 py-4 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 transition-all font-black text-xs uppercase tracking-widest text-slate-900 flex items-center gap-3 shadow-sm"
               >
-                 <Search className="w-4 h-4 text-blue-400" />
+                 <Search className="w-4 h-4 text-blue-600" />
                  Deep Analysis
               </button>
               <button 
                 onClick={() => onNavigate?.('experiment')}
-                className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-indigo-500/30 transition-all font-black text-xs uppercase tracking-widest text-white flex items-center gap-3"
+                className="px-8 py-4 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 transition-all font-black text-xs uppercase tracking-widest text-slate-900 flex items-center gap-3 shadow-sm"
               >
-                 <Shield className="w-4 h-4 text-indigo-400" />
+                 <Shield className="w-4 h-4 text-indigo-600" />
                  Methodology
               </button>
            </div>
            
            {/* Minimal Stats Footer */}
-           <div className="pt-24 flex items-center justify-center gap-12 border-t border-white/5 opacity-30">
+           <div className="pt-24 flex items-center justify-center gap-12 border-t border-slate-100 opacity-60">
               <div className="text-center">
-                 <p className="text-[10px] font-mono font-black text-white uppercase tracking-widest">13,205 Samples</p>
+                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest">13,205 Samples</p>
         </div>
-              <div className="w-1 h-1 rounded-full bg-white/20" />
+              <div className="w-1 h-1 rounded-full bg-slate-200" />
               <div className="text-center">
-                 <p className="text-[10px] font-mono font-black text-white uppercase tracking-widest">99.8% Conf.</p>
+                 <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest">99.8% Conf.</p>
         </div>
       </div>
         </div>
+
 
       </div>
     </div>

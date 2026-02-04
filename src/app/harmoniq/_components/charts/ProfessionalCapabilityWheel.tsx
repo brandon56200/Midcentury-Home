@@ -43,10 +43,10 @@ export default function ProfessionalCapabilityWheel({
   return (
     <div ref={containerRef} className="flex flex-col items-center justify-center space-y-12">
       {(title || subtitle) && (
-        <div className="flex flex-col items-center gap-2 border-b border-white/5 pb-6 w-full max-w-md">
+        <div className="flex flex-col items-center gap-2 border-b border-slate-100 pb-6 w-full max-w-md">
           <div className="flex items-center gap-3">
-            <div className="w-1 h-6 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.5)]" style={{ backgroundColor: color }} />
-            <h3 className="text-sm font-mono font-black uppercase tracking-[0.2em] text-white">{title}</h3>
+            <div className="w-1 h-6 rounded-full shadow-sm" style={{ backgroundColor: color }} />
+            <h3 className="text-sm font-mono font-black uppercase tracking-[0.2em] text-slate-900">{title}</h3>
           </div>
           {subtitle && <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{subtitle}</p>}
         </div>
@@ -56,8 +56,8 @@ export default function ProfessionalCapabilityWheel({
         <svg width={size} height={size} className="overflow-visible">
           <defs>
             <radialGradient id="wheel-gradient" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor={`${color}66`} />
-              <stop offset="100%" stopColor={`${color}0D`} />
+              <stop offset="0%" stopColor={`${color}4D`} />
+              <stop offset="100%" stopColor={`${color}05`} />
             </radialGradient>
             <filter id="glow-wheel">
               <feGaussianBlur stdDeviation="4" result="blur" />
@@ -73,10 +73,10 @@ export default function ProfessionalCapabilityWheel({
               cy={center}
               r={(r / 100) * radius}
               fill="none"
-              stroke="white"
+              stroke="#e2e8f0"
               strokeWidth="0.5"
               strokeDasharray="4 4"
-              className="opacity-10"
+              className="opacity-40"
             />
           ))}
 
@@ -88,9 +88,9 @@ export default function ProfessionalCapabilityWheel({
               y1={center}
               x2={center + radius * Math.cos(p.angle)}
               y2={center + radius * Math.sin(p.angle)}
-              stroke="white"
+              stroke="#e2e8f0"
               strokeWidth="1"
-              className="opacity-5 transition-opacity group-hover/wheel:opacity-10"
+              className="opacity-20 transition-opacity group-hover/wheel:opacity-40"
             />
           ))}
 
@@ -103,8 +103,7 @@ export default function ProfessionalCapabilityWheel({
             fill="url(#wheel-gradient)"
             stroke={color}
             strokeWidth="3"
-            filter="url(#glow-wheel)"
-            style={{ filter: `drop-shadow(0 0 15px ${color}99)` }}
+            style={{ filter: `drop-shadow(0 0 10px ${color}40)` }}
           />
 
           {/* Data Points & Interactive Areas */}
@@ -123,7 +122,7 @@ export default function ProfessionalCapabilityWheel({
                 transition={{ delay: 1.5 + (i * 0.1) }}
                 fill={color}
                 className={`transition-all duration-300`}
-                style={{ filter: hoveredIdx === i ? `drop-shadow(0 0 10px ${color})` : `drop-shadow(0 0 5px ${color}80)` }}
+                style={{ filter: hoveredIdx === i ? `drop-shadow(0 0 8px ${color})` : `drop-shadow(0 0 4px ${color}40)` }}
               />
               
               {/* Invisible touch target */}
@@ -137,7 +136,7 @@ export default function ProfessionalCapabilityWheel({
                 transition={{ delay: 2 + (i * 0.05) }}
                 textAnchor="middle"
                 alignmentBaseline="middle"
-                className={`transition-all duration-300 font-mono font-black uppercase text-[10px] ${hoveredIdx === i ? 'fill-white' : 'fill-white/30'}`}
+                className={`transition-all duration-300 font-mono font-black uppercase text-[10px] ${hoveredIdx === i ? 'fill-slate-900' : 'fill-slate-400'}`}
               >
                 {p.name}
               </motion.text>
@@ -152,25 +151,20 @@ export default function ProfessionalCapabilityWheel({
               initial={{ opacity: 0, scale: 0.9, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 10 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-center bg-black/80 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl z-20"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-center bg-white/90 backdrop-blur-xl border border-slate-200 p-6 rounded-3xl shadow-xl z-20"
             >
               <p className="text-[10px] font-mono font-black uppercase tracking-widest mb-1" style={{ color }}>
                 {points[hoveredIdx]?.name}
               </p>
-              <p className="text-4xl font-black text-white tracking-tighter">
+              <p className="text-4xl font-black text-slate-900 tracking-tighter">
                 {points[hoveredIdx]?.value}
-                <span className="text-xl text-white/30 ml-1">%</span>
+                <span className="text-xl text-slate-400 ml-1">%</span>
               </p>
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Center Glow Background */}
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 blur-[80px] rounded-full pointer-events-none opacity-10"
-          style={{ backgroundColor: color }}
-        />
       </div>
     </div>
+
   );
 }

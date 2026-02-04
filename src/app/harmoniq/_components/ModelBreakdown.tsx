@@ -72,18 +72,19 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
       {/* Left Column: Circular Menu & Radar */}
       <div className="lg:col-span-8 flex flex-col items-center justify-center relative min-h-[800px]">
         {/* The Outer Ring (Dotted connecting line) */}
-        <svg className="absolute w-[700px] h-[700px] pointer-events-none opacity-20" viewBox="0 0 700 700">
-          <circle 
-            cx="350" 
-            cy="350" 
-            r="340" 
-            fill="none" 
-            stroke="white" 
-            strokeWidth="1" 
-            strokeDasharray="4 8" 
-          />
-        </svg>
-        
+      <svg className="absolute w-[700px] h-[700px] pointer-events-none" viewBox="0 0 700 700">
+        <circle 
+          cx="350" 
+          cy="350" 
+          r="340" 
+          fill="none" 
+          stroke="#94a3b8" 
+          strokeWidth="1.5" 
+          strokeDasharray="6 10" 
+          className="opacity-50"
+        />
+      </svg>
+
         {/* Model Icons around the circle */}
         {models.map((m, i) => {
           const angle = (i * (360 / models.length) - 90) * (Math.PI / 180);
@@ -105,15 +106,15 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
             >
               <div className={`w-[70px] h-[70px] rounded-2xl flex items-center justify-center transition-all duration-300 border-2 ${
                 isActive 
-                  ? 'bg-black border-white shadow-[0_0_30px_rgba(255,255,255,0.2)] scale-110' 
-                  : 'bg-black border-white/10 hover:border-white/40'
+                  ? 'bg-white border-slate-900 shadow-xl scale-110' 
+                  : 'bg-white border-slate-100 hover:border-slate-300 shadow-sm'
               }`}>
-                <BrandIcon brandId={m.id} size={32} className="text-white" />
+                <BrandIcon brandId={m.id} size={32} className="text-slate-900" />
               </div>
               
               {/* Label */}
               <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 whitespace-nowrap transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                <span className="text-[10px] font-mono font-black text-white uppercase tracking-widest bg-black/50 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                <span className="text-[10px] font-mono font-black text-slate-900 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full border border-slate-200 backdrop-blur-md shadow-sm">
                   {m.shortName}
                 </span>
               </div>
@@ -155,15 +156,15 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
               {/* Header */}
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center px-2">
-                    <BrandIcon brandId={selectedModelId} size={20} className="text-white" />
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center px-2 shadow-sm">
+                    <BrandIcon brandId={selectedModelId} size={20} className="text-slate-900" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono font-black text-blue-400 uppercase tracking-widest">{selectedModel.provider}</p>
-                    <h4 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">{selectedModel.fullName}</h4>
+                    <p className="text-[10px] font-mono font-black text-blue-600 uppercase tracking-widest">{selectedModel.provider}</p>
+                    <h4 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">{selectedModel.fullName}</h4>
                   </div>
                 </div>
-                <p className="text-base text-slate-400 font-bold leading-relaxed max-w-sm">
+                <p className="text-base text-slate-500 font-bold leading-relaxed max-w-sm">
                   {currentChars?.desc}
                 </p>
               </div>
@@ -171,13 +172,13 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
               {/* High-Level Pros/Cons */}
               <div className="space-y-6">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-emerald-400">
+                  <div className="flex items-center gap-3 text-emerald-600">
                     <CheckCircle2 className="w-4 h-4" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Key Strengths</span>
                   </div>
                   <ul className="space-y-2">
                     {currentChars?.pros.map((p, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-slate-200 text-sm font-bold leading-snug">
+                      <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm font-bold leading-snug">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
                         {p}
                       </li>
@@ -186,13 +187,13 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-red-400">
+                  <div className="flex items-center gap-3 text-red-600">
                     <XCircle className="w-4 h-4" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Areas for Improvement</span>
                   </div>
                   <ul className="space-y-2">
                     {currentChars?.cons.map((c, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-slate-200 text-sm font-bold leading-snug">
+                      <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm font-bold leading-snug">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
                         {c}
                       </li>
@@ -202,14 +203,14 @@ export default function ModelBreakdown({ models, rankings, accuracyByTask, palet
               </div>
 
               {/* Quick Stats Banner - Minimal */}
-              <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10">
+              <div className="grid grid-cols-2 gap-8 pt-6 border-t border-slate-100">
                 <div>
-                  <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-widest mb-1">Rank</p>
-                  <p className="text-xl font-black text-white">#{selectedRank.rank}</p>
+                  <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-1">Rank</p>
+                  <p className="text-xl font-black text-slate-900">#{selectedRank.rank}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-mono font-black text-white/40 uppercase tracking-widest mb-1">Accuracy</p>
-                  <p className="text-xl font-black text-white">{selectedRank.accuracy}%</p>
+                  <p className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-1">Accuracy</p>
+                  <p className="text-xl font-black text-slate-900">{selectedRank.accuracy}%</p>
                 </div>
               </div>
             </motion.div>

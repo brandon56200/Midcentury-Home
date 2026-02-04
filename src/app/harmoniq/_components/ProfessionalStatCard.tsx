@@ -22,11 +22,11 @@ export default function ProfessionalStatCard({
   color = "blue"
 }: ProfessionalStatCardProps) {
   const colorMap = {
-    cyan: { text: "text-cyan-500", bg: "bg-cyan-500/10", border: "border-cyan-500/20", glow: "bg-cyan-500" },
-    blue: { text: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/20", glow: "bg-blue-500" },
-    indigo: { text: "text-indigo-500", bg: "bg-indigo-500/10", border: "border-indigo-500/20", glow: "bg-indigo-500" },
-    violet: { text: "text-[#8b5cf6]", bg: "bg-[#8b5cf6]/10", border: "border-[#8b5cf6]/20", glow: "bg-[#8b5cf6]" },
-    purple: { text: "text-purple-500", bg: "bg-purple-500/10", border: "border-purple-500/20", glow: "bg-purple-500" },
+    cyan: { text: "text-cyan-600", bg: "bg-cyan-50", border: "border-cyan-100", glow: "bg-cyan-600" },
+    blue: { text: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100", glow: "bg-blue-600" },
+    indigo: { text: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-100", glow: "bg-indigo-600" },
+    violet: { text: "text-[#7c3aed]", bg: "bg-[#f5f3ff]", border: "border-[#ddd6fe]", glow: "bg-[#7c3aed]" },
+    purple: { text: "text-purple-600", bg: "bg-purple-50", border: "border-purple-100", glow: "bg-purple-600" },
   };
 
   const selected = colorMap[color];
@@ -36,7 +36,7 @@ export default function ProfessionalStatCard({
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white/1 border border-white/5 p-8 rounded-3xl group relative overflow-hidden flex flex-col justify-between h-full backdrop-blur-sm transition-all hover:bg-white/2 hover:border-white/10"
+      className="bg-white border border-slate-100 p-8 rounded-3xl group relative overflow-hidden flex flex-col justify-between h-full shadow-sm transition-all hover:bg-slate-50 hover:border-slate-200"
     >
       <div className="space-y-6 relative z-10">
         <div className="flex items-center justify-between">
@@ -44,24 +44,24 @@ export default function ProfessionalStatCard({
             <Icon size={24} />
           </div>
           {trend && (
-            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-white/30 bg-white/5 px-2 py-1 rounded">
+            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-1 rounded">
               {trend}
             </span>
           )}
         </div>
 
         <div className="space-y-1">
-          <p className="font-mono text-[9px] font-black text-white/20 uppercase tracking-[0.2em]">
+          <p className="font-mono text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">
             {label}
           </p>
-          <h4 className="text-4xl font-black text-white tracking-tighter">
+          <h4 className="text-4xl font-black text-slate-900 tracking-tighter">
             {value}
           </h4>
         </div>
       </div>
 
       {detail && (
-        <div className="mt-8 pt-6 border-t border-white/5 relative z-10">
+        <div className="mt-8 pt-6 border-t border-slate-100 relative z-10">
           <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tight italic leading-relaxed">
             "{detail}"
           </p>
@@ -71,5 +71,6 @@ export default function ProfessionalStatCard({
       {/* Subtle corner glow */}
       <div className={`absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-10 rounded-full transition-opacity group-hover:opacity-20 ${selected.glow}`} />
     </motion.div>
+
   );
 }

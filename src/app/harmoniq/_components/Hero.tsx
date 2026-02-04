@@ -33,7 +33,7 @@ export default function Hero({ onNext }: HeroProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-start md:justify-start md:pt-32 relative px-6 pb-20 overflow-y-auto md:overflow-hidden bg-transparent custom-scrollbar">
+    <div className="flex-1 flex flex-col items-center justify-center relative px-6 py-8 md:py-12 bg-transparent min-h-0">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -41,28 +41,28 @@ export default function Hero({ onNext }: HeroProps) {
         className="max-w-6xl mx-auto flex flex-col items-center relative z-10 w-full"
       >
         {/* Top Indicator */}
-        <motion.div variants={itemVariants} className="mb-10 flex flex-col items-center gap-2">
+        <motion.div variants={itemVariants} className="mb-6 md:mb-8 flex flex-col items-center gap-2">
           <div className="flex items-center gap-3">
-            <div className="h-px w-8 bg-blue-500/50" />
-            <span className="text-blue-500 font-mono text-[10px] font-bold tracking-[0.4em] uppercase">
+            <div className="h-px w-8 bg-blue-200" />
+            <span className="text-blue-600 font-mono text-[10px] font-bold tracking-[0.4em] uppercase">
               The New Standard for Voice AI
             </span>
-            <div className="h-px w-8 bg-blue-500/50" />
+            <div className="h-px w-8 bg-blue-200" />
           </div>
         </motion.div>
 
         {/* Main Headline */}
-        <div className="max-w-5xl text-center space-y-4 md:space-y-6">
+        <div className="max-w-5xl text-center space-y-3 md:space-y-4">
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.95] md:leading-[0.9] text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] md:leading-[0.9] text-slate-900"
           >
             {meta.title}<span className="text-blue-600">.</span>
           </motion.h1>
           
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed"
           >
             {meta.subtitle}
           </motion.p>
@@ -71,25 +71,19 @@ export default function Hero({ onNext }: HeroProps) {
         {/* Primary Action */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 md:mt-12 flex flex-col md:flex-row items-center gap-6"
+          className="mt-6 md:mt-8 flex flex-col md:flex-row items-center gap-6"
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={onNext}
-            className="group relative flex items-center gap-4 md:gap-5 px-8 md:px-10 py-4 md:py-5 rounded-2xl md:rounded-3xl bg-black border border-blue-500/30 text-white transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.1)] hover:shadow-[0_0_50px_rgba(37,99,235,0.3)] hover:border-blue-400/50 overflow-hidden"
+            className="group relative flex items-center gap-4 md:gap-5 px-8 md:px-10 py-4 md:py-5 rounded-2xl md:rounded-3xl bg-white text-slate-900 border border-slate-200 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
           >
-            {/* Internal Shine Effect */}
-            <div className="absolute inset-0 bg-linear-to-r from-transparent via-blue-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            
             <span className="relative z-10 text-lg md:text-xl font-bold tracking-tight">Explore Benchmark</span>
             
-            <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/40 group-hover:scale-110 group-hover:bg-blue-500 transition-all">
+            <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
               <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
-
-            {/* Pulsing Glow Ring */}
-            <div className="absolute -inset-px rounded-2xl md:rounded-3xl bg-linear-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-500" />
           </motion.button>
         </motion.div>
 
@@ -99,7 +93,7 @@ export default function Hero({ onNext }: HeroProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full"
+          className="mt-10 md:mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full"
         >
           {[
             { icon: Database, value: "13,205", label: "Audio Samples", detail: "End-to-End Evaluation" },
@@ -109,26 +103,27 @@ export default function Hero({ onNext }: HeroProps) {
             <motion.div 
               key={idx} 
               variants={itemVariants}
-              className="bg-white/1 border border-white/5 p-5 md:p-6 rounded-3xl flex flex-col items-center text-center group hover:bg-white/2 transition-all hover:border-white/10"
+              className="bg-white border border-slate-100 p-5 md:p-6 rounded-3xl flex flex-col items-center text-center group hover:shadow-md transition-all hover:border-slate-200 shadow-sm"
             >
-              <div className="w-10 h-10 md:w-14 md:h-14 bg-blue-900/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-blue-50 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
                 <stat.icon className="w-5 h-5 md:w-7 md:h-7 text-blue-600" />
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 md:mb-2 text-white">
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-1 md:mb-2 text-slate-900">
                 {stat.value.includes('|') ? (
                   <>
                     {stat.value.split('|')[0]}
-                    <span className="text-blue-500/40 mx-2 font-extralight">|</span>
+                    <span className="text-blue-200 mx-2 font-extralight">|</span>
                     {stat.value.split('|')[1]}
                   </>
                 ) : stat.value}
               </h3>
-              <p className="text-sm md:text-slate-400 font-medium mb-1">{stat.label}</p>
-              <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-600 font-bold">{stat.detail}</p>
+              <p className="text-sm md:text-slate-500 font-medium mb-1">{stat.label}</p>
+              <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-400 font-bold">{stat.detail}</p>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
     </div>
+
   );
 }

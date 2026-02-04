@@ -27,23 +27,24 @@ export default function ProfessionalArticleSection({
       <section className={`max-w-6xl mx-auto px-6 py-24 md:py-32 space-y-16 ${className}`}>
         <div className="space-y-8 max-w-3xl">
           <div className="flex items-center gap-4">
-             <span className="font-mono text-sm md:text-base font-black text-blue-400 bg-blue-400/10 px-3 py-1.5 rounded-xl border border-blue-400/20">
+             <span className="font-mono text-sm md:text-base font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100">
                SECTION {number}
              </span>
              {subtitle && (
-               <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-white/70">
+               <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400">
                  {subtitle}
                </span>
              )}
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-white uppercase">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
             {title}
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-500 leading-relaxed font-medium">
             {description}
           </p>
+
         </div>
 
         <motion.div
@@ -64,21 +65,21 @@ export default function ProfessionalArticleSection({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
         <div className="lg:col-span-5 space-y-8">
           <div className="flex items-center gap-4">
-             <span className="font-mono text-sm md:text-base font-black text-blue-400 bg-blue-400/10 px-3 py-1.5 rounded-xl border border-blue-400/20">
+             <span className="font-mono text-sm md:text-base font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100">
                SECTION {number}
              </span>
              {subtitle && (
-               <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-white/70">
+               <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400">
                  {subtitle}
                </span>
              )}
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-white uppercase">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
             {title}
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-lg font-medium">
+          <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-lg font-medium">
             {description}
           </p>
         </div>

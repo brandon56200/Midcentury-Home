@@ -117,7 +117,7 @@ export default function Future() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 md:p-10 overflow-y-auto custom-scrollbar bg-transparent relative selection:bg-blue-600/30">
+    <div className="flex-1 flex flex-col p-4 md:p-10 bg-transparent relative selection:bg-blue-600/30">
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -127,14 +127,15 @@ export default function Future() {
         
         {/* Simple, High-Impact Header */}
         <div className="space-y-6 text-center md:text-left">
-          <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+          <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
             The Roadmap. <br />
             <span className="text-blue-600">What's Next for Harmoniq.</span>
           </h3>
-          <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-3xl font-medium">
+          <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-3xl font-medium">
             Harmoniq is a living benchmark. We are actively expanding coverage, deepening rigor, and pushing toward a true standard for voice AI evaluation.
           </p>
         </div>
+
 
         {/* Focus: The Four Panels in Rows */}
         <div className="flex flex-col gap-6 md:gap-8 w-full">
@@ -159,7 +160,7 @@ function RoadmapCard({ item }: { item: any }) {
 
   return (
     <motion.div 
-      className={`relative bg-[#050505] border border-white/10 rounded-2xl flex flex-col overflow-hidden shadow-2xl transition-all duration-500 ${isExpanded ? 'ring-1 ring-blue-500/30 bg-[#080808]' : 'hover:border-white/20'}`}
+      className={`relative bg-white border border-slate-100 rounded-2xl flex flex-col overflow-hidden shadow-sm transition-all duration-500 ${isExpanded ? 'ring-1 ring-blue-100 bg-slate-50/50' : 'hover:border-slate-200'}`}
     >
       {/* Row-based Layout for Card */}
       <div className="p-8 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12 relative z-10">
@@ -167,38 +168,38 @@ function RoadmapCard({ item }: { item: any }) {
         {/* Left Side: Summary & Icon */}
         <div className="lg:w-1/2 space-y-8 flex flex-col">
           <div className="flex justify-between items-start">
-            <div className="w-14 h-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center transition-transform duration-500 shadow-xl">
-              <item.icon className="w-7 h-7 text-blue-500" />
+            <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center transition-transform duration-500 shadow-sm">
+              <item.icon className="w-7 h-7 text-blue-600" />
             </div>
-            <span className="px-3 py-1 rounded-full bg-blue-600/5 border border-blue-500/10 text-blue-500 text-[8px] font-bold uppercase tracking-[0.2em]">
+            <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[8px] font-bold uppercase tracking-[0.2em]">
               Roadmap Item
             </span>
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-3xl font-bold text-white tracking-tight">{item.title}</h4>
-            <p className="text-blue-500/80 text-[11px] font-bold uppercase tracking-widest">{item.subtitle}</p>
+            <h4 className="text-3xl font-bold text-slate-900 tracking-tight">{item.title}</h4>
+            <p className="text-blue-600/80 text-[11px] font-bold uppercase tracking-widest">{item.subtitle}</p>
           </div>
 
           <button 
             onClick={() => setIsExpanded(!isExpanded)}
-            className="hidden lg:flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-auto hover:text-white transition-colors group/btn w-fit"
+            className="hidden lg:flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-auto hover:text-slate-900 transition-colors group/btn w-fit"
           >
             <span>{isExpanded ? 'Collapse Details' : 'Deep Dive Details'}</span>
-            <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? 'rotate-180 text-blue-500' : 'group-hover/btn:translate-y-0.5'}`} />
+            <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? 'rotate-180 text-blue-600' : 'group-hover/btn:translate-y-0.5'}`} />
           </button>
         </div>
 
         {/* Right Side: Micro-Graphic */}
-        <div className="lg:w-1/2 min-h-[180px] bg-black/40 rounded-2xl border border-white/5 p-8 flex items-center justify-center relative overflow-hidden group/graphic">
-          <div className="absolute inset-0 bg-grid-white/[0.01]" />
+        <div className="lg:w-1/2 min-h-[180px] bg-slate-50 rounded-2xl border border-slate-100 p-8 flex items-center justify-center relative overflow-hidden group/graphic">
+          <div className="absolute inset-0 bg-grid-black/[0.01]" />
           <RoadmapGraphic type={item.graphic} label={item.oneLiner} />
         </div>
 
         {/* Mobile Expand Button */}
         <button 
           onClick={() => setIsExpanded(!isExpanded)}
-          className="lg:hidden w-full flex items-center justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest py-2 hover:text-white transition-colors"
+          className="lg:hidden w-full flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest py-2 hover:text-slate-900 transition-colors"
         >
           <span>Deep Dive Details</span>
           <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? 'rotate-180' : ''}`} />
@@ -213,17 +214,17 @@ function RoadmapCard({ item }: { item: any }) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-            className="overflow-hidden bg-black/20"
+            className="overflow-hidden bg-slate-50/30"
           >
-            <div className="p-8 md:p-10 pt-0 border-t border-white/5 relative z-10">
+            <div className="p-8 md:p-10 pt-0 border-t border-slate-100 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
                 {item.details.map((detail: any, idx: number) => (
                   <div key={idx} className="space-y-3 relative">
                     <div className="flex items-center gap-3">
-                      <div className="w-1 h-1 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                      <h5 className="text-xs font-bold text-white uppercase tracking-widest">{detail.label}</h5>
+                      <div className="w-1 h-1 rounded-full bg-blue-600 shadow-sm" />
+                      <h5 className="text-xs font-bold text-slate-900 uppercase tracking-widest">{detail.label}</h5>
                     </div>
-                    <p className="text-slate-400 text-sm leading-relaxed font-medium">{detail.content}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed font-medium">{detail.content}</p>
                   </div>
                 ))}
               </div>
@@ -232,10 +233,11 @@ function RoadmapCard({ item }: { item: any }) {
         )}
       </AnimatePresence>
 
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-600/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-50/50 blur-[100px] pointer-events-none" />
     </motion.div>
   );
 }
+
 
 function RoadmapGraphic({ type, label }: { type: string, label: string }) {
   if (type === "waveform") {
@@ -269,27 +271,27 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
       <div className="flex flex-col items-center gap-6 w-full h-full justify-center">
         <div className="flex items-center gap-10 relative">
           <div className="relative">
-            <Headphones className="w-10 h-10 text-slate-600" />
+            <Headphones className="w-10 h-10 text-slate-400" />
             <motion.div 
-              animate={{ opacity: [0.2, 0.5, 0.2] }}
+              animate={{ opacity: [0.1, 0.3, 0.1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="absolute -inset-4 bg-blue-500/10 blur-2xl rounded-full"
+              className="absolute -inset-4 bg-blue-500/5 blur-2xl rounded-full"
             />
           </div>
           
           {/* Knob & Slider System */}
           <div className="flex flex-col gap-4 w-32">
-            <div className="h-1 w-full bg-white/5 rounded-full relative">
+            <div className="h-1 w-full bg-slate-100 rounded-full relative">
               <motion.div 
                 animate={{ left: ["0%", "100%", "0%"] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-[0_0_10px_rgba(59,130,246,0.8)] z-10"
+                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-md z-10"
               />
-              <div className="absolute inset-0 bg-blue-500/20 rounded-full overflow-hidden">
+              <div className="absolute inset-0 bg-blue-600/10 rounded-full overflow-hidden">
                 <motion.div 
                   animate={{ width: ["0%", "100%", "0%"] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-full bg-blue-500/40"
+                  className="h-full bg-blue-600/20"
                 />
               </div>
             </div>
@@ -298,17 +300,17 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
                 <motion.div 
                   key={s}
                   animate={{ 
-                    backgroundColor: ["rgba(255,255,255,0.05)", "rgba(59,130,246,0.8)", "rgba(255,255,255,0.05)"],
-                    boxShadow: ["none", "0 0 10px rgba(59,130,246,0.4)", "none"]
+                    backgroundColor: ["rgba(0,0,0,0.05)", "rgba(37,99,235,0.8)", "rgba(0,0,0,0.05)"],
+                    boxShadow: ["none", "0 0 10px rgba(37,99,235,0.2)", "none"]
                   }}
                   transition={{ duration: 4, repeat: Infinity, delay: s * 0.2, ease: "easeInOut" }}
-                  className="w-3 h-3 rounded-xs border border-white/5"
+                  className="w-3 h-3 rounded-xs border border-slate-100"
                 />
               ))}
             </div>
           </div>
         </div>
-        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-400 transition-colors">{label}</p>
+        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-600 transition-colors">{label}</p>
       </div>
     );
   }
@@ -324,8 +326,8 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
             <motion.div 
               key={i} 
               animate={{ 
-                borderColor: ["rgba(255,255,255,0.1)", "rgba(59,130,246,0.4)", "rgba(255,255,255,0.1)"],
-                background: ["rgba(255,255,255,0.05)", "rgba(59,130,246,0.1)", "rgba(255,255,255,0.05)"]
+                borderColor: ["rgba(0,0,0,0.05)", "rgba(37,99,235,0.2)", "rgba(0,0,0,0.05)"],
+                background: ["rgba(0,0,0,0.02)", "rgba(37,99,235,0.05)", "rgba(0,0,0,0.02)"]
               }}
               transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
               className="border px-3 py-2 rounded-lg flex items-center gap-2"
@@ -333,9 +335,9 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
               <motion.div 
                 animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
-                className="w-1.5 h-1.5 rounded-full bg-blue-500" 
+                className="w-1.5 h-1.5 rounded-full bg-blue-600" 
               />
-              <span className="text-[7px] font-bold uppercase tracking-widest text-white">{cap.label}</span>
+              <span className="text-[7px] font-bold uppercase tracking-widest text-slate-700">{cap.label}</span>
             </motion.div>
           ))}
           
@@ -343,10 +345,10 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
           <motion.div 
             animate={{ top: ["-10%", "110%", "-10%"] }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            className="absolute left-0 w-full h-px bg-blue-500/40 blur-[2px] z-20 pointer-events-none"
+            className="absolute left-0 w-full h-px bg-blue-600/20 blur-[1px] z-20 pointer-events-none"
           />
         </div>
-        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-400 transition-colors">{label}</p>
+        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-600 transition-colors">{label}</p>
       </div>
     );
   }
@@ -357,53 +359,53 @@ function RoadmapGraphic({ type, label }: { type: string, label: string }) {
         <div className="flex items-center gap-6 w-full max-w-[240px] relative h-20">
           {/* Current Panel */}
           <motion.div 
-            animate={{ opacity: [0.4, 0.2, 0.4] }}
+            animate={{ opacity: [0.6, 0.4, 0.6] }}
             transition={{ duration: 3, repeat: Infinity }}
-            className="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl flex flex-col items-center gap-2 grayscale"
+            className="flex-1 bg-slate-50 border border-slate-100 p-3 rounded-xl flex flex-col items-center gap-2 grayscale shadow-sm"
           >
-            <div className="w-full h-1 bg-slate-700 rounded-full overflow-hidden relative">
+            <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden relative">
               <motion.div 
                 animate={{ left: ["-100%", "200%"] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 w-1/2 h-full bg-slate-500/20"
+                className="absolute top-0 w-1/2 h-full bg-slate-300/30"
               />
             </div>
             <div className="flex items-center gap-1">
-              <span className="text-[5px] font-mono text-slate-500 uppercase tracking-tighter">prompt://</span>
-              <Mic2 className="w-3 h-3 text-slate-500" />
+              <span className="text-[5px] font-mono text-slate-400 uppercase tracking-tighter">prompt://</span>
+              <Mic2 className="w-3 h-3 text-slate-400" />
             </div>
           </motion.div>
 
           {/* Connection Pulse */}
           <div className="relative flex items-center justify-center">
-            <ArrowRight className="w-4 h-4 text-slate-700" />
+            <ArrowRight className="w-4 h-4 text-slate-300" />
             <motion.div 
-              animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+              animate={{ scale: [1, 2], opacity: [0.3, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="absolute w-4 h-4 bg-blue-500/20 rounded-full"
+              className="absolute w-4 h-4 bg-blue-500/10 rounded-full"
             />
           </div>
 
           {/* Future Panel */}
           <motion.div 
             animate={{ 
-              borderColor: ["rgba(59,130,246,0.3)", "rgba(59,130,246,0.6)", "rgba(59,130,246,0.3)"],
-              boxShadow: ["0 0 10px rgba(59,130,246,0.1)", "0 0 20px rgba(59,130,246,0.3)", "0 0 10px rgba(59,130,246,0.1)"]
+              borderColor: ["rgba(37,99,235,0.1)", "rgba(37,99,235,0.3)", "rgba(37,99,235,0.1)"],
+              boxShadow: ["0 0 10px rgba(37,99,235,0.05)", "0 0 20px rgba(37,99,235,0.15)", "0 0 10px rgba(37,99,235,0.05)"]
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex-1 bg-blue-600/10 border p-3 rounded-xl flex flex-col items-center gap-2"
+            className="flex-1 bg-blue-50 border border-blue-100 p-3 rounded-xl flex flex-col items-center gap-2 shadow-sm"
           >
-            <div className="w-full h-1 bg-blue-500/20 rounded-full overflow-hidden relative">
+            <div className="w-full h-1 bg-blue-100 rounded-full overflow-hidden relative">
               <motion.div 
                 animate={{ left: ["-100%", "200%"] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 w-1/2 h-full bg-blue-400/40 shadow-[0_0_8px_rgba(96,165,250,0.8)]"
+                className="absolute top-0 w-1/2 h-full bg-blue-500/20"
               />
             </div>
-            <Volume2 className="w-4 h-4 text-blue-500" />
+            <Volume2 className="w-4 h-4 text-blue-600" />
           </motion.div>
         </div>
-        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-400 transition-colors">{label}</p>
+        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-[0.2em] group-hover/graphic:text-blue-600 transition-colors">{label}</p>
       </div>
     );
   }

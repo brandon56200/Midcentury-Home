@@ -40,7 +40,7 @@ export default function Experiment() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 md:p-10 overflow-y-auto custom-scrollbar bg-transparent relative selection:bg-blue-600/30">
+    <div className="flex-1 flex flex-col p-4 md:p-10 bg-transparent relative selection:bg-blue-600/30">
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -59,39 +59,39 @@ export default function Experiment() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
             <div className="lg:col-span-6 space-y-10 flex flex-col justify-center">
               <div className="space-y-6">
-                <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+                <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
                   Voice AI is the future. <br />
                   <span className="text-blue-600">We need a standard to drive it forward.</span>
                 </h3>
-                <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl font-medium">
+                <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-xl font-medium">
                   In 2024, AI labs began to ship native speech-to-speech models, the next step in the evolution of voice AI. These models could process and generate in the audio domain directly without the need for an external pipeline.
                 </p>
-                <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl font-medium">
+                <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-xl font-medium">
                   Existing evaluations measured narrow slices: transcription accuracy here, reasoning ability there. What was missing was a full-suite benchmark—one rigorous enough for researchers and practical enough for developers to adopt as a shared standard.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="space-y-2">
-                  <p className="text-white font-bold text-sm leading-tight">Comprehensive Coverage</p>
-                  <p className="text-slate-500 text-[11px] leading-relaxed">8 tasks across 3 capability pillars. Speech understanding, voice understanding, and speech reasoning—tested together, not in isolation.</p>
+                  <p className="text-slate-900 font-bold text-sm leading-tight">Comprehensive Coverage</p>
+                  <p className="text-slate-400 text-[11px] leading-relaxed">8 tasks across 3 capability pillars. Speech understanding, voice understanding, and speech reasoning—tested together, not in isolation.</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-white font-bold text-sm leading-tight">No Shortcuts</p>
-                  <p className="text-slate-500 text-[11px] leading-relaxed">Real human speech from professional voice actors. Production APIs, not research checkpoints. End-to-end evaluation with no synthetic simplifications.</p>
+                  <p className="text-slate-900 font-bold text-sm leading-tight">No Shortcuts</p>
+                  <p className="text-slate-400 text-[11px] leading-relaxed">Real human speech from professional voice actors. Production APIs, not research checkpoints. End-to-end evaluation with no synthetic simplifications.</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-white font-bold text-sm leading-tight">Multi-Dimensional</p>
-                  <p className="text-slate-500 text-[11px] leading-relaxed">Accuracy alone isn't enough. We measure naturalness, reliability, and paralinguistic perception—the full picture of production readiness.</p>
+                  <p className="text-slate-900 font-bold text-sm leading-tight">Multi-Dimensional</p>
+                  <p className="text-slate-400 text-[11px] leading-relaxed">Accuracy alone isn't enough. We measure naturalness, reliability, and paralinguistic perception—the full picture of production readiness.</p>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#050505] border border-white/10 rounded-[3rem] p-8 md:p-10 relative overflow-hidden shadow-2xl h-full flex flex-col items-center justify-center min-h-[700px] group/circuit">
+              <div className="bg-white border border-slate-200 rounded-[3rem] p-8 md:p-10 relative overflow-hidden shadow-sm h-full flex flex-col items-center justify-center min-h-[700px] group/circuit">
                 {/* Modern Visual Atmosphere */}
-                <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-grid-black/[0.01] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_70%)] pointer-events-none" />
                 
                 {/* Advanced Circuit Architecture */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice">
@@ -114,35 +114,35 @@ export default function Experiment() {
                   </defs>
 
                   {/* Complex Circuit Trace Layer */}
-                  <g stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" fill="none">
+                  <g stroke="rgba(0,0,0,0.05)" strokeWidth="1.5" fill="none">
                     {/* Primary Traces with Fillets (Smooth Corners) */}
                     {/* Column 1 -> Hub (Starts below Pillar 1) */}
                     <path d="M 66 160 Q 66 200 133 220 T 200 240" />
-                    <path d="M 56 160 Q 56 210 128 230 T 190 240" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
+                    <path d="M 56 160 Q 56 210 128 230 T 190 240" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
                     
                     {/* Column 2 -> Hub (Starts below Pillar 2) */}
                     <path d="M 200 160 V 240" />
-                    <path d="M 194 160 V 230 Q 194 240 200 240" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
-                    <path d="M 206 160 V 230 Q 206 240 200 240" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
+                    <path d="M 194 160 V 230 Q 194 240 200 240" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
+                    <path d="M 206 160 V 230 Q 206 240 200 240" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
 
                     {/* Column 3 -> Hub (Starts below Pillar 3) */}
                     <path d="M 334 160 Q 334 200 267 220 T 200 240" />
-                    <path d="M 344 160 Q 344 210 272 230 T 210 240" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
+                    <path d="M 344 160 Q 344 210 272 230 T 210 240" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
 
                     {/* Hub -> Engines (Starts below Hub) */}
                     <path d="M 200 310 Q 200 350 150 370 T 100 400" />
                     <path d="M 200 310 Q 200 350 250 370 T 300 400" />
                     
                     {/* Parallel Detail Traces for Engines */}
-                    <path d="M 210 310 Q 210 340 160 360 T 110 400" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
-                    <path d="M 190 310 Q 190 340 240 360 T 290 400" strokeWidth="0.5" stroke="rgba(255,255,255,0.03)" />
+                    <path d="M 210 310 Q 210 340 160 360 T 110 400" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
+                    <path d="M 190 310 Q 190 340 240 360 T 290 400" strokeWidth="0.5" stroke="rgba(0,0,0,0.02)" />
                     
                     {/* Engines -> Output (Flowing into the Zap icon area) */}
                     <path d="M 100 490 Q 100 550 150 570 T 200 630" />
                     <path d="M 300 490 Q 300 550 250 570 T 200 630" />
                     
                     {/* Central Bus to Output */}
-                    <path d="M 200 310 V 630" strokeWidth="1" stroke="rgba(59, 130, 246, 0.1)" />
+                    <path d="M 200 310 V 630" strokeWidth="1" stroke="rgba(59, 130, 246, 0.05)" />
                   </g>
 
                   {/* Active Energy Layer */}
@@ -168,11 +168,11 @@ export default function Experiment() {
                       {/* Sub-pulse trace */}
                       <motion.path
                         d={stream.d}
-                        stroke="rgba(96, 165, 250, 0.3)"
+                        stroke="rgba(96, 165, 250, 0.2)"
                         strokeWidth="2"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: [0, 0.4, 0] }}
+                        animate={{ pathLength: 1, opacity: [0, 0.3, 0] }}
                         transition={{ 
                           duration: stream.duration, 
                           repeat: Infinity, 
@@ -183,7 +183,7 @@ export default function Experiment() {
                       {/* Data Packet */}
                       <motion.circle
                         r="1.5"
-                        fill="#fff"
+                        fill="#3b82f6"
                         filter="url(#glow)"
                         initial={{ offsetDistance: "0%", opacity: 0 }}
                         animate={{ offsetDistance: "100%", opacity: [0, 1, 1, 0] }}
@@ -215,8 +215,8 @@ export default function Experiment() {
                         cx={node.cx}
                         cy={node.cy}
                         r="3.5"
-                        fill="rgba(5, 5, 5, 1)"
-                        stroke="rgba(59, 130, 246, 0.3)"
+                        fill="white"
+                        stroke="rgba(59, 130, 246, 0.2)"
                         strokeWidth="1"
                       />
                       <motion.circle
@@ -244,16 +244,16 @@ export default function Experiment() {
                         key={i}
                         className="group/card relative"
                       >
-                        <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-4xl p-4 flex flex-col items-center gap-3 relative h-28 justify-center shadow-2xl transition-all group-hover/card:border-blue-500/50 group-hover/card:shadow-[0_0_30px_rgba(59,130,246,0.2)] group-hover/card:bg-black/90">
-                          <div className={`w-8 h-8 rounded-xl bg-${p.color}-600/10 flex items-center justify-center transition-all group-hover/card:brightness-150`}>
-                            <p.icon className={`w-4 h-4 text-${p.color}-500`} />
+                        <div className="bg-white/80 backdrop-blur-xl border border-slate-100 rounded-4xl p-4 flex flex-col items-center gap-3 relative h-28 justify-center shadow-sm transition-all group-hover/card:border-blue-200 group-hover/card:shadow-md group-hover/card:bg-white">
+                          <div className={`w-8 h-8 rounded-xl bg-${p.color}-50 flex items-center justify-center transition-all group-hover/card:brightness-110`}>
+                            <p.icon className={`w-4 h-4 text-${p.color}-600`} />
                           </div>
-                          <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover/card:text-white transition-colors">{p.label}</span>
+                          <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] group-hover/card:text-slate-900 transition-colors">{p.label}</span>
                         </div>
 
                         {/* Connection Port Bottom */}
-                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-black border border-white/10 flex items-center justify-center">
-                          <div className="w-1 h-1 rounded-full bg-blue-500/50 group-hover/card:bg-blue-500 group-hover/card:shadow-[0_0_12px_rgba(59,130,246,1)] transition-all" />
+                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white border border-slate-100 flex items-center justify-center shadow-sm">
+                          <div className="w-1 h-1 rounded-full bg-blue-200 group-hover/card:bg-blue-500 group-hover/card:shadow-[0_0_12px_rgba(59,130,246,0.5)] transition-all" />
                         </div>
                       </div>
                     ))}
@@ -261,25 +261,12 @@ export default function Experiment() {
 
                   {/* Central Processing Hub (Static, Professional) */}
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-3xl border border-blue-500/20 bg-black/60 backdrop-blur-xl flex items-center justify-center relative shadow-2xl overflow-hidden transition-all group-hover/circuit:border-blue-500/50 group-hover/circuit:shadow-[0_0_25px_rgba(59,130,246,0.2)]">
-                      <Plus className="w-6 h-6 text-blue-500" />
+                    <div className="w-16 h-16 rounded-3xl border border-blue-100 bg-white/60 backdrop-blur-xl flex items-center justify-center relative shadow-sm overflow-hidden transition-all group-hover/circuit:border-blue-300 group-hover/circuit:shadow-md">
+                      <Plus className="w-6 h-6 text-blue-600" />
                       
                       {/* Subtle Glow */}
-                      <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)" />
+                      <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)" />
                     </div>
-                    {/* Orbiting Particles (Static or very slow) */}
-                    {[0, 120, 240].map((deg) => (
-                      <motion.div
-                        key={deg}
-                        className="absolute top-1/2 left-1/2 w-1 h-1 bg-blue-400 rounded-full"
-                        animate={{
-                          x: [Math.cos(deg * Math.PI / 180) * 40, Math.cos((deg + 360) * Math.PI / 180) * 40],
-                          y: [Math.sin(deg * Math.PI / 180) * 40, Math.sin((deg + 360) * Math.PI / 180) * 40],
-                          opacity: [0.1, 0.4, 0.1]
-                        }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                      />
-                    ))}
                   </div>
 
                   {/* Layer 2: Engines */}
@@ -293,23 +280,23 @@ export default function Experiment() {
                         className="group/engine relative"
                       >
                         {/* Connection Port Top */}
-                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-black border border-white/10 flex items-center justify-center z-20">
-                          <div className="w-1 h-1 rounded-full bg-blue-500/50 group-hover/engine:bg-blue-500 transition-all" />
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white border border-slate-100 flex items-center justify-center z-20 shadow-sm">
+                          <div className="w-1 h-1 rounded-full bg-blue-200 group-hover/engine:bg-blue-500 transition-all" />
                         </div>
 
-                        <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-4xl p-6 flex items-center gap-5 relative h-22 shadow-xl transition-all group-hover/engine:border-blue-500/50 group-hover/engine:shadow-[0_0_30px_rgba(59,130,246,0.2)] group-hover/engine:bg-black/90">
-                          <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover/engine:brightness-150">
-                            <e.icon className="w-4 h-4 text-slate-400 group-hover/engine:text-blue-400" />
+                        <div className="bg-white/80 backdrop-blur-xl border border-slate-100 rounded-4xl p-6 flex items-center gap-5 relative h-22 shadow-sm transition-all group-hover/engine:border-blue-200 group-hover/engine:shadow-md group-hover/engine:bg-white">
+                          <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 transition-all group-hover/engine:brightness-110">
+                            <e.icon className="w-4 h-4 text-slate-400 group-hover/engine:text-blue-600" />
                           </div>
                           <div>
-                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block group-hover/engine:text-white transition-colors">{e.label}</span>
-                            <span className="text-[7px] text-slate-600 font-bold uppercase tracking-widest mt-0.5 transition-colors group-hover/engine:text-blue-500/70">{e.detail}</span>
+                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block group-hover/engine:text-slate-900 transition-colors">{e.label}</span>
+                            <span className="text-[7px] text-slate-500 font-bold uppercase tracking-widest mt-0.5 transition-colors group-hover/engine:text-blue-600/70">{e.detail}</span>
                           </div>
                         </div>
 
                         {/* Connection Port Bottom */}
-                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-black border border-white/10 flex items-center justify-center z-20">
-                          <div className="w-1 h-1 rounded-full bg-blue-500/50 group-hover/engine:bg-blue-500 transition-all" />
+                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white border border-slate-100 flex items-center justify-center z-20 shadow-sm">
+                          <div className="w-1 h-1 rounded-full bg-blue-200 group-hover/engine:bg-blue-500 transition-all" />
                         </div>
                       </div>
                     ))}
@@ -318,29 +305,26 @@ export default function Experiment() {
                   {/* Final Output: Harmoniq */}
                   <div className="w-full relative group/output">
                     {/* Connection Port Top - Visual Alignment with Lines */}
-                    <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black border border-white/10 flex items-center justify-center z-20">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover/output:shadow-[0_0_12px_rgba(59,130,246,1)] transition-all" />
+                    <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border border-slate-100 flex items-center justify-center z-20 shadow-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover/output:shadow-[0_0_12px_rgba(59,130,246,0.5)] transition-all" />
                     </div>
 
-                    {/* Background Glow */}
-                    <div className="absolute -inset-2 bg-linear-to-r from-blue-600/10 to-indigo-600/10 rounded-[3rem] blur-2xl opacity-0 group-hover/output:opacity-100 transition-opacity duration-700" />
-                    
-                    <div className="relative w-full bg-[#050505] border border-white/10 rounded-[2.5rem] p-10 text-center overflow-hidden shadow-2xl transition-all group-hover/output:border-blue-500/50 group-hover/output:shadow-[0_0_50px_rgba(59,130,246,0.3)] group-hover/output:bg-[#080808]">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_70%)]" />
+                    <div className="relative w-full bg-white border border-slate-200 rounded-[2.5rem] p-10 text-center overflow-hidden shadow-sm transition-all group-hover/output:border-blue-300 group-hover/output:shadow-md group-hover/output:bg-white">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.03),transparent_70%)]" />
                       
                       <div className="relative z-10 space-y-5">
                         <motion.div 
                           animate={{ 
-                            boxShadow: ["0 0 20px rgba(37,99,235,0.1)", "0 0 40px rgba(37,99,235,0.3)", "0 0 20px rgba(37,99,235,0.1)"] 
+                            boxShadow: ["0 0 20px rgba(37,99,235,0.05)", "0 0 40px rgba(37,99,235,0.15)", "0 0 20px rgba(37,99,235,0.05)"] 
                           }}
                           transition={{ duration: 4, repeat: Infinity }}
-                          className="w-20 h-20 rounded-3xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center mx-auto transition-all group-hover/output:brightness-150"
+                          className="w-20 h-20 rounded-3xl bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto transition-all group-hover/output:brightness-110"
                         >
-                          <Zap className="w-10 h-10 text-blue-500 fill-blue-500/20" />
+                          <Zap className="w-10 h-10 text-blue-600 fill-blue-600/10" />
                         </motion.div>
                         <div>
-                          <h4 className="text-3xl md:text-4xl font-bold text-white tracking-[0.4em] uppercase">Harmoniq</h4>
-                          <p className="text-[10px] font-bold text-blue-500/60 uppercase tracking-[0.6em] mt-3 transition-colors group-hover/output:text-blue-500">The Standard</p>
+                          <h4 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-[0.4em] uppercase">Harmoniq</h4>
+                          <p className="text-[10px] font-bold text-blue-600/60 uppercase tracking-[0.6em] mt-3 transition-colors group-hover/output:text-blue-600">The Standard</p>
                         </div>
                       </div>
                     </div>
@@ -352,6 +336,7 @@ export default function Experiment() {
 
           </div>
         </section>
+
 
         {/* --- SECTION 2: THE FRAMEWORK --- */}
         <section className="space-y-12">
@@ -437,32 +422,33 @@ export default function Experiment() {
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {models.map((model) => (
-                <div key={model.id} className="bg-white/1 border border-white/5 rounded-2xl p-6 flex flex-col items-center text-center space-y-4 hover:bg-white/2 transition-colors">
-                  <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white font-bold text-xs uppercase">
+                <div key={model.id} className="bg-white border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center space-y-4 hover:bg-slate-50 transition-colors shadow-sm">
+                  <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 font-bold text-xs uppercase shadow-sm">
                     {model.shortName[0]}
                   </div>
                   <div className="space-y-1">
-                    <p className="text-[10px] font-bold text-blue-500 uppercase tracking-widest leading-none mb-1">{model.provider}</p>
-                    <h4 className="text-white font-bold text-sm leading-none">{model.shortName}</h4>
+                    <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest leading-none mb-1">{model.provider}</p>
+                    <h4 className="text-slate-900 font-bold text-sm leading-none">{model.shortName}</h4>
                   </div>
-                  <p className="text-[9px] text-slate-500 font-medium leading-relaxed">Native Speech-to-Speech</p>
+                  <p className="text-[9px] text-slate-400 font-medium leading-relaxed">Native Speech-to-Speech</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-white/1 border border-white/5 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="bg-white border border-slate-100 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
               <div className="space-y-2">
-                <h4 className="text-white font-bold">Additional Baselines (ASR Only)</h4>
+                <h4 className="text-slate-900 font-bold">Additional Baselines (ASR Only)</h4>
                 <p className="text-slate-500 text-xs leading-relaxed max-w-xl">Do STS models need dedicated STT, or is their built-in transcription sufficient? We benchmark against enterprise specialists to find out.</p>
               </div>
               <div className="flex gap-4">
                 {sttProviders.map(p => (
-                  <div key={p.name} className="px-4 py-2 rounded-lg bg-white/2 border border-white/5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{p.name.split(' ')[0]}</div>
+                  <div key={p.name} className="px-4 py-2 rounded-lg bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-500 uppercase tracking-widest shadow-sm">{p.name.split(' ')[0]}</div>
                 ))}
               </div>
             </div>
           </div>
         </section>
+
 
         {/* --- SECTION 5: THE DATA --- */}
         <section className="space-y-12">
@@ -485,15 +471,15 @@ export default function Experiment() {
                 approach="Difficulty: Documentation of the 'speech reasoning gap' across established benchmarks."
               />
             </div>
-            <div className="md:col-span-4 bg-white/1 border border-white/5 rounded-2xl p-8 space-y-6 flex flex-col justify-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center mx-auto">
-                <Database className="w-6 h-6 text-blue-500" />
+            <div className="md:col-span-4 bg-white border border-slate-100 rounded-2xl p-8 space-y-6 flex flex-col justify-center text-center shadow-sm hover:bg-slate-50 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto shadow-sm">
+                <Database className="w-6 h-6 text-blue-600" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-white font-bold">ASR Evaluation</h4>
-                <p className="text-slate-400 text-xs leading-relaxed font-medium italic">LibriSpeech test-clean</p>
+                <h4 className="text-slate-900 font-bold">ASR Evaluation</h4>
+                <p className="text-slate-500 text-xs leading-relaxed font-medium italic">LibriSpeech test-clean</p>
               </div>
-              <p className="text-slate-500 text-[10px] leading-relaxed">Industry-standard benchmark split from audiobooks used to measure Word Error Rate (WER).</p>
+              <p className="text-slate-400 text-[10px] leading-relaxed">Industry-standard benchmark split from audiobooks used to measure Word Error Rate (WER).</p>
             </div>
           </div>
         </section>
@@ -504,14 +490,14 @@ export default function Experiment() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8 space-y-6">
-              <div className="bg-white/1 border border-white/5 rounded-2xl p-8 relative overflow-hidden group">
+              <div className="bg-white border border-slate-100 rounded-2xl p-8 relative overflow-hidden group shadow-sm hover:bg-slate-50 transition-colors">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center">
-                    <Scale className="w-6 h-6 text-blue-500" />
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                    <Scale className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-xl font-bold text-white tracking-tight">3-Judge LLM Panel</h4>
-                    <p className="text-[10px] text-blue-500 uppercase font-bold tracking-[0.2em]">Accuracy Evaluation</p>
+                    <h4 className="text-xl font-bold text-slate-900 tracking-tight">3-Judge LLM Panel</h4>
+                    <p className="text-[10px] text-blue-600 uppercase font-bold tracking-[0.2em]">Accuracy Evaluation</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -519,27 +505,27 @@ export default function Experiment() {
                   <JudgeCard model="Claude 3.5" role="Judge 2" />
                   <JudgeCard model="Gemini 1.5" role="Judge 3" />
                 </div>
-                <div className="mt-8 pt-8 border-t border-white/5">
-                  <p className="text-slate-400 text-xs leading-relaxed font-medium">Each response is transcribed and evaluated by three independent judges. Majority consensus (2/3) determines the final score, reducing single-model bias.</p>
+                <div className="mt-8 pt-8 border-t border-slate-100">
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">Each response is transcribed and evaluated by three independent judges. Majority consensus (2/3) determines the final score, reducing single-model bias.</p>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col gap-4">
-              <div className="bg-white/1 border border-white/5 rounded-2xl p-6 space-y-3 flex-1">
-                <div className="flex items-center gap-2 text-blue-500">
+                <div className="lg:col-span-4 flex flex-col gap-4">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 space-y-3 flex-1 shadow-sm hover:bg-slate-50 transition-colors">
+                <div className="flex items-center gap-2 text-blue-600">
                   <Activity className="w-4 h-4" />
                   <span className="text-[10px] font-bold uppercase tracking-widest">Naturalness</span>
                 </div>
-                <h5 className="text-white font-bold">UTMOSv2</h5>
+                <h5 className="text-slate-900 font-bold">UTMOSv2</h5>
                 <p className="text-slate-500 text-[11px] leading-relaxed font-medium">Automated MOS scoring using UTMOSv2 to generate reproducible rankings of audio quality.</p>
               </div>
-              <div className="bg-white/1 border border-white/5 rounded-2xl p-6 space-y-3 flex-1">
-                <div className="flex items-center gap-2 text-blue-500">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 space-y-3 flex-1 shadow-sm hover:bg-slate-50 transition-colors">
+                <div className="flex items-center gap-2 text-blue-600">
                   <Layers className="w-4 h-4" />
                   <span className="text-[10px] font-bold uppercase tracking-widest">ASR</span>
                 </div>
-                <h5 className="text-white font-bold">Word Error Rate</h5>
+                <h5 className="text-slate-900 font-bold">Word Error Rate</h5>
                 <p className="text-slate-500 text-[11px] leading-relaxed font-medium">Standard WER calculation after text normalization to focus on transcription accuracy.</p>
               </div>
             </div>
@@ -568,48 +554,49 @@ export default function Experiment() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-7 space-y-8">
               <div className="space-y-4">
-                <h4 className="text-white font-bold text-lg">Acknowledgments</h4>
-                <p className="text-slate-400 text-sm leading-relaxed font-medium max-w-xl">
+                <h4 className="text-slate-900 font-bold text-lg">Acknowledgments</h4>
+                <p className="text-slate-500 text-sm leading-relaxed font-medium max-w-xl">
                   Harmoniq builds on the foundational work of <strong>Artificial Analysis</strong>. Their creation of <strong>Big Bench Audio</strong> made rigorous speech reasoning evaluation possible. We also thank the open-source community for LibriSpeech and UTMOSv2.
                 </p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a href="https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-white/1 border border-white/5 p-4 rounded-xl hover:bg-white/2 transition-colors group">
-                  <div className="w-10 h-10 rounded-lg bg-blue-600/10 flex items-center justify-center shrink-0">
-                    <FileText className="w-5 h-5 text-blue-500" />
+                <a href="https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-white border border-slate-100 p-4 rounded-xl hover:bg-slate-50 transition-colors group shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
+                    <FileText className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-xs group-hover:text-blue-400 transition-colors">Big Bench Audio</p>
-                    <p className="text-slate-500 text-[10px]">Dataset Repository</p>
+                    <p className="text-slate-900 font-bold text-xs group-hover:text-blue-600 transition-colors">Big Bench Audio</p>
+                    <p className="text-slate-400 text-[10px]">Dataset Repository</p>
                   </div>
                 </a>
-                <a href="#" className="flex items-center gap-4 bg-white/1 border border-white/5 p-4 rounded-xl hover:bg-white/2 transition-colors group opacity-50 cursor-not-allowed">
-                  <div className="w-10 h-10 rounded-lg bg-blue-600/10 flex items-center justify-center shrink-0">
-                    <Github className="w-5 h-5 text-blue-500" />
+                <a href="#" className="flex items-center gap-4 bg-white border border-slate-100 p-4 rounded-xl hover:bg-slate-50 transition-colors group opacity-50 cursor-not-allowed shadow-sm">
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
+                    <Github className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-xs">Midcentury Datasets</p>
-                    <p className="text-slate-500 text-[10px]">Coming Soon</p>
+                    <p className="text-slate-900 font-bold text-xs">Midcentury Datasets</p>
+                    <p className="text-slate-400 text-[10px]">Coming Soon</p>
                   </div>
                 </a>
               </div>
             </div>
 
             <div className="md:col-span-5">
-              <div className="bg-linear-to-br from-blue-950/20 via-[#050505] to-black border border-white/10 rounded-3xl p-8 space-y-6">
+              <div className="bg-linear-to-br from-blue-600 to-indigo-700 border border-blue-500 rounded-3xl p-8 space-y-6 shadow-xl">
                 <h4 className="text-white font-bold text-sm uppercase tracking-widest">Public Assets</h4>
                 <div className="space-y-4">
-                  <ReleaseRow label="Midcentury-ER Dataset" status="Coming Soon" />
-                  <ReleaseRow label="Midcentury-GR Dataset" status="Coming Soon" />
-                  <ReleaseRow label="Midcentury-SQA Dataset" status="Coming Soon" />
-                  <ReleaseRow label="Evaluation Configs" status="Available" />
-                  <ReleaseRow label="Raw Results JSON" status="Available" />
+                  <ReleaseRow label="Midcentury-ER Dataset" status="Coming Soon" inverted />
+                  <ReleaseRow label="Midcentury-GR Dataset" status="Coming Soon" inverted />
+                  <ReleaseRow label="Midcentury-SQA Dataset" status="Coming Soon" inverted />
+                  <ReleaseRow label="Evaluation Configs" status="Available" inverted />
+                  <ReleaseRow label="Raw Results JSON" status="Available" inverted />
                 </div>
               </div>
             </div>
           </div>
         </section>
+
 
       </motion.div>
     </div>
@@ -620,10 +607,10 @@ export default function Experiment() {
 
 function SectionHeader({ number, title, description, noBorder }: any) {
   return (
-    <div className={`flex flex-col gap-2 ${noBorder ? '' : 'border-b border-white/5 pb-4 md:pb-6'} w-full`}>
+    <div className={`flex flex-col gap-2 ${noBorder ? '' : 'border-b border-slate-100 pb-4 md:pb-6'} w-full`}>
       <div className="flex items-center gap-3">
         <span className="text-blue-600 font-mono text-[10px] md:text-xs font-bold">[{number}]</span>
-        <h2 className="text-lg md:text-2xl font-bold tracking-tight uppercase text-white">{title}</h2>
+        <h2 className="text-lg md:text-2xl font-bold tracking-tight uppercase text-slate-900">{title}</h2>
       </div>
       <p className="text-slate-500 font-medium text-[11px] md:text-sm max-w-2xl leading-relaxed">{description}</p>
     </div>
@@ -632,39 +619,38 @@ function SectionHeader({ number, title, description, noBorder }: any) {
 
 function PillarBlock({ icon: Icon, title, subtitle, desc, color = "blue" }: any) {
   const colors = {
-    blue: "bg-blue-600/10 border-blue-500/20 text-blue-500",
-    purple: "bg-purple-600/10 border-purple-500/20 text-purple-500",
-    teal: "bg-teal-600/10 border-teal-500/20 text-teal-500"
+    blue: "bg-blue-50 border-blue-100 text-blue-600",
+    purple: "bg-purple-50 border-purple-100 text-purple-600",
+    teal: "bg-teal-50 border-teal-100 text-teal-600"
   };
   
   const colorStyles = colors[color as keyof typeof colors].split(' ');
 
   return (
-    <div className="bg-white/1 border border-white/5 rounded-2xl p-8 space-y-6 hover:bg-white/2 transition-colors relative overflow-hidden group h-full">
+    <div className="bg-white border border-slate-100 rounded-2xl p-8 space-y-6 hover:bg-slate-50 transition-colors relative overflow-hidden group h-full shadow-sm">
       <div className={`w-12 h-12 rounded-2xl ${colorStyles[0]} ${colorStyles[1]} flex items-center justify-center group-hover:scale-110 transition-transform`}>
         <Icon className={`w-6 h-6 ${colorStyles[2]}`} />
       </div>
       <div className="space-y-2">
-        <h4 className="text-xl font-bold text-white tracking-tight">{title}</h4>
+        <h4 className="text-xl font-bold text-slate-900 tracking-tight">{title}</h4>
         <p className={`${colorStyles[2]} text-[9px] font-bold uppercase tracking-[0.2em] leading-none`}>{subtitle}</p>
       </div>
-      <p className="text-slate-400 text-xs leading-relaxed font-medium">{desc}</p>
-      <div className="absolute inset-0 bg-grid-white opacity-[0.005] pointer-events-none" />
+      <p className="text-slate-500 text-xs leading-relaxed font-medium">{desc}</p>
     </div>
   );
 }
 
 function DataCard({ title, badge, tasks, desc, approach }: any) {
   return (
-    <div className="bg-white/1 border border-white/5 rounded-2xl p-6 space-y-4 hover:bg-white/2 transition-colors">
+    <div className="bg-white border border-slate-100 rounded-2xl p-6 space-y-4 hover:bg-slate-50 transition-colors shadow-sm">
       <div className="flex justify-between items-start">
-        <span className="px-2 py-1 rounded bg-blue-600/10 border border-blue-500/20 text-blue-500 text-[8px] font-bold uppercase tracking-widest">{badge}</span>
-        <span className="text-slate-600 font-mono text-[9px] font-bold uppercase">{tasks}</span>
+        <span className="px-2 py-1 rounded bg-blue-50 border border-blue-100 text-blue-600 text-[8px] font-bold uppercase tracking-widest">{badge}</span>
+        <span className="text-slate-400 font-mono text-[9px] font-bold uppercase">{tasks}</span>
       </div>
-      <h4 className="text-white font-bold">{title}</h4>
-      <p className="text-slate-400 text-[11px] leading-relaxed font-medium">{desc}</p>
-      <div className="bg-black/40 rounded-xl p-4 border border-white/5">
-        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Recording Philosophy</p>
+      <h4 className="text-slate-900 font-bold">{title}</h4>
+      <p className="text-slate-500 text-[11px] leading-relaxed font-medium">{desc}</p>
+      <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Recording Philosophy</p>
         <p className="text-slate-500 text-[10px] leading-relaxed italic">"{approach}"</p>
       </div>
     </div>
@@ -673,31 +659,35 @@ function DataCard({ title, badge, tasks, desc, approach }: any) {
 
 function JudgeCard({ model, role }: any) {
   return (
-    <div className="bg-black/40 border border-white/5 rounded-xl p-4 text-center space-y-1">
-      <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 mx-auto flex items-center justify-center text-white font-bold text-[10px]">
+    <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center space-y-1 shadow-sm">
+      <div className="w-8 h-8 rounded-full bg-white border border-slate-200 mx-auto flex items-center justify-center text-slate-900 font-bold text-[10px] shadow-sm">
         {model[0]}
       </div>
-      <p className="text-white font-bold text-xs leading-none pt-1">{model}</p>
-      <p className="text-slate-600 text-[8px] uppercase tracking-widest font-bold">{role}</p>
+      <p className="text-slate-900 font-bold text-xs leading-none pt-1">{model}</p>
+      <p className="text-slate-400 text-[8px] uppercase tracking-widest font-bold">{role}</p>
     </div>
   );
 }
 
 function StatCard({ label, value }: any) {
   return (
-    <div className="bg-white/1 border border-white/5 rounded-2xl p-6 text-center space-y-1 hover:bg-white/2 transition-colors">
-      <p className="text-2xl md:text-3xl font-bold text-white tracking-tighter">{value}</p>
-      <p className="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-tight">{label}</p>
+    <div className="bg-white border border-slate-100 rounded-2xl p-6 text-center space-y-1 hover:bg-slate-50 transition-colors shadow-sm">
+      <p className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tighter">{value}</p>
+      <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-tight">{label}</p>
     </div>
   );
 }
 
-function ReleaseRow({ label, status }: any) {
+function ReleaseRow({ label, status, inverted }: any) {
   const isAvailable = status === "Available";
   return (
-    <div className="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
-      <span className="text-slate-400 text-xs font-medium">{label}</span>
-      <span className={`text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded ${isAvailable ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-500/10 text-slate-500 border border-slate-500/20'}`}>{status}</span>
+    <div className={`flex justify-between items-center border-b ${inverted ? 'border-white/10' : 'border-slate-100'} pb-3 last:border-0 last:pb-0`}>
+      <span className={`${inverted ? 'text-blue-50' : 'text-slate-500'} text-xs font-medium`}>{label}</span>
+      <span className={`text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded ${
+        isAvailable 
+          ? (inverted ? 'bg-white/20 text-white border border-white/30' : 'bg-emerald-50 text-emerald-600 border border-emerald-100') 
+          : (inverted ? 'bg-white/10 text-white/60 border border-white/20' : 'bg-slate-100 text-slate-500 border border-slate-200')
+      }`}>{status}</span>
     </div>
   );
 }
@@ -706,15 +696,15 @@ function TaskCard({ task, example }: { task: any, example: string }) {
   const colorClass = task.type === 'speech_reasoning' ? 'teal' : task.type === 'voice_understanding' ? 'purple' : 'blue';
   
   return (
-    <div className="p-6 rounded-2xl bg-white/1 border border-white/5 hover:bg-white/2 transition-all group relative h-full flex flex-col">
+    <div className="p-6 rounded-2xl bg-white border border-slate-100 hover:bg-slate-50 transition-all group relative h-full flex flex-col shadow-sm">
       <div className="flex justify-between items-start mb-4">
-        <span className={`text-${colorClass}-500 font-mono text-[9px] font-bold uppercase tracking-widest`}>{task.abbreviation}</span>
+        <span className={`text-${colorClass}-600 font-mono text-[9px] font-bold uppercase tracking-widest`}>{task.abbreviation}</span>
         <TaskIcon type={task.type} />
       </div>
-      <h4 className={`font-bold text-white text-base mb-2 group-hover:text-${colorClass}-400 transition-colors`}>{task.name}</h4>
-      <div className="bg-black/20 rounded-xl p-3 border border-white/5 mt-auto">
-        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Test Case</p>
-        <p className="text-slate-400 text-[10px] leading-relaxed italic">"{example}"</p>
+      <h4 className={`font-bold text-slate-900 text-base mb-2 group-hover:text-${colorClass}-600 transition-colors`}>{task.name}</h4>
+      <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 mt-auto">
+        <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Test Case</p>
+        <p className="text-slate-500 text-[10px] leading-relaxed italic">"{example}"</p>
       </div>
     </div>
   );
