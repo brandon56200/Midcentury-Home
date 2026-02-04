@@ -192,8 +192,11 @@ export default function ProfessionalBarChart({
                   </div>
                 )}
                 <div className="group relative">
+                  {/* Individual Row Hover State */}
+                  <div className="absolute -inset-x-4 -inset-y-4 bg-slate-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-slate-100 z-0" />
+                  
                   {/* Row Header - High Contrast Labels */}
-                  <div className="flex justify-between items-end mb-2.5 px-1">
+                  <div className="relative z-10 flex justify-between items-end mb-2.5 px-1">
                     <div className="flex items-center gap-4">
                       {item.brandId && (
                         <div className="w-10 h-10 rounded-lg border border-slate-100 flex items-center justify-center bg-white shadow-sm transition-all duration-500 group-hover:border-slate-300">
@@ -228,7 +231,7 @@ export default function ProfessionalBarChart({
                   </div>
 
                   {/* Advanced Bar System */}
-                  <div className="relative h-4 md:h-5 w-full">
+                  <div className="relative z-10 h-4 md:h-5 w-full">
                     {/* Background Track */}
                     <div className="absolute inset-0 bg-slate-50 border border-slate-100 rounded-full overflow-hidden" />
 
@@ -253,9 +256,6 @@ export default function ProfessionalBarChart({
                       />
                     </motion.div>
                   </div>
-
-                  {/* Individual Row Hover State */}
-                  <div className="absolute -inset-x-4 -inset-y-4 bg-slate-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-slate-100" />
                 </div>
               </React.Fragment>
             );
