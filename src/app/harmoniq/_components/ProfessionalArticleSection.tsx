@@ -37,7 +37,7 @@ export default function ProfessionalArticleSection({
              )}
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
             {title}
           </h2>
 
@@ -75,7 +75,7 @@ export default function ProfessionalArticleSection({
              )}
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
             {title}
           </h2>
 

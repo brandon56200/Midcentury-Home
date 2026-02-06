@@ -74,7 +74,7 @@ export interface HarmoniqData {
 export const HARMONIQ_DATA: HarmoniqData = {
   "meta": {
     "title": "Harmoniq",
-    "subtitle": "Benchmarking Voice AI the Way Users Actually Experience It",
+    "subtitle": "Benchmarking Voice AI In The Real World",
     "description": "The first benchmark designed to evaluate speech-to-speech AI models under real-world conditions.",
     "stats": {
       "totalSamples": 13205,

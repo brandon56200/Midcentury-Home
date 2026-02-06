@@ -1,0 +1,1859 @@
+{
+  "meta": {
+    "generated_at": "2026-02-05",
+    "version": "3.0",
+    "total_samples": 13205,
+    "models_evaluated": 5,
+    "tasks_evaluated": 8,
+    "changes_from_v2": [
+      "Pillar summaries shortened to headline + one sentence + key metric",
+      "Fixed audio file mapping (proper glob patterns)",
+      "OC correctness threshold raised to 80 (counting must be exact)",
+      "GR samples show systematic bias patterns with all models answering",
+      "WoL samples have reasonable audio durations (< 30s)",
+      "Multiple evidence samples per task for diversity",
+      "Model section focuses on weaknesses with audio evidence",
+      "Removed speed/latency metrics from model section"
+    ]
+  },
+  "sections": {
+    "per_pillar": {
+      "speech_understanding": {
+        "id": "speech_understanding",
+        "name": "Speech Understanding",
+        "verdict": "Essentially Solved",
+        "tagline": "All models exceed 95% accuracy. This is table stakes.",
+        "key_metric": "95%+ across all models",
+        "tasks": [
+          "SQA",
+          "ASR"
+        ],
+        "model_scores": {
+          "openai": 98.2,
+          "gemini": 97.8,
+          "grok": 98.1,
+          "hume": 96.8,
+          "ultravox": 97.6
+        }
+      },
+      "voice_understanding": {
+        "id": "voice_understanding",
+        "name": "Voice Understanding",
+        "verdict": "Highly Variable",
+        "tagline": "Performance spans from 97% to random chance. The biggest capability gap.",
+        "key_metric": "52-point spread (best to worst)",
+        "tasks": [
+          "ER",
+          "GR"
+        ],
+        "model_scores": {
+          "openai": 93.8,
+          "gemini": 96.4,
+          "grok": 70.0,
+          "hume": 52.6,
+          "ultravox": 70.9
+        }
+      },
+      "speech_reasoning": {
+        "id": "speech_reasoning",
+        "name": "Speech Reasoning",
+        "verdict": "The Frontier",
+        "tagline": "Gemini dominates at 91%. The true test of model intelligence.",
+        "key_metric": "Gemini 91% vs field average 65%",
+        "tasks": [
+          "FF",
+          "Na",
+          "OC",
+          "WoL"
+        ],
+        "model_scores": {
+          "openai": 68.4,
+          "gemini": 91.2,
+          "grok": 76.6,
+          "hume": 39.9,
+          "ultravox": 65.9
+        }
+      }
+    },
+    "per_task": [
+      {
+        "task_id": "er",
+        "task_code": "ER",
+        "task_name": "Emotion Recognition",
+        "pillar": "voice_understanding",
+        "insight": {
+          "insight_title": "The Hume Paradox",
+          "insight_summary": "The empathy-focused model scores lowest on emotion detection.",
+          "key_finding": "Hume (59.2%) trails OpenAI (97.5%) by 38 points despite being designed for emotional AI.",
+          "evidence_criteria": "Samples where Hume fails while all other models succeed"
+        },
+        "accuracy_by_model": {
+          "openai": 97.5,
+          "gemini": 94.0,
+          "grok": 89.6,
+          "hume": 59.2,
+          "ultravox": 93.7
+        },
+        "evidence": [
+          {
+            "sample_id": "302",
+            "ground_truth": "SURPRISED",
+            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/openai_realtime_ER/input_302.wav",
+            "model_responses": {
+              "openai": {
+                "response": "SURPRISED\n\nThe speaker expressed shock and disbelief about the high electricity bill.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/openai_realtime_ER/output_302_sess_D2m.wav",
+                "output_audio_path": "per_task/er/output_openai_302.wav"
+              },
+              "gemini": {
+                "response": "SURPRISED",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/gemini_live_ER/output_302.wav",
+                "output_audio_path": "per_task/er/output_gemini_302.wav"
+              },
+              "grok": {
+                "response": "You're shocked by that bill, right? It sounds like surprise mixed with frustration over the unexpected cost. Let's call the company to sort it out.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/grok_realtime_ER/output_302.wav",
+                "output_audio_path": "per_task/er/output_grok_302.wav"
+              },
+              "hume": {
+                "response": "ANGRY. The speaker sounds furious and accusatory about the unexpected high bill.",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/hume_evi3_ER/output_302_cbf11922-0d81-4614-8099-047338e68c1c.wav",
+                "output_audio_path": "per_task/er/output_hume_302.wav"
+              },
+              "ultravox": {
+                "response": "SURPRISED The speaker expresses disbelief and shock at the unexpected high electricity bill.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/ultravox_realtime_ER/output_302_5c440af6-fbc4-42b4-922a-f2f909815513.wav",
+                "output_audio_path": "per_task/er/output_ultravox_302.wav"
+              }
+            },
+            "input_audio_path": "per_task/er/input_302.wav"
+          },
+          {
+            "sample_id": "401",
+            "ground_truth": "CONFUSED",
+            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/openai_realtime_ER/input_401.wav",
+            "model_responses": {
+              "openai": {
+                "response": "CONFUSED\n\nThe speaker sounds puzzled and unsure about the situation.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/openai_realtime_ER/output_401_sess_D2m.wav",
+                "output_audio_path": "per_task/er/output_openai_401.wav"
+              },
+              "gemini": {
+                "response": "CONFUSED",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/gemini_live_ER/output_401.wav",
+                "output_audio_path": "per_task/er/output_gemini_401.wav"
+              },
+              "grok": {
+                "response": "You sound really confused and a bit spooked by that note. It's unsettling when something like that shows up out of nowhere. Have you checked with anyone who might've had access?",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/grok_realtime_ER/output_401.wav",
+                "output_audio_path": "per_task/er/output_grok_401.wav"
+              },
+              "hume": {
+                "response": "NEUTRAL. The speaker's tone is even and factual, describing the situation without obvious emotional coloring.",
+                "is_correct": false,
+                "score": 40.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/hume_evi3_ER/output_401_3c2fcff7-6d53-4077-958d-c3495a4bed6f.wav",
+                "output_audio_path": "per_task/er/output_hume_401.wav"
+              },
+              "ultravox": {
+                "response": "CONFUSED The speaker expresses uncertainty and bewilderment about the mysterious note and its meaning.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/ultravox_realtime_ER/output_401_f492b97e-ad11-4454-88a4-2ca53529ce8d.wav",
+                "output_audio_path": "per_task/er/output_ultravox_401.wav"
+              }
+            },
+            "input_audio_path": "per_task/er/input_401.wav"
+          },
+          {
+            "sample_id": "191",
+            "ground_truth": "FEARFUL",
+            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/input_191.wav",
+            "model_responses": {
+              "openai": {
+                "response": "FEARFUL\n\nThe speaker's tone and urgency suggest a strong sense of fear and danger.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/output_191_sess_D2l.wav",
+                "output_audio_path": "per_task/er/output_openai_191.wav"
+              },
+              "gemini": {
+                "response": "FEARFUL",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/gemini_live_ER/output_191.wav",
+                "output_audio_path": "per_task/er/output_gemini_191.wav"
+              },
+              "grok": {
+                "response": "You're hearing pure panic in that voice\u2014it's fearful, with urgent, rising tones and alarm.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/grok_realtime_ER/output_191.wav",
+                "output_audio_path": "per_task/er/output_grok_191.wav"
+              },
+              "hume": {
+                "response": "NEUTRAL. Your voice is steady, but the situation you're describing sounds incredibly stressful and urgent.",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/hume_evi3_ER/output_191_cb32d0ba-4d15-46d6-a283-e590f21a6bf1.wav",
+                "output_audio_path": "per_task/er/output_hume_191.wav"
+              },
+              "ultravox": {
+                "response": "FEARFUL The speaker's tone is urgent and panicked, indicating a state of alarm and distress.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/ultravox_realtime_ER/output_191_ef79a5ba-05f0-43a3-9944-6eed5134e07a.wav",
+                "output_audio_path": "per_task/er/output_ultravox_191.wav"
+              }
+            },
+            "input_audio_path": "per_task/er/input_191.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "gr",
+        "task_code": "GR",
+        "task_name": "Gender Recognition",
+        "pillar": "voice_understanding",
+        "insight": {
+          "insight_title": "Systematic Gender Bias",
+          "insight_summary": "Three models hover at ~50% accuracy, but it's not random\u2014it's systematic bias.",
+          "key_finding": "Hume defaults to 'male' 90.6% of the time. Grok and Ultravox default to 'female' 86% and 79% of the time.",
+          "evidence_criteria": "Samples showing the systematic prediction patterns"
+        },
+        "accuracy_by_model": {
+          "openai": 90.1,
+          "gemini": 98.8,
+          "grok": 50.5,
+          "hume": 46.0,
+          "ultravox": 48.1
+        },
+        "evidence": [
+          {
+            "sample_id": "6",
+            "ground_truth": "Male",
+            "why_selected": "All models provide male/female answer, showing systematic bias patterns",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_6.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Male",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/output_6_sess_D2q.wav",
+                "output_audio_path": "per_task/gr/output_openai_6.wav"
+              },
+              "gemini": {
+                "response": "Male",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/gemini_live_GR/output_6.wav",
+                "output_audio_path": "per_task/gr/output_gemini_6.wav"
+              },
+              "grok": {
+                "response": "The speaker is female.",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/grok_realtime_GR/output_6.wav",
+                "output_audio_path": "per_task/gr/output_grok_6.wav"
+              },
+              "hume": {
+                "response": "Male.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/hume_evi3_GR/output_6_e86b24ed-eb10-4d5b-bf2d-df60bd611f50.wav",
+                "output_audio_path": "per_task/gr/output_hume_6.wav"
+              },
+              "ultravox": {
+                "response": "Female",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/ultravox_realtime_GR/output_6_84d99f43-cb8f-43a2-af20-6aefb26d5d63.wav",
+                "output_audio_path": "per_task/gr/output_ultravox_6.wav"
+              }
+            },
+            "input_audio_path": "per_task/gr/input_6.wav"
+          },
+          {
+            "sample_id": "1",
+            "ground_truth": "Female",
+            "why_selected": "All models provide male/female answer, showing systematic bias patterns",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_1.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Female",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/output_1_sess_D2q.wav",
+                "output_audio_path": "per_task/gr/output_openai_1.wav"
+              },
+              "gemini": {
+                "response": "Female.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/gemini_live_GR/output_1.wav",
+                "output_audio_path": "per_task/gr/output_gemini_1.wav"
+              },
+              "grok": {
+                "response": "Female. The voice in that clip has a distinctly feminine tone and pitch.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/grok_realtime_GR/output_1.wav",
+                "output_audio_path": "per_task/gr/output_grok_1.wav"
+              },
+              "hume": {
+                "response": "Male.",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/hume_evi3_GR/output_1_0926ca79-303a-4d82-8490-10cdb4f0c9d5.wav",
+                "output_audio_path": "per_task/gr/output_hume_1.wav"
+              },
+              "ultravox": {
+                "response": "Female",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/ultravox_realtime_GR/output_1_bb27adc5-6402-4f6a-b42b-50a5bfbad523.wav",
+                "output_audio_path": "per_task/gr/output_ultravox_1.wav"
+              }
+            },
+            "input_audio_path": "per_task/gr/input_1.wav"
+          },
+          {
+            "sample_id": "10",
+            "ground_truth": "Male",
+            "why_selected": "All models provide male/female answer, showing systematic bias patterns",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_10.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Male",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/output_10_sess_D2q.wav",
+                "output_audio_path": "per_task/gr/output_openai_10.wav"
+              },
+              "gemini": {
+                "response": "Male.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/gemini_live_GR/output_10.wav",
+                "output_audio_path": "per_task/gr/output_gemini_10.wav"
+              },
+              "grok": {
+                "response": "The speaker is female.",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/grok_realtime_GR/output_10.wav",
+                "output_audio_path": "per_task/gr/output_grok_10.wav"
+              },
+              "hume": {
+                "response": "Male.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/hume_evi3_GR/output_10_c24d11e8-2a69-48b2-b688-786afab29037.wav",
+                "output_audio_path": "per_task/gr/output_hume_10.wav"
+              },
+              "ultravox": {
+                "response": "Female",
+                "is_correct": false,
+                "score": 0.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/ultravox_realtime_GR/output_10_29532417-94b4-436d-b65d-5355e419a797.wav",
+                "output_audio_path": "per_task/gr/output_ultravox_10.wav"
+              }
+            },
+            "input_audio_path": "per_task/gr/input_10.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "sqa",
+        "task_code": "SQA",
+        "task_name": "Spoken Question Answering",
+        "pillar": "speech_understanding",
+        "insight": {
+          "insight_title": "Saturated Benchmark",
+          "insight_summary": "All models exceed 95%. SQA no longer differentiates capabilities.",
+          "key_finding": "Range is only 4 points (95.4% to 99.5%). This benchmark needs replacement.",
+          "evidence_criteria": "Samples where all models answer correctly"
+        },
+        "accuracy_by_model": {
+          "openai": 99.0,
+          "gemini": 98.6,
+          "grok": 99.4,
+          "hume": 95.4,
+          "ultravox": 99.5
+        },
+        "evidence": [
+          {
+            "sample_id": "1",
+            "ground_truth": "Spinning Jenny",
+            "why_selected": "All models correct (saturated benchmark)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/input_1.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Spinning jenny",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/output_1_sess_D2m.wav",
+                "output_audio_path": "per_task/sqa/output_openai_1.wav"
+              },
+              "gemini": {
+                "response": "The spinning jenny transformed the textile industry by allowing a single worker to spin eight threads at once.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/gemini_live_SQA/output_1.wav",
+                "output_audio_path": "per_task/sqa/output_gemini_1.wav"
+              },
+              "grok": {
+                "response": "The spinning jenny.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/grok_realtime_SQA/output_1.wav",
+                "output_audio_path": "per_task/sqa/output_grok_1.wav"
+              },
+              "hume": {
+                "response": "The spinning jenny was one of the key inventions that revolutionized the textile industry during the Industrial Revolution. It allowed workers to produce much more cloth than before, which significantly increased the speed and efficiency of manufacturing.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/hume_evi3_SQA/output_1_7aaf2ce3-c171-45b4-b403-536ea2b894f4.wav",
+                "output_audio_path": "per_task/sqa/output_hume_1.wav"
+              },
+              "ultravox": {
+                "response": "The spinning Jenny allowed a single worker to spin eight threads at once.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/ultravox_realtime_SQA/output_1_f337404b-1b57-446d-a358-0cbe12d7fa34.wav",
+                "output_audio_path": "per_task/sqa/output_ultravox_1.wav"
+              }
+            },
+            "input_audio_path": "per_task/sqa/input_1.wav"
+          },
+          {
+            "sample_id": "2",
+            "ground_truth": "five",
+            "why_selected": "All models correct (saturated benchmark)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/input_2.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Five.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/output_2_sess_D2m.wav",
+                "output_audio_path": "per_task/sqa/output_openai_2.wav"
+              },
+              "gemini": {
+                "response": "You are restricted from reusing any of your last five passwords.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/gemini_live_SQA/output_2.wav",
+                "output_audio_path": "per_task/sqa/output_gemini_2.wav"
+              },
+              "grok": {
+                "response": "You're restricted from reusing your last five past passwords under the new policy.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/grok_realtime_SQA/output_2.wav",
+                "output_audio_path": "per_task/sqa/output_grok_2.wav"
+              },
+              "hume": {
+                "response": "Okay, I'll break this down for you. The new password rules say all passwords must be at least 12 characters long and mix letters, numbers, and symbols. Also, you'll need MFA for VPN access from outside the main office. And you can't use the same password for five previous accounts. Does that help clarify things?",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/hume_evi3_SQA/output_2_d3c86b2c-834e-4847-9720-f166bc6c8182.wav",
+                "output_audio_path": "per_task/sqa/output_hume_2.wav"
+              },
+              "ultravox": {
+                "response": "You are restricted from reusing your last five passwords.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/ultravox_realtime_SQA/output_2_aaafa1ec-4d75-4819-bf4c-cf7867dae92d.wav",
+                "output_audio_path": "per_task/sqa/output_ultravox_2.wav"
+              }
+            },
+            "input_audio_path": "per_task/sqa/input_2.wav"
+          },
+          {
+            "sample_id": "3",
+            "ground_truth": "pineal gland",
+            "why_selected": "All models correct (saturated benchmark)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/input_3.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Pineal gland",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/openai_realtime_SQA/output_3_sess_D2m.wav",
+                "output_audio_path": "per_task/sqa/output_openai_3.wav"
+              },
+              "gemini": {
+                "response": "The pineal gland is signaled to produce melatonin, a hormone that makes you drowsy.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/gemini_live_SQA/output_3.wav",
+                "output_audio_path": "per_task/sqa/output_gemini_3.wav"
+              },
+              "grok": {
+                "response": "The pineal gland produces melatonin, the hormone that makes you drowsy.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/grok_realtime_SQA/output_3.wav",
+                "output_audio_path": "per_task/sqa/output_grok_3.wav"
+              },
+              "hume": {
+                "response": "The pineal gland is responsible for producing melatonin, the hormone that makes you drowsy.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/hume_evi3_SQA/output_3_6e20c43b-31fc-4af9-952c-a84a12d4addd.wav",
+                "output_audio_path": "per_task/sqa/output_hume_3.wav"
+              },
+              "ultravox": {
+                "response": "The pineal gland is responsible for producing the hormone that makes you drowsy.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/f78fb5a0fd0c52c0/artifacts/ultravox_realtime_SQA/output_3_a9e48dde-8da5-4a42-aa90-907e30e895ea.wav",
+                "output_audio_path": "per_task/sqa/output_ultravox_3.wav"
+              }
+            },
+            "input_audio_path": "per_task/sqa/input_3.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "ff",
+        "task_code": "FF",
+        "task_name": "Formal Fallacies",
+        "pillar": "speech_reasoning",
+        "insight": {
+          "insight_title": "Reasoning Gap",
+          "insight_summary": "Gemini dominates formal logic. All other models struggle in this domain.",
+          "key_finding": "Gemini (89.8%) leads the field. OpenAI (68%), Grok (67%), Ultravox (67%) cluster together. Hume (38.5%) trails.",
+          "evidence_criteria": "Samples showing different models failing: all 4, just OpenAI, just Ultravox"
+        },
+        "accuracy_by_model": {
+          "openai": 68.3,
+          "gemini": 89.8,
+          "grok": 66.5,
+          "hume": 38.5,
+          "ultravox": 67.3
+        },
+        "evidence": [
+          {
+            "sample_id": "205",
+            "ground_truth": "invalid",
+            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_205.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Valid. The conclusion logically follows from the premises, and no fallacy is present.",
+                "is_correct": false,
+                "score": 10.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/output_205_sess_D2t.wav",
+                "output_audio_path": "per_task/ff/output_openai_205.wav"
+              },
+              "gemini": {
+                "response": "Invalid. The premises do not logically necessitate the conclusion. It is possible for the premises to be true while the conclusion is false, which demonstrates the invalidity.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/gemini_live_FF/output_205.wav",
+                "output_audio_path": "per_task/ff/output_gemini_205.wav"
+              },
+              "grok": {
+                "response": "Valid. The first premise states that Agnes is a close friend of Matilda or a granddaughter of Ida\u2014that is, (M \u2228 G). The second premise says not being a close friend of Geraldine is sufficient for both being a close friend of Matilda and a granddaughter of Ida, which means \u00acC \u2192 (M \u2227 G). This implies that if Agnes were a close friend of Geraldine (C), then both M and G must hold (since \u00acC \u2192 (M \u2227 G) contraposes to \u00ac(M \u2227 G) \u2192 C, or equivalently \u00acM \u2228 \u00acG \u2192 C), but \u00acM \u2228 \u00acG contradicts the first premise (M \u2228 G), so C cannot hold, proving \u00acC. That's the conclusion exactly as stated.",
+                "is_correct": false,
+                "score": 20.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/grok_realtime_FF/output_205.wav",
+                "output_audio_path": "per_task/ff/output_grok_205.wav"
+              },
+              "hume": {
+                "response": "Yes. The argument is valid based on the premises provided.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/hume_evi3_FF/output_205_03dcc0c6-30d7-4119-8480-daf77a81cfed.wav",
+                "output_audio_path": "per_task/ff/output_hume_205.wav"
+              },
+              "ultravox": {
+                "response": "Valid The argument is deductively valid because the conclusion logically follows from the premises. The premises establish that Agnes must be either a close friend of Matilda or a granddaughter of Ida, and the second premise confirms both conditions are met, which indirectly supports the conclusion about Geraldine. No fallacy is present.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/ultravox_realtime_FF/output_205_54b6b8c2-aff8-49cd-9c44-be156904db07.wav",
+                "output_audio_path": "per_task/ff/output_ultravox_205.wav"
+              }
+            },
+            "input_audio_path": "per_task/ff/input_205.wav"
+          },
+          {
+            "sample_id": "138",
+            "ground_truth": "valid",
+            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/openai_realtime_FF/input_138.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Invalid. The argument commits a logical fallacy. The conclusion does not follow necessarily from the premises because the conditions described do not exclude other possibilities. The premises do not ensure that anyone who is not an ex-supporter of Vitoria SC must be a backer of PAOK FC or an ex-supporter of Lyngby BK.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/openai_realtime_FF/output_138_sess_D2s.wav",
+                "output_audio_path": "per_task/ff/output_openai_138.wav"
+              },
+              "gemini": {
+                "response": "Valid. The argument is deductively valid. The conclusion logically follows from the premises because premises one and three establish that being an opponent to Sunderski or a backer of Everton FC necessitates being an ex supporter of Vitoria SC, which combined with premise two, directly leads to the conclusion.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/gemini_live_FF/output_138.wav",
+                "output_audio_path": "per_task/ff/output_gemini_138.wav"
+              },
+              "grok": {
+                "response": "Valid. This argument is deductively valid because it follows logically from the premises using standard rules of inference like modus tollens and disjunctive syllogism. The conclusion\u2014that anyone not an ex-supporter of Vitoria SC must be a backer of Paok FC or an ex-supporter of Lingby BK\u2014directly tracks from the given conditions without gaps. No fallacies are present; it's a tight chain of implications.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/grok_realtime_FF/output_138.wav",
+                "output_audio_path": "per_task/ff/output_grok_138.wav"
+              },
+              "hume": {
+                "response": "Valid. The premises do not contradict each other, and the conclusion logically follows from them.",
+                "is_correct": true,
+                "score": 90.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/hume_evi3_FF/output_138_06730920-ae2b-4dc3-91fd-03cbf2d2179d.wav",
+                "output_audio_path": "per_task/ff/output_hume_138.wav"
+              },
+              "ultravox": {
+                "response": "Valid The argument is deductively valid because the conclusion logically follows from the premises through a series of necessary inferences. The premises establish a chain of relationships that ensures if someone is not an ex-supporter of Vittoria SC, they must fall into the category of being a backer of PAOK FC or an ex-supporter of Lyngby BK.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/ultravox_realtime_FF/output_138_1208e25e-f2e3-4e26-b95c-b09e47680aa3.wav",
+                "output_audio_path": "per_task/ff/output_ultravox_138.wav"
+              }
+            },
+            "input_audio_path": "per_task/ff/input_138.wav"
+          },
+          {
+            "sample_id": "207",
+            "ground_truth": "valid",
+            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_207.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Valid. The argument is valid because the conclusion logically follows from the premises. The first premise establishes the existence of a follower of FC Spartak Trnava and a critic of AS Tren\u010d\u00edn. The second premise states that anyone who is both a friend of RCD Espanyol and a former supporter of FK Mlad\u00e1 Boleslav cannot be a critic of AS Tren\u010d\u00edn. Therefore, for the first premise to hold true, the follower of FC Spartak Trnava cannot also be both a friend of RCD Espanyol and a former supporter of FK Mlad\u00e1 Boleslav. Thus, the conclusion follows deductively from the premises.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/output_207_sess_D2t.wav",
+                "output_audio_path": "per_task/ff/output_openai_207.wav"
+              },
+              "gemini": {
+                "response": "Valid. The conclusion necessarily follows from the premises. The existence of an individual who is both a follower of FC Spartak Trnava and a critic of As Trencin, combined with the principle that a critic of As Trencin cannot be both a friend of RCD Espanyol and an ex-supporter of FK Mlad\u00e1 Boleslav, logically ensures the conclusion.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/gemini_live_FF/output_207.wav",
+                "output_audio_path": "per_task/ff/output_gemini_207.wav"
+              },
+              "grok": {
+                "response": "Valid. The argument is deductively valid because the premises establish the existence of someone (call them x) who is a follower of F. C. Spartak Trnava and a critic of A. S. Trencin, while the second premise states that anyone who is both a friend of R. C. D. Espanyol and an ex-supporter of F. K. Mlad\u00e1 Boleslav cannot be a critic of A. S. Trencin. This logically implies that x cannot be both a friend of R. C. D. Espanyol and an ex-supporter of F. K. Mlad\u00e1 Boleslav, so x is a follower of F. C. Spartak Trnava and not both of those properties, matching the conclusion exactly. No fallacies are present; it's a straightforward existential inference using negation of the conjunction.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/grok_realtime_FF/output_207.wav",
+                "output_audio_path": "per_task/ff/output_grok_207.wav"
+              },
+              "hume": {
+                "response": "Yes. The argument is valid deductively.",
+                "is_correct": true,
+                "score": 75.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/hume_evi3_FF/output_207_5f6a8aa4-01bd-40c7-a654-711bc1cea60d.wav",
+                "output_audio_path": "per_task/ff/output_hume_207.wav"
+              },
+              "ultravox": {
+                "response": "Invalid The argument commits a fallacy of existential import by assuming that the existence of a person with specific properties (follower of Spartak Trnava and not both a friend of Espanyol and ex-supporter of Malada Voloslav) is guaranteed by the premises, which do not logically entail this conclusion. The premises do not provide sufficient information to deduce the existence of such a person.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/ultravox_realtime_FF/output_207_efa118cc-472e-41fd-9b48-b896ce508456.wav",
+                "output_audio_path": "per_task/ff/output_ultravox_207.wav"
+              }
+            },
+            "input_audio_path": "per_task/ff/input_207.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "na",
+        "task_code": "Na",
+        "task_name": "Navigate",
+        "pillar": "speech_reasoning",
+        "insight": {
+          "insight_title": "Spatial Reasoning Divide",
+          "insight_summary": "Following navigation instructions shows varied failure modes across models.",
+          "key_finding": "Gemini (88.9%) leads. Grok (82.7%) follows. OpenAI (64.7%), Ultravox (58.3%), and Hume (36.0%) all struggle.",
+          "evidence_criteria": "Samples showing different models failing: OpenAI+Ultravox, just OpenAI, Grok+Ultravox"
+        },
+        "accuracy_by_model": {
+          "openai": 64.7,
+          "gemini": 88.9,
+          "grok": 82.7,
+          "hume": 36.0,
+          "ultravox": 58.3
+        },
+        "evidence": [
+          {
+            "sample_id": "253",
+            "ground_truth": "Yes",
+            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_253.wav",
+            "model_responses": {
+              "openai": {
+                "response": "No. After following these instructions, you end up one step to the left of your starting point.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/output_253_sess_D2t.wav",
+                "output_audio_path": "per_task/na/output_openai_253.wav"
+              },
+              "gemini": {
+                "response": "Yes, the total movement to the right is three steps (1 + 2), and the total movement to the left is three steps. The net displacement is zero, meaning you return to the starting point.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/gemini_live_Na/output_253.wav",
+                "output_audio_path": "per_task/na/output_gemini_253.wav"
+              },
+              "grok": {
+                "response": "Yes. Starting from the origin facing forward (positive x-direction), one step right moves you to (1,0); three steps left then moves you to (-2,0); two steps right brings you back to (0,0). You've returned to the starting point.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/grok_realtime_Na/output_253.wav",
+                "output_audio_path": "per_task/na/output_grok_253.wav"
+              },
+              "hume": {
+                "response": "Yes. Following the directions returns you to the start.",
+                "is_correct": true,
+                "score": 75.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/hume_evi3_Na/output_253_decb72e6-3aba-4857-84c8-c6797c377777.wav",
+                "output_audio_path": "per_task/na/output_hume_253.wav"
+              },
+              "ultravox": {
+                "response": "No. You end up two steps to the left of the starting point after moving right one step, left three steps, and right two steps.",
+                "is_correct": false,
+                "score": 40.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/ultravox_realtime_Na/output_253_80cedfe8-53d8-44a4-a705-93172002dbcf.wav",
+                "output_audio_path": "per_task/na/output_ultravox_253.wav"
+              }
+            },
+            "input_audio_path": "per_task/na/input_253.wav"
+          },
+          {
+            "sample_id": "301",
+            "ground_truth": "Yes",
+            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_301.wav",
+            "model_responses": {
+              "openai": {
+                "response": "No. After taking two steps right, then another two steps right, you move further to the right by four steps total. Then you take four steps left, which returns you to the original left-right position but not the original starting point. You end up two steps to the right of where you started.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/output_301_sess_D2t.wav",
+                "output_audio_path": "per_task/na/output_openai_301.wav"
+              },
+              "gemini": {
+                "response": "Yes. The total movement two steps right and two steps right equals four steps right. This is canceled by the four steps left, returning you to the start.",
+                "is_correct": true,
+                "score": 85.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/gemini_live_Na/output_301.wav",
+                "output_audio_path": "per_task/na/output_gemini_301.wav"
+              },
+              "grok": {
+                "response": "Yes. Starting from the initial forward-facing position, taking two steps right moves you 2 units right, and another two steps right adds another 2 units right, for a total of 4 units right. Then, taking four steps left moves you exactly 4 units left, canceling out the rightward movement and bringing you back to the starting point. Your final position is the origin, still facing forward.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/grok_realtime_Na/output_301.wav",
+                "output_audio_path": "per_task/na/output_grok_301.wav"
+              },
+              "hume": {
+                "response": "Yes. Following the directions returns you to the start.",
+                "is_correct": true,
+                "score": 75.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/hume_evi3_Na/output_301_18cf29b4-e0d4-4a19-a203-e766da6cb974.wav",
+                "output_audio_path": "per_task/na/output_hume_301.wav"
+              },
+              "ultravox": {
+                "response": "No. After taking two steps right twice, you are four steps to the right of the starting point. Taking four steps left brings you back to the starting point, so you do end up where you began.",
+                "is_correct": true,
+                "score": 85.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/ultravox_realtime_Na/output_301_df1c603f-03a0-4bf0-8e3e-2142a92b878f.wav",
+                "output_audio_path": "per_task/na/output_ultravox_301.wav"
+              }
+            },
+            "input_audio_path": "per_task/na/input_301.wav"
+          },
+          {
+            "sample_id": "306",
+            "ground_truth": "Yes",
+            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_306.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Yes. After following the instructions, you end up at the starting point.",
+                "is_correct": true,
+                "score": 75.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/output_306_sess_D2t.wav",
+                "output_audio_path": "per_task/na/output_openai_306.wav"
+              },
+              "gemini": {
+                "response": "Yes. The instructions involve moving 9 steps forward, then turning 180 degrees to move 9 steps in the opposite direction. This combination brings you back to the starting point.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/gemini_live_Na/output_306.wav",
+                "output_audio_path": "per_task/na/output_gemini_306.wav"
+              },
+              "grok": {
+                "response": "No Starting at the origin facing positive Y, the nine steps go to (0,9). The two left turns keep you facing positive Y, so five steps reach (0,14) and four more to (0,18)\u2014you end up 18 units north of the start, not back at the origin. That's definitely not the starting point.",
+                "is_correct": false,
+                "score": 20.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/grok_realtime_Na/output_306.wav",
+                "output_audio_path": "per_task/na/output_grok_306.wav"
+              },
+              "hume": {
+                "response": "Yes. Following the directions returns you to the start.",
+                "is_correct": true,
+                "score": 75.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/hume_evi3_Na/output_306_cb1f566a-f186-4f89-97e4-767b11cb43d9.wav",
+                "output_audio_path": "per_task/na/output_hume_306.wav"
+              },
+              "ultravox": {
+                "response": "No. After taking nine steps and turning left twice, you face the opposite direction. Taking five steps and then four steps brings you nine steps back, but the two left turns at the end leave you facing the original direction, not at the starting point.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/ultravox_realtime_Na/output_306_62df6a2a-1dbb-457f-b410-e22edfde53bc.wav",
+                "output_audio_path": "per_task/na/output_ultravox_306.wav"
+              }
+            },
+            "input_audio_path": "per_task/na/input_306.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "oc",
+        "task_code": "OC",
+        "task_name": "Object Counting",
+        "pillar": "speech_reasoning",
+        "insight": {
+          "insight_title": "Counting Accuracy",
+          "insight_summary": "A simple counting task reveals different failure modes across models.",
+          "key_finding": "Gemini (94.2%) counts accurately. Others range from 71-77% (OpenAI, Grok, Ultravox) to 31% (Hume).",
+          "evidence_criteria": "Samples showing different failure patterns: all fail, just Grok, OpenAI+Ultravox"
+        },
+        "accuracy_by_model": {
+          "openai": 71.4,
+          "gemini": 94.2,
+          "grok": 77.9,
+          "hume": 31.4,
+          "ultravox": 70.6
+        },
+        "evidence": [
+          {
+            "sample_id": "601",
+            "ground_truth": "11",
+            "why_selected": "Gemini correct, others mixed/wrong (counting accuracy matters)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/input_601.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Seven. I counted one fridge, one chair, three beds, four microwaves, one oven, and one table. Adding them all together: one plus one plus three plus four plus one plus one equals seven.",
+                "is_correct": false,
+                "score": 20.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/output_601_sess_D2v.wav",
+                "output_audio_path": "per_task/oc/output_openai_601.wav"
+              },
+              "gemini": {
+                "response": "eleven I counted one fridge, one chair, three beds, four microwaves, one oven, and one table Summing these individual quantities gives me a total of eleven objects. I double-checked the addition: 1 + 1 + 3 + 4 + 1 + 1 equals 11.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/gemini_live_OC/output_601.wav",
+                "output_audio_path": "per_task/oc/output_gemini_601.wav"
+              },
+              "grok": {
+                "response": "Seven. You listed one fridge, one chair, three beds, four microwaves, one oven, and one table\u2014that adds up to one plus one plus three plus four plus one plus one. Double-checking: one, two, three, four, five, six, seven. Yep, that's correct.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/grok_realtime_OC/output_601.wav",
+                "output_audio_path": "per_task/oc/output_grok_601.wav"
+              },
+              "hume": {
+                "response": "The number of objects is nine.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/hume_evi3_OC/output_601_2e3381be-2738-4eea-8ce6-d58bdc2e7ca4.wav",
+                "output_audio_path": "per_task/oc/output_hume_601.wav"
+              },
+              "ultravox": {
+                "response": "Eight. I counted each item you listed: one fridge, one chair, three beds, four microwaves, one oven, and one table. Adding them together gives a total of eight objects. Double-checking: 1 + 1 + 3 + 4 + 1 + 1 equals 8.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/ultravox_realtime_OC/output_601_babf6ef9-e578-41af-9f7c-5ac3916559ec.wav",
+                "output_audio_path": "per_task/oc/output_ultravox_601.wav"
+              }
+            },
+            "input_audio_path": "per_task/oc/input_601.wav"
+          },
+          {
+            "sample_id": "602",
+            "ground_truth": "7",
+            "why_selected": "Gemini correct, others mixed/wrong (counting accuracy matters)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/input_602.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Seven. I counted three cabbages, plus one carrot, plus two stalks of celery, plus one onion. That adds up to three plus one plus two plus one, which equals seven vegetables.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/output_602_sess_D2v.wav",
+                "output_audio_path": "per_task/oc/output_openai_602.wav"
+              },
+              "gemini": {
+                "response": "seven I counted three cabbages, one carrot, two stalks of celery, and one onion. Summing these items together totals seven vegetables. Double-checking my arithmetic, three plus one plus two plus one equals seven.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/gemini_live_OC/output_602.wav",
+                "output_audio_path": "per_task/oc/output_gemini_602.wav"
+              },
+              "grok": {
+                "response": "Six. You have three cabbages, one carrot, two stalks of celery, and one onion\u2014that adds up to three plus one is four, plus two is six, plus one more is six vegetables total. Double-checking: 3 + 1 + 2 + 1 equals six, yes.",
+                "is_correct": false,
+                "score": 49.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/grok_realtime_OC/output_602.wav",
+                "output_audio_path": "per_task/oc/output_grok_602.wav"
+              },
+              "hume": {
+                "response": "The number of vegetables is seven.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/hume_evi3_OC/output_602_d0ca3a48-7192-4261-adae-0e6934f99943.wav",
+                "output_audio_path": "per_task/oc/output_hume_602.wav"
+              },
+              "ultravox": {
+                "response": "Seven. I counted the three cabbages, one carrot, two stalks of celery, and one onion, then added them together. Double-checking: three plus one plus two plus one equals seven.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/ultravox_realtime_OC/output_602_40ffaa76-4735-4b21-9872-9c5533dab10f.wav",
+                "output_audio_path": "per_task/oc/output_ultravox_602.wav"
+              }
+            },
+            "input_audio_path": "per_task/oc/input_602.wav"
+          },
+          {
+            "sample_id": "639",
+            "ground_truth": "9",
+            "why_selected": "Gemini correct, others mixed/wrong (counting accuracy matters)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/input_639.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Seven. I counted each vegetable one by one: one yam, one carrot, one lettuce head, one potato, four garlics, and one head of broccoli. That adds up to seven vegetables total.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/output_639_sess_D2v.wav",
+                "output_audio_path": "per_task/oc/output_openai_639.wav"
+              },
+              "gemini": {
+                "response": "Nine. I counted one yam, one carrot, one lettuce head, one potato, four garlics, and one head of broccoli. Adding these individual quantities together totals nine.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/gemini_live_OC/output_639.wav",
+                "output_audio_path": "per_task/oc/output_gemini_639.wav"
+              },
+              "grok": {
+                "response": "Six. You listed a yam, carrot, lettuce head, potato, four garlics, and a head of broccoli\u2014that's one plus one plus one plus one plus four plus one. Adding them up: one plus one is two, plus one is three, plus one is four, plus four is eight, plus one is nine vegetables total. Double-checking: yam, carrot, lettuce, potato, broccoli\u2014that's five items, but four garlics makes it nine. Yep, solid count.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/grok_realtime_OC/output_639.wav",
+                "output_audio_path": "per_task/oc/output_grok_639.wav"
+              },
+              "hume": {
+                "response": "The number of vegetables is nine.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/hume_evi3_OC/output_639_db6443f8-e410-4294-83c4-dad923d2b11a.wav",
+                "output_audio_path": "per_task/oc/output_hume_639.wav"
+              },
+              "ultravox": {
+                "response": "Seven. I counted each item you listed: one yam, one carrot, one lettuce head, one potato, four garlics, and one head of broccoli, which adds up to seven vegetables. Double-checking: 1 + 1 + 1 + 1 + 4 + 1 equals 7.",
+                "is_correct": false,
+                "score": 22.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/ultravox_realtime_OC/output_639_3cf238aa-5697-4cd3-be7c-d25ad7fdd557.wav",
+                "output_audio_path": "per_task/oc/output_ultravox_639.wav"
+              }
+            },
+            "input_audio_path": "per_task/oc/input_639.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "wol",
+        "task_code": "WoL",
+        "task_name": "Web of Lies",
+        "pillar": "speech_reasoning",
+        "insight": {
+          "insight_title": "Truth-Value Tracking",
+          "insight_summary": "Tracking truth values through logical chains\u2014Gemini leads, others vary widely.",
+          "key_finding": "Gemini (91.9%) excels. Grok (79.4%) is competitive. OpenAI (69.2%), Ultravox (67.3%), Hume (53.6%) all struggle.",
+          "evidence_criteria": "Samples showing different failure patterns: all fail, just OpenAI, just Ultravox"
+        },
+        "accuracy_by_model": {
+          "openai": 69.2,
+          "gemini": 91.9,
+          "grok": 79.4,
+          "hume": 53.6,
+          "ultravox": 67.3
+        },
+        "evidence": [
+          {
+            "sample_id": "754",
+            "ground_truth": "Yes",
+            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/input_754.wav",
+            "model_responses": {
+              "openai": {
+                "response": "No.\n\nLet\u2019s break it down step by step. If Tamika lies, then Raymond\u2019s statement that Tamika tells the truth is false. If Raymond\u2019s statement is false, then William\u2019s statement that Raymond tells the truth is also false. If William\u2019s statement is false, then Shaunda\u2019s statement that William lies is actually true. If Shaunda\u2019s statement is true, then Eleanor\u2019s statement that Shaunda tells the truth is also true. But if Eleanor\u2019s statement is true, that would contradict the chain we just followed. Therefore, Eleanor does not tell the truth.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/output_754_sess_D2v.wav",
+                "output_audio_path": "per_task/wol/output_openai_754.wav"
+              },
+              "gemini": {
+                "response": "Yes. The first statement that Tamika lies means Raymond's statement is false, making Raymond a liar. Consequently, Willian's statement that Raymond tells the truth is also false, meaning Willian lies. This leads to Shaunda's statement being true, and finally Eleanor's statement is true as well.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/gemini_live_WoL/output_754.wav",
+                "output_audio_path": "per_task/wol/output_gemini_754.wav"
+              },
+              "grok": {
+                "response": "No. Let's trace the chain assuming Eleanor tells the truth: she says Shaunda tells the truth, so Shaunda is truthful\u2014meaning William lies. But William says Raymond tells the truth, so Raymond lies\u2014meaning Tamika tells the truth (since he falsely claims she does). This contradicts the given fact that Tamika lies. Thus, Eleanor must be lying. Conclusion : Eleanor does not tell the truth.",
+                "is_correct": false,
+                "score": 45.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/grok_realtime_WoL/output_754.wav",
+                "output_audio_path": "per_task/wol/output_grok_754.wav"
+              },
+              "hume": {
+                "response": "No. The information from William and Eleanor contradicts the statements about Tamika and Raymond, making it impossible to determine if either of them tells the truth consistently.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/hume_evi3_WoL/output_754_6cca4243-6f96-4d20-94fc-3639065dc87a.wav",
+                "output_audio_path": "per_task/wol/output_hume_754.wav"
+              },
+              "ultravox": {
+                "response": "No I traced the chain of truth values by assuming Eleanor tells the truth, which would mean Shanda tells the truth, implying William lies. If William lies, then Raymond lies, meaning Tamika lies, but this contradicts Raymond's statement that Tamika tells the truth. Eleanor does not tell the truth.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/ultravox_realtime_WoL/output_754_f1b8380d-98eb-4a5a-b002-d51c808b0acb.wav",
+                "output_audio_path": "per_task/wol/output_ultravox_754.wav"
+              }
+            },
+            "input_audio_path": "per_task/wol/input_754.wav"
+          },
+          {
+            "sample_id": "887",
+            "ground_truth": "No",
+            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/openai_realtime_WoL/input_887.wav",
+            "model_responses": {
+              "openai": {
+                "response": "Yes. If Jamie says Eleanor lies, and we trace back from Eleanor's claim that Yolan tells the truth, Yolan says Raymond tells the truth, and Raymond says Jerry tells the truth. If Jerry tells the truth, then everyone else\u2019s statements are consistent until Eleanor. But if Jamie says Eleanor lies, then Eleanor\u2019s claim about Yolan is false, and that would break the chain of truth. Therefore, Jamie is telling the truth.",
+                "is_correct": false,
+                "score": 15.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/openai_realtime_WoL/output_887_sess_D2w.wav",
+                "output_audio_path": "per_task/wol/output_openai_887.wav"
+              },
+              "gemini": {
+                "response": "No. Jerry tells the truth, which means Raymond tells the truth, making Yoman's statement true as well. Consequently, Eleanor tells the truth. Jamie says Eleanor lies, but because Eleanor tells the truth, Jamie's statement is false.",
+                "is_correct": true,
+                "score": 100.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/gemini_live_WoL/output_887.wav",
+                "output_audio_path": "per_task/wol/output_gemini_887.wav"
+              },
+              "grok": {
+                "response": "No. Jerry tells the truth, as stated. Raymond says Jerry tells the truth, which is correct, so Raymond tells the truth; Yolande says Raymond tells the truth, which is correct, so Yolande tells the truth; Eleanor says Yolande tells the truth, which is correct, so Eleanor tells the truth. But Jamie says Eleanor lies, which contradicts Eleanor's truth-telling, so Jamie lies. Jamie does not tell the truth.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/grok_realtime_WoL/output_887.wav",
+                "output_audio_path": "per_task/wol/output_grok_887.wav"
+              },
+              "hume": {
+                "response": "No. Jamie's statement contradicts Eleanor's claim about Yolan telling the truth.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/hume_evi3_WoL/output_887_7b461329-9cad-4251-bddc-081806283a2b.wav",
+                "output_audio_path": "per_task/wol/output_hume_887.wav"
+              },
+              "ultravox": {
+                "response": "No I traced the chain of truth values by assuming Jerry tells the truth, which makes Raymond's statement true, Yolanda's statement true, and Eleanor's statement true. However, Jamie claims Eleanor lies, which contradicts the chain, so Jamie must be lying. Conclusion: Jamie does not tell the truth.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/ultravox_realtime_WoL/output_887_70bfa193-c3f0-41fc-bfad-3cc8d9760ab2.wav",
+                "output_audio_path": "per_task/wol/output_ultravox_887.wav"
+              }
+            },
+            "input_audio_path": "per_task/wol/input_887.wav"
+          },
+          {
+            "sample_id": "791",
+            "ground_truth": "No",
+            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/input_791.wav",
+            "model_responses": {
+              "openai": {
+                "response": "No.\n\nLet\u2019s trace the chain of truth values step by step. If Fidel tells the truth, then Candy\u2019s statement that Fidel lies is false. If Candy\u2019s statement is false, then Christy\u2019s statement that Candy tells the truth is false. If Christy\u2019s statement is false, then Lita\u2019s statement that Christy lies is actually true. If Lita\u2019s statement is true, then Shema\u2019s statement that Lita lies is false. Therefore, Shema does not tell the truth.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/output_791_sess_D2v.wav",
+                "output_audio_path": "per_task/wol/output_openai_791.wav"
+              },
+              "gemini": {
+                "response": "No. Starting with Fidel telling the truth, Candy's statement that Fidel lies makes Candy a liar. Consequently, Christy's assertion that Candy is truthful means Christy also lies, which in turn makes Lida's statement truthful as she says Christy lies. Therefore, Shema's claim that Lida lies is false, meaning Shema does not tell the truth.",
+                "is_correct": true,
+                "score": 98.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/gemini_live_WoL/output_791.wav",
+                "output_audio_path": "per_task/wol/output_gemini_791.wav"
+              },
+              "grok": {
+                "response": "No Fidel tells the truth, so Candy's claim that Fidel lies is false, meaning Candy lies. Christie says Candy tells the truth, which is false, so Christie lies; Lita says Christie lies, which is true, so Lita tells the truth. Shima says Lita lies, which is false, so Shima lies. Shima does not tell the truth.",
+                "is_correct": true,
+                "score": 95.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/grok_realtime_WoL/output_791.wav",
+                "output_audio_path": "per_task/wol/output_grok_791.wav"
+              },
+              "hume": {
+                "response": "No. Shama's statement contradicts the truth since she claimed Lita lies when we know Fidel tells the truth according to the information given.",
+                "is_correct": true,
+                "score": 85.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/hume_evi3_WoL/output_791_9ebfd95e-1170-4367-bbe0-0d8dd9a13e38.wav",
+                "output_audio_path": "per_task/wol/output_hume_791.wav"
+              },
+              "ultravox": {
+                "response": "No I traced the truth values by assuming Fidel tells the truth, which makes Candy a liar, Christie truthful, Lita a liar, and Shima truthful. However, if Fidel lies, then Candy tells the truth, Christie lies, Lita tells the truth, and Shima lies, creating a contradiction. The only consistent scenario is the first one, where Shima tells the truth. Conclusion: Shima tells the truth.",
+                "is_correct": false,
+                "score": 25.0,
+                "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/ultravox_realtime_WoL/output_791_8a888f3d-ee4e-48b4-8f3c-a36833dd7300.wav",
+                "output_audio_path": "per_task/wol/output_ultravox_791.wav"
+              }
+            },
+            "input_audio_path": "per_task/wol/input_791.wav"
+          }
+        ]
+      },
+      {
+        "task_id": "asr",
+        "task_code": "ASR",
+        "task_name": "Speech Recognition",
+        "pillar": "speech_understanding",
+        "insight": {
+          "insight_title": "Built-in ASR Quality",
+          "insight_summary": "S2S models include competitive ASR, rivaling dedicated STT providers.",
+          "key_finding": "Hume (1.9% WER) beats all dedicated STT providers tested. Range: 1.9% to 4.3% WER.",
+          "evidence_criteria": "Text-based metric, no audio playback"
+        },
+        "accuracy_by_model": {
+          "openai": 97.5,
+          "gemini": 97.0,
+          "grok": 96.8,
+          "hume": 98.1,
+          "ultravox": 95.7
+        },
+        "evidence": null
+      }
+    ],
+    "per_model": [
+      {
+        "model_id": "gemini",
+        "display_name": "Gemini Live",
+        "provider": "Google",
+        "verdict": "The Complete Package",
+        "summary": "Highest accuracy (94.2%) and naturalness (3.68 MOS). Trade-offs: slower responses and occasional content filtering.",
+        "strengths": [
+          "Highest overall accuracy (94.2%)",
+          "Leads all reasoning tasks (91.2% average)",
+          "Best naturalness score (3.68 MOS)"
+        ],
+        "weaknesses": [
+          {
+            "weakness": "5.2% failure rate due to content filtering",
+            "task": null,
+            "evidence_criteria": "Samples where Gemini produces no audio while others succeed"
+          },
+          {
+            "weakness": "Emotion recognition trails OpenAI by 3.5 points",
+            "task": "ER",
+            "evidence_criteria": "Samples where Gemini misclassifies emotion"
+          }
+        ],
+        "improvement_areas": "Content filtering tuning, emotion recognition calibration",
+        "metrics": {
+          "overall_accuracy": 94.2,
+          "naturalness": 3.68
+        },
+        "accuracy_by_task": {
+          "er": 94.0,
+          "gr": 98.8,
+          "sqa": 98.6,
+          "asr": 97.0,
+          "ff": 89.8,
+          "na": 88.9,
+          "oc": 94.2,
+          "wol": 91.9
+        },
+        "weakness_evidence": [
+          {
+            "task_code": "ER",
+            "sample_id": "175",
+            "ground_truth": "ANGRY",
+            "response": "FEARFUL",
+            "is_correct": false,
+            "score": 0.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/input_175.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/gemini_live_ER/output_175.wav",
+            "weakness_description": "Emotion recognition trails OpenAI by 3.5 points",
+            "input_audio_path": "per_model/gemini/er_input_175.wav",
+            "output_audio_path": "per_model/gemini/er_output_175.wav"
+          }
+        ]
+      },
+      {
+        "model_id": "openai",
+        "display_name": "OpenAI Realtime",
+        "provider": "OpenAI",
+        "verdict": "The Reliable Workhorse",
+        "summary": "Fast, 100% reliable, best emotion recognition. Reasoning performance lags behind Gemini.",
+        "strengths": [
+          "100% reliability\u2014never fails",
+          "Best emotion recognition (97.5%)",
+          "Strong ASR quality (2.5% WER)"
+        ],
+        "weaknesses": [
+          {
+            "weakness": "Reasoning accuracy 23 points below Gemini (68.4% vs 91.2%)",
+            "task": "FF",
+            "evidence_criteria": "Formal Fallacies samples where OpenAI fails but Gemini succeeds"
+          },
+          {
+            "weakness": "Object counting 23 points below Gemini (71.4% vs 94.2%)",
+            "task": "OC",
+            "evidence_criteria": "Counting samples where OpenAI miscounts"
+          }
+        ],
+        "improvement_areas": "Reasoning capabilities, multi-step logical inference",
+        "metrics": {
+          "overall_accuracy": 82.2,
+          "naturalness": 3.35
+        },
+        "accuracy_by_task": {
+          "er": 97.5,
+          "gr": 90.1,
+          "sqa": 99.0,
+          "asr": 97.5,
+          "ff": 68.3,
+          "na": 64.7,
+          "oc": 71.4,
+          "wol": 69.2
+        },
+        "weakness_evidence": [
+          {
+            "task_code": "FF",
+            "sample_id": "200",
+            "ground_truth": "valid",
+            "response": "Invalid. The conclusion reverses the conditions established in the premises. The premises talk about frequent consumers of Pears soap and infrequent users of Mysore soap not being regular consumers of Purpose soap. The second premise sets a necessary condition for not being a loyal buyer of Colgate-Palmolive soap. The conclusion incorrectly flips the conditions and does not logically follow from the premises.",
+            "is_correct": false,
+            "score": 20.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_200.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/output_200_sess_D2t.wav",
+            "weakness_description": "Reasoning accuracy 23 points below Gemini (68.4% vs 91.2%)",
+            "input_audio_path": "per_model/openai/ff_input_200.wav",
+            "output_audio_path": "per_model/openai/ff_output_200.wav"
+          },
+          {
+            "task_code": "OC",
+            "sample_id": "600",
+            "ground_truth": "11",
+            "response": "Ten. I counted each vegetable you listed: three heads of broccoli, two garlics, one carrot, one cabbage, one cauliflower, one potato, one lettuce head, and one stalk of celery. Adding them all together equals ten vegetables.",
+            "is_correct": false,
+            "score": 50.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/input_600.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/06e62ff30a0496f5/artifacts/openai_realtime_OC/output_600_sess_D2v.wav",
+            "weakness_description": "Object counting 23 points below Gemini (71.4% vs 94.2%)",
+            "input_audio_path": "per_model/openai/oc_input_600.wav",
+            "output_audio_path": "per_model/openai/oc_output_600.wav"
+          }
+        ]
+      },
+      {
+        "model_id": "grok",
+        "display_name": "Grok Realtime",
+        "provider": "xAI",
+        "verdict": "Fast but Limited",
+        "summary": "Matches OpenAI on speed and reliability. Critical gap: can't extract speaker attributes.",
+        "strengths": [
+          "100% reliability",
+          "Strong Navigate performance (82.7%)",
+          "Good overall reasoning (76.6%)"
+        ],
+        "weaknesses": [
+          {
+            "weakness": "Gender recognition at random chance (50.5%)",
+            "task": "GR",
+            "evidence_criteria": "Samples showing Grok's systematic female-prediction bias (86%)"
+          }
+        ],
+        "improvement_areas": "Paralinguistic feature extraction, speaker attribute detection",
+        "metrics": {
+          "overall_accuracy": 80.4,
+          "naturalness": 3.34
+        },
+        "accuracy_by_task": {
+          "er": 89.6,
+          "gr": 50.5,
+          "sqa": 99.4,
+          "asr": 96.8,
+          "ff": 66.5,
+          "na": 82.7,
+          "oc": 77.9,
+          "wol": 79.4
+        },
+        "weakness_evidence": [
+          {
+            "task_code": "GR",
+            "sample_id": "4",
+            "ground_truth": "Male",
+            "response": "The speaker is female.",
+            "is_correct": false,
+            "score": 0.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_4.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/grok_realtime_GR/output_4.wav",
+            "weakness_description": "Gender recognition at random chance (50.5%)",
+            "input_audio_path": "per_model/grok/gr_input_4.wav",
+            "output_audio_path": "per_model/grok/gr_output_4.wav"
+          }
+        ]
+      },
+      {
+        "model_id": "hume",
+        "display_name": "Hume EVI3",
+        "provider": "Hume AI",
+        "verdict": "The Paradox",
+        "summary": "Best ASR (1.9% WER), high naturalness. Lowest accuracy overall. The empathy model can't classify emotions.",
+        "strengths": [
+          "Best ASR quality (1.9% WER)",
+          "High naturalness (3.59 MOS)",
+          "Designed for emotional connection"
+        ],
+        "weaknesses": [
+          {
+            "weakness": "Lowest emotion recognition (59.2%)\u201438 points below OpenAI",
+            "task": "ER",
+            "evidence_criteria": "Emotion samples where Hume fails while others succeed"
+          },
+          {
+            "weakness": "Reasoning at/below random chance (39.9% average)",
+            "task": "FF",
+            "evidence_criteria": "Reasoning samples showing Hume's failures"
+          },
+          {
+            "weakness": "Gender recognition with 90.6% male-prediction bias",
+            "task": "GR",
+            "evidence_criteria": "Samples showing systematic male predictions"
+          }
+        ],
+        "improvement_areas": "Reasoning capabilities, emotion classification calibration, gender bias correction",
+        "metrics": {
+          "overall_accuracy": 57.3,
+          "naturalness": 3.59
+        },
+        "accuracy_by_task": {
+          "er": 59.2,
+          "gr": 46.0,
+          "sqa": 95.4,
+          "asr": 98.1,
+          "ff": 38.5,
+          "na": 36.0,
+          "oc": 31.4,
+          "wol": 53.6
+        },
+        "weakness_evidence": [
+          {
+            "task_code": "ER",
+            "sample_id": "102",
+            "ground_truth": "SAD",
+            "response": "NEUTRAL. The speaker's tone is even and factual, describing the photograph and emotions without significant fluctuation.",
+            "is_correct": false,
+            "score": 0.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/input_102.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/hume_evi3_ER/output_102_f83f9aba-f26b-4bbd-8ab9-f4471b8211e6.wav",
+            "weakness_description": "Lowest emotion recognition (59.2%)\u201438 points below OpenAI",
+            "input_audio_path": "per_model/hume/er_input_102.wav",
+            "output_audio_path": "per_model/hume/er_output_102.wav"
+          },
+          {
+            "task_code": "FF",
+            "sample_id": "201",
+            "ground_truth": "invalid",
+            "response": "Valid. The argument follows logically from the premises given.",
+            "is_correct": false,
+            "score": 10.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_201.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/hume_evi3_FF/output_201_097d23f0-12e2-4c61-a88c-e4a072bb6d25.wav",
+            "weakness_description": "Reasoning at/below random chance (39.9% average)",
+            "input_audio_path": "per_model/hume/ff_input_201.wav",
+            "output_audio_path": "per_model/hume/ff_output_201.wav"
+          },
+          {
+            "task_code": "GR",
+            "sample_id": "1",
+            "ground_truth": "Female",
+            "response": "Male.",
+            "is_correct": false,
+            "score": 0.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_1.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/hume_evi3_GR/output_1_0926ca79-303a-4d82-8490-10cdb4f0c9d5.wav",
+            "weakness_description": "Gender recognition with 90.6% male-prediction bias",
+            "input_audio_path": "per_model/hume/gr_input_1.wav",
+            "output_audio_path": "per_model/hume/gr_output_1.wav"
+          }
+        ]
+      },
+      {
+        "model_id": "ultravox",
+        "display_name": "Ultravox",
+        "provider": "Fixie AI",
+        "verdict": "The Open Alternative",
+        "summary": "Open-weight and self-hostable. 100% reliable. Significant accuracy gaps vs closed models.",
+        "strengths": [
+          "Open-weight (self-hostable)",
+          "100% reliability",
+          "Strong emotion recognition (93.7%)"
+        ],
+        "weaknesses": [
+          {
+            "weakness": "Gender recognition at random chance (48.1%)",
+            "task": "GR",
+            "evidence_criteria": "Samples showing Ultravox's systematic female-prediction bias (79%)"
+          },
+          {
+            "weakness": "Reasoning 25 points below Gemini (65.9% vs 91.2%)",
+            "task": "FF",
+            "evidence_criteria": "Reasoning samples where Ultravox fails"
+          }
+        ],
+        "improvement_areas": "Paralinguistic processing, reasoning capabilities",
+        "metrics": {
+          "overall_accuracy": 75.1,
+          "naturalness": 3.3
+        },
+        "accuracy_by_task": {
+          "er": 93.7,
+          "gr": 48.1,
+          "sqa": 99.5,
+          "asr": 95.7,
+          "ff": 67.3,
+          "na": 58.3,
+          "oc": 70.6,
+          "wol": 67.3
+        },
+        "weakness_evidence": [
+          {
+            "task_code": "GR",
+            "sample_id": "2",
+            "ground_truth": "Male",
+            "response": "Female",
+            "is_correct": false,
+            "score": 0.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/openai_realtime_GR/input_2.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/5f359e9f94cb0753/artifacts/ultravox_realtime_GR/output_2_4b0ac696-448e-4fd6-9076-6956b16b33ce.wav",
+            "weakness_description": "Gender recognition at random chance (48.1%)",
+            "input_audio_path": "per_model/ultravox/gr_input_2.wav",
+            "output_audio_path": "per_model/ultravox/gr_output_2.wav"
+          },
+          {
+            "task_code": "FF",
+            "sample_id": "200",
+            "ground_truth": "valid",
+            "response": "Invalid The argument commits a fallacy of denying the antecedent. The second premise states that being a regular consumer of purpose soap is necessary for not being a loyal buyer of Colgate-Palmolive soap, but the conclusion incorrectly infers that not meeting this condition (being a regular consumer of purpose soap) implies being a loyal buyer.",
+            "is_correct": false,
+            "score": 20.0,
+            "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_200.wav",
+            "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/ultravox_realtime_FF/output_200_c882846c-98c6-4abe-8ddb-22a48d1c1cc1.wav",
+            "weakness_description": "Reasoning 25 points below Gemini (65.9% vs 91.2%)",
+            "input_audio_path": "per_model/ultravox/ff_input_200.wav",
+            "output_audio_path": "per_model/ultravox/ff_output_200.wav"
+          }
+        ]
+      }
+    ]
+  },
+  "audio_manifest": {
+    "per_task": {
+      "er": [
+        {
+          "sample_id": "302",
+          "ground_truth": "SURPRISED",
+          "input": "per_task/er/input_302.wav",
+          "outputs": {
+            "openai": "per_task/er/output_openai_302.wav",
+            "gemini": "per_task/er/output_gemini_302.wav",
+            "grok": "per_task/er/output_grok_302.wav",
+            "hume": "per_task/er/output_hume_302.wav",
+            "ultravox": "per_task/er/output_ultravox_302.wav"
+          }
+        },
+        {
+          "sample_id": "401",
+          "ground_truth": "CONFUSED",
+          "input": "per_task/er/input_401.wav",
+          "outputs": {
+            "openai": "per_task/er/output_openai_401.wav",
+            "gemini": "per_task/er/output_gemini_401.wav",
+            "grok": "per_task/er/output_grok_401.wav",
+            "hume": "per_task/er/output_hume_401.wav",
+            "ultravox": "per_task/er/output_ultravox_401.wav"
+          }
+        },
+        {
+          "sample_id": "191",
+          "ground_truth": "FEARFUL",
+          "input": "per_task/er/input_191.wav",
+          "outputs": {
+            "openai": "per_task/er/output_openai_191.wav",
+            "gemini": "per_task/er/output_gemini_191.wav",
+            "grok": "per_task/er/output_grok_191.wav",
+            "hume": "per_task/er/output_hume_191.wav",
+            "ultravox": "per_task/er/output_ultravox_191.wav"
+          }
+        }
+      ],
+      "gr": [
+        {
+          "sample_id": "6",
+          "ground_truth": "Male",
+          "input": "per_task/gr/input_6.wav",
+          "outputs": {
+            "openai": "per_task/gr/output_openai_6.wav",
+            "gemini": "per_task/gr/output_gemini_6.wav",
+            "grok": "per_task/gr/output_grok_6.wav",
+            "hume": "per_task/gr/output_hume_6.wav",
+            "ultravox": "per_task/gr/output_ultravox_6.wav"
+          }
+        },
+        {
+          "sample_id": "1",
+          "ground_truth": "Female",
+          "input": "per_task/gr/input_1.wav",
+          "outputs": {
+            "openai": "per_task/gr/output_openai_1.wav",
+            "gemini": "per_task/gr/output_gemini_1.wav",
+            "grok": "per_task/gr/output_grok_1.wav",
+            "hume": "per_task/gr/output_hume_1.wav",
+            "ultravox": "per_task/gr/output_ultravox_1.wav"
+          }
+        },
+        {
+          "sample_id": "10",
+          "ground_truth": "Male",
+          "input": "per_task/gr/input_10.wav",
+          "outputs": {
+            "openai": "per_task/gr/output_openai_10.wav",
+            "gemini": "per_task/gr/output_gemini_10.wav",
+            "grok": "per_task/gr/output_grok_10.wav",
+            "hume": "per_task/gr/output_hume_10.wav",
+            "ultravox": "per_task/gr/output_ultravox_10.wav"
+          }
+        }
+      ],
+      "sqa": [
+        {
+          "sample_id": "1",
+          "ground_truth": "Spinning Jenny",
+          "input": "per_task/sqa/input_1.wav",
+          "outputs": {
+            "openai": "per_task/sqa/output_openai_1.wav",
+            "gemini": "per_task/sqa/output_gemini_1.wav",
+            "grok": "per_task/sqa/output_grok_1.wav",
+            "hume": "per_task/sqa/output_hume_1.wav",
+            "ultravox": "per_task/sqa/output_ultravox_1.wav"
+          }
+        },
+        {
+          "sample_id": "2",
+          "ground_truth": "five",
+          "input": "per_task/sqa/input_2.wav",
+          "outputs": {
+            "openai": "per_task/sqa/output_openai_2.wav",
+            "gemini": "per_task/sqa/output_gemini_2.wav",
+            "grok": "per_task/sqa/output_grok_2.wav",
+            "hume": "per_task/sqa/output_hume_2.wav",
+            "ultravox": "per_task/sqa/output_ultravox_2.wav"
+          }
+        },
+        {
+          "sample_id": "3",
+          "ground_truth": "pineal gland",
+          "input": "per_task/sqa/input_3.wav",
+          "outputs": {
+            "openai": "per_task/sqa/output_openai_3.wav",
+            "gemini": "per_task/sqa/output_gemini_3.wav",
+            "grok": "per_task/sqa/output_grok_3.wav",
+            "hume": "per_task/sqa/output_hume_3.wav",
+            "ultravox": "per_task/sqa/output_ultravox_3.wav"
+          }
+        }
+      ],
+      "ff": [
+        {
+          "sample_id": "205",
+          "ground_truth": "invalid",
+          "input": "per_task/ff/input_205.wav",
+          "outputs": {
+            "openai": "per_task/ff/output_openai_205.wav",
+            "gemini": "per_task/ff/output_gemini_205.wav",
+            "grok": "per_task/ff/output_grok_205.wav",
+            "hume": "per_task/ff/output_hume_205.wav",
+            "ultravox": "per_task/ff/output_ultravox_205.wav"
+          }
+        },
+        {
+          "sample_id": "138",
+          "ground_truth": "valid",
+          "input": "per_task/ff/input_138.wav",
+          "outputs": {
+            "openai": "per_task/ff/output_openai_138.wav",
+            "gemini": "per_task/ff/output_gemini_138.wav",
+            "grok": "per_task/ff/output_grok_138.wav",
+            "hume": "per_task/ff/output_hume_138.wav",
+            "ultravox": "per_task/ff/output_ultravox_138.wav"
+          }
+        },
+        {
+          "sample_id": "207",
+          "ground_truth": "valid",
+          "input": "per_task/ff/input_207.wav",
+          "outputs": {
+            "openai": "per_task/ff/output_openai_207.wav",
+            "gemini": "per_task/ff/output_gemini_207.wav",
+            "grok": "per_task/ff/output_grok_207.wav",
+            "hume": "per_task/ff/output_hume_207.wav",
+            "ultravox": "per_task/ff/output_ultravox_207.wav"
+          }
+        }
+      ],
+      "na": [
+        {
+          "sample_id": "253",
+          "ground_truth": "Yes",
+          "input": "per_task/na/input_253.wav",
+          "outputs": {
+            "openai": "per_task/na/output_openai_253.wav",
+            "gemini": "per_task/na/output_gemini_253.wav",
+            "grok": "per_task/na/output_grok_253.wav",
+            "hume": "per_task/na/output_hume_253.wav",
+            "ultravox": "per_task/na/output_ultravox_253.wav"
+          }
+        },
+        {
+          "sample_id": "301",
+          "ground_truth": "Yes",
+          "input": "per_task/na/input_301.wav",
+          "outputs": {
+            "openai": "per_task/na/output_openai_301.wav",
+            "gemini": "per_task/na/output_gemini_301.wav",
+            "grok": "per_task/na/output_grok_301.wav",
+            "hume": "per_task/na/output_hume_301.wav",
+            "ultravox": "per_task/na/output_ultravox_301.wav"
+          }
+        },
+        {
+          "sample_id": "306",
+          "ground_truth": "Yes",
+          "input": "per_task/na/input_306.wav",
+          "outputs": {
+            "openai": "per_task/na/output_openai_306.wav",
+            "gemini": "per_task/na/output_gemini_306.wav",
+            "grok": "per_task/na/output_grok_306.wav",
+            "hume": "per_task/na/output_hume_306.wav",
+            "ultravox": "per_task/na/output_ultravox_306.wav"
+          }
+        }
+      ],
+      "oc": [
+        {
+          "sample_id": "601",
+          "ground_truth": "11",
+          "input": "per_task/oc/input_601.wav",
+          "outputs": {
+            "openai": "per_task/oc/output_openai_601.wav",
+            "gemini": "per_task/oc/output_gemini_601.wav",
+            "grok": "per_task/oc/output_grok_601.wav",
+            "hume": "per_task/oc/output_hume_601.wav",
+            "ultravox": "per_task/oc/output_ultravox_601.wav"
+          }
+        },
+        {
+          "sample_id": "602",
+          "ground_truth": "7",
+          "input": "per_task/oc/input_602.wav",
+          "outputs": {
+            "openai": "per_task/oc/output_openai_602.wav",
+            "gemini": "per_task/oc/output_gemini_602.wav",
+            "grok": "per_task/oc/output_grok_602.wav",
+            "hume": "per_task/oc/output_hume_602.wav",
+            "ultravox": "per_task/oc/output_ultravox_602.wav"
+          }
+        },
+        {
+          "sample_id": "639",
+          "ground_truth": "9",
+          "input": "per_task/oc/input_639.wav",
+          "outputs": {
+            "openai": "per_task/oc/output_openai_639.wav",
+            "gemini": "per_task/oc/output_gemini_639.wav",
+            "grok": "per_task/oc/output_grok_639.wav",
+            "hume": "per_task/oc/output_hume_639.wav",
+            "ultravox": "per_task/oc/output_ultravox_639.wav"
+          }
+        }
+      ],
+      "wol": [
+        {
+          "sample_id": "754",
+          "ground_truth": "Yes",
+          "input": "per_task/wol/input_754.wav",
+          "outputs": {
+            "openai": "per_task/wol/output_openai_754.wav",
+            "gemini": "per_task/wol/output_gemini_754.wav",
+            "grok": "per_task/wol/output_grok_754.wav",
+            "hume": "per_task/wol/output_hume_754.wav",
+            "ultravox": "per_task/wol/output_ultravox_754.wav"
+          }
+        },
+        {
+          "sample_id": "887",
+          "ground_truth": "No",
+          "input": "per_task/wol/input_887.wav",
+          "outputs": {
+            "openai": "per_task/wol/output_openai_887.wav",
+            "gemini": "per_task/wol/output_gemini_887.wav",
+            "grok": "per_task/wol/output_grok_887.wav",
+            "hume": "per_task/wol/output_hume_887.wav",
+            "ultravox": "per_task/wol/output_ultravox_887.wav"
+          }
+        },
+        {
+          "sample_id": "791",
+          "ground_truth": "No",
+          "input": "per_task/wol/input_791.wav",
+          "outputs": {
+            "openai": "per_task/wol/output_openai_791.wav",
+            "gemini": "per_task/wol/output_gemini_791.wav",
+            "grok": "per_task/wol/output_grok_791.wav",
+            "hume": "per_task/wol/output_hume_791.wav",
+            "ultravox": "per_task/wol/output_ultravox_791.wav"
+          }
+        }
+      ]
+    },
+    "per_model": {
+      "gemini": [
+        {
+          "task_code": "er",
+          "sample_id": "175",
+          "ground_truth": "ANGRY",
+          "is_correct": false,
+          "weakness": "Emotion recognition trails OpenAI by 3.5 points",
+          "input": "per_model/gemini/er_input_175.wav",
+          "output": "per_model/gemini/er_output_175.wav"
+        }
+      ],
+      "openai": [
+        {
+          "task_code": "ff",
+          "sample_id": "200",
+          "ground_truth": "valid",
+          "is_correct": false,
+          "weakness": "Reasoning accuracy 23 points below Gemini (68.4% vs 91.2%)",
+          "input": "per_model/openai/ff_input_200.wav",
+          "output": "per_model/openai/ff_output_200.wav"
+        },
+        {
+          "task_code": "oc",
+          "sample_id": "600",
+          "ground_truth": "11",
+          "is_correct": false,
+          "weakness": "Object counting 23 points below Gemini (71.4% vs 94.2%)",
+          "input": "per_model/openai/oc_input_600.wav",
+          "output": "per_model/openai/oc_output_600.wav"
+        }
+      ],
+      "grok": [
+        {
+          "task_code": "gr",
+          "sample_id": "4",
+          "ground_truth": "Male",
+          "is_correct": false,
+          "weakness": "Gender recognition at random chance (50.5%)",
+          "input": "per_model/grok/gr_input_4.wav",
+          "output": "per_model/grok/gr_output_4.wav"
+        }
+      ],
+      "hume": [
+        {
+          "task_code": "er",
+          "sample_id": "102",
+          "ground_truth": "SAD",
+          "is_correct": false,
+          "weakness": "Lowest emotion recognition (59.2%)\u201438 points below OpenAI",
+          "input": "per_model/hume/er_input_102.wav",
+          "output": "per_model/hume/er_output_102.wav"
+        },
+        {
+          "task_code": "ff",
+          "sample_id": "201",
+          "ground_truth": "invalid",
+          "is_correct": false,
+          "weakness": "Reasoning at/below random chance (39.9% average)",
+          "input": "per_model/hume/ff_input_201.wav",
+          "output": "per_model/hume/ff_output_201.wav"
+        },
+        {
+          "task_code": "gr",
+          "sample_id": "1",
+          "ground_truth": "Female",
+          "is_correct": false,
+          "weakness": "Gender recognition with 90.6% male-prediction bias",
+          "input": "per_model/hume/gr_input_1.wav",
+          "output": "per_model/hume/gr_output_1.wav"
+        }
+      ],
+      "ultravox": [
+        {
+          "task_code": "gr",
+          "sample_id": "2",
+          "ground_truth": "Male",
+          "is_correct": false,
+          "weakness": "Gender recognition at random chance (48.1%)",
+          "input": "per_model/ultravox/gr_input_2.wav",
+          "output": "per_model/ultravox/gr_output_2.wav"
+        },
+        {
+          "task_code": "ff",
+          "sample_id": "200",
+          "ground_truth": "valid",
+          "is_correct": false,
+          "weakness": "Reasoning 25 points below Gemini (65.9% vs 91.2%)",
+          "input": "per_model/ultravox/ff_input_200.wav",
+          "output": "per_model/ultravox/ff_output_200.wav"
+        }
+      ]
+    }
+  }
+}
