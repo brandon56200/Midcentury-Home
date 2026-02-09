@@ -37,14 +37,28 @@ import ModelBreakdown from "./ModelBreakdown";
 import BrandIcon from "./BrandIcon";
 
 interface ResultsProps {
-  onNavigate?: (stageId: string) => void;
+  onNavigate?: (stageId: string, sectionId?: string) => void;
+  scrollToSection?: string | null;
 }
 
-export default function Results({ onNavigate }: ResultsProps) {
+export default function Results({ onNavigate, scrollToSection }: ResultsProps) {
   const { rankings, accuracyByTask, models, tasks, asrWer, sttProviders } = HARMONIQ_DATA;
   const [hoveredRadarIdx, setHoveredRadarIdx] = React.useState<number | null>(null);
   const [modularViewMode, setModularViewMode] = React.useState<'sort' | 'group'>('sort');
   const [showGaps, setShowGaps] = React.useState(false);
+
+  // Handle cross-page scrolling
+  React.useEffect(() => {
+    if (scrollToSection) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById(scrollToSection);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500); // Wait for entrance animation
+      return () => clearTimeout(timer);
+    }
+  }, [scrollToSection]);
 
   const palette = {
     cyan: "#06b6d4",
@@ -188,7 +202,7 @@ export default function Results({ onNavigate }: ResultsProps) {
       <div className="pb-32 space-y-0">
         
         {/* BLOCK 1: THE NARRATIVE & PROBLEM STATEMENT */}
-        <section className="relative pt-32 pb-48 px-6 overflow-hidden min-h-[800px] flex flex-col justify-center bg-[#fcfcfc]">
+        <section className="relative pt-32 pb-48 px-6 overflow-hidden min-h-[800px] flex flex-col justify-center bg-white">
            {/* Refined Technical Spotlight Grid */}
            <div className="absolute inset-0 pointer-events-none select-none">
               <div 
@@ -208,11 +222,10 @@ export default function Results({ onNavigate }: ResultsProps) {
 
            <div className="max-w-5xl mx-auto relative z-10 space-y-24">
              <div className="space-y-12 text-center">
-                 <motion.div
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 0.7, ease: "easeOut" }}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
                    className="space-y-12"
                  >
                    <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.9] max-w-4xl mx-auto">
@@ -229,7 +242,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                </div>
 
               {/* Problem Statement Section - High-Efficiency Technical Grid */}
-              <section className="py-20 px-6 relative overflow-hidden">
+              <section id="problem-statement" className="py-20 px-6 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto space-y-12 relative z-10">
                   <div className="max-w-4xl space-y-4">
                     <div className="flex items-center gap-3">
@@ -248,8 +261,8 @@ export default function Results({ onNavigate }: ResultsProps) {
                       {[
                         { 
                           id: "01", 
-                          title: "Fragmented Evaluation", 
-                          topic: "Current benchmarks evaluate capabilities in isolation, missing failures that emerge at the intersection of reasoning, perception, and generation.", 
+                          title: "Synthetic Environments", 
+                          topic: "Evaluating models under laboratory conditions produces results that don't transfer to deployed systems with real infrastructure constraints.", 
                           icon: Layers, 
                           color: "blue" 
                         },
@@ -262,8 +275,8 @@ export default function Results({ onNavigate }: ResultsProps) {
                         },
                         { 
                           id: "03", 
-                          title: "Lab vs. Production", 
-                          topic: "Evaluating research prototypes with text-based shortcuts produces results that don't transfer to real user conditions.", 
+                          title: "Incomplete Inference", 
+                          topic: "Current benchmarks fail to evaluate the full inference loop—from audio input through audio output—that defines real voice interaction.", 
                           icon: Globe, 
                           color: "cyan" 
                         }
@@ -295,19 +308,19 @@ export default function Results({ onNavigate }: ResultsProps) {
                             id: "01", 
                             color: "slate", 
                             label: "The Problem",
-                            text: "Some benchmarks measure reasoning accuracy. Others measure paralinguistic perception. Few measure output naturalness. When these dimensions are tested separately, models that excel on individual metrics can still fail due to the subtle breakdowns that occur at the seams between capabilities, not within them. A fragmented evalutation is unable to fully capture the abilities and inabilities of a model." 
+                            text: "Academic benchmarks typically evaluate models in controlled environments—local inference, unlimited compute, no network constraints. But production voice APIs operate under different conditions: content filtering, concurrency limits, and failure modes that only manifest at scale. When laboratory results guide production decisions, developers encounter behaviors that the benchmark never measured." 
                           },
                           { 
                             id: "02", 
                             color: "slate", 
                             label: "The Problem",
-                            text: "Exisitng audio benchmarks usually repurpose existing speech corpora or leverage synthetic audio generation. Neither approach provides verified ground truth for paralinguistic attributes. When the \"correct\" emotion or speaker characteristic is inferred rather than recorded, measurement error propagates into the final scores—inflating or deflating accuracy in ways that don't reflect true model capability." 
+                            text: "Existing audio benchmarks usually repurpose existing speech corpora or leverage synthetic audio generation. Neither approach provides verified ground truth for paralinguistic attributes. When the \"correct\" emotion or speaker characteristic is inferred rather than recorded, measurement error propagates into the final scores—inflating or deflating accuracy in ways that don't reflect true model capability." 
                           },
                           { 
                             id: "03", 
                             color: "slate", 
                             label: "The Problem",
-                            text: "The most ciritical goal of every benchmark should be to simulate as close to reality as possible. Current benchmarks test models that aren't publicly available, or take shortcuts via text input/output to avoid web-socket and audio generation constraints. When evaluation bypasses the actual production interface, the resulting scores often describe a different system than the one users will experience." 
+                            text: "Voice agents in production receive audio and produce audio. But many benchmarks only test fragments of this loop: sending text prompts to audio models, or transcribing outputs before evaluation. These shortcuts bypass speech recognition, streaming dynamics, and audio generation—the very capabilities that determine whether a voice agent works. When the full inference loop isn't tested, results reflect a partial system rather than the complete experience." 
                           }
                         ].map((item) => (
                           <div key={item.id} className="p-8 md:p-10 space-y-4">
@@ -324,7 +337,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                             id: "01", 
                             color: "blue", 
                             label: "Our Approach",
-                            text: "Evaluating reasoning, voice understanding, and naturalness within a single framework makes interaction effects measurable. When a model's reasoning degrades under emotional speech, or when accurate responses sound robotic, these failures surface in the results rather than hiding in the gaps between separate benchmarks." 
+                            text: "Testing through production APIs via live WebSocket connections captures infrastructure realities as part of the evaluation. Rate limits, content filtering, and scaling behaviors surface in the results—not as surprises after deployment, but as measured characteristics that inform model selection." 
                           },
                           { 
                             id: "02", 
@@ -336,7 +349,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                             id: "03", 
                             color: "cyan", 
                             label: "Our Approach",
-                            text: "Testing only production APIs through their real-time audio interfaces means the benchmark measures results that can be seen and verified by users in the real world. Models that score well have demonstrated that performance under the same conditions end users will encounter—latency, voice synthesis, and all." 
+                            text: "Instructions are delivered as spoken audio; responses are captured as audio streams. The entire loop—from speech input through spoken response—is evaluated end-to-end. Models that score well have demonstrated performance across the full inference path that users will actually encounter." 
                           }
                         ].map((item) => (
                           <div key={item.id} className="p-8 md:p-10 space-y-4">
@@ -406,7 +419,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                         color: "cyan" 
                       }
                     ].map((p) => (
-                      <div key={p.title} className="bg-white border border-slate-100 p-8 md:p-10 rounded-4xl space-y-8 hover:bg-slate-50/50 transition-all duration-300 group shadow-sm hover:shadow-md relative overflow-hidden flex flex-col h-full">
+                      <div key={p.title} className="bg-white border border-slate-100 p-8 md:p-10 rounded-4xl space-y-8 hover:bg-slate-50/50 transition-all duration-300 group hover:shadow-md relative overflow-hidden flex flex-col h-full">
                          <div className={`w-14 h-14 rounded-2xl bg-${p.color}-50 border border-${p.color}-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
                             <p.icon className={`w-7 h-7 text-${p.color}-600`} />
                          </div>
@@ -434,7 +447,7 @@ export default function Results({ onNavigate }: ResultsProps) {
           stacked={true}
         >
           <div className="space-y-20">
-             <div className="bg-white border border-slate-200 px-8 md:px-14 pt-4 md:pt-6 pb-7 md:pb-8 rounded-2xl shadow-sm relative overflow-hidden">
+             <div className="bg-white border border-slate-200 px-8 md:px-14 pt-4 md:pt-6 pb-7 md:pb-8 rounded-2xl relative overflow-hidden">
                <div className="pt-4">
                  <ProfessionalBarChart
                    data={executiveData}
@@ -668,7 +681,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                             <h4 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">Functional Parity</h4>
                          </div>
                          <p className="text-slate-500 text-base leading-relaxed font-bold">
-                            Integrated neural bundles now achieve Word Error Rates that rival or beat enterprise STT specialists, rendering modular transcription layers obsolete.
+                            Native speech models now achieve Word Error Rates that rival or beat enterprise STT specialists, rendering modular transcription layers obsolete.
                          </p>
                   </div>
 
@@ -856,7 +869,7 @@ export default function Results({ onNavigate }: ResultsProps) {
                  model2: "Gemini", reason2: "94.0% ER Accuracy. Strong empathetic mapping with consistent tonal detection."
                },
                { 
-                 need: "Natural Voice", 
+                 need: "Most Natural Voice", 
                  model1: "Gemini", reason1: "3.68 MOS. Leading naturalness with human-like prosody and emotional cadence.",
                  model2: "Hume", reason2: "3.59 MOS. Highly expressive empathetic voice designed for social connection."
                },
@@ -866,26 +879,26 @@ export default function Results({ onNavigate }: ResultsProps) {
                  model2: "N/A", reason2: "Ultravox is the only open-weight model in the current production STS cohort."
                },
              ].map((r) => (
-               <div key={r.need} className="bg-white border border-slate-100 p-8 md:p-10 rounded-2xl space-y-6 hover:shadow-md transition-all shadow-sm flex flex-col justify-between">
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between">
+               <div key={r.need} className="bg-white border border-slate-100 p-10 md:p-12 rounded-3xl space-y-8 hover:shadow-md transition-all shadow-sm flex flex-col justify-between min-h-[480px]">
+                  <div className="space-y-8">
+                    <div className="flex items-center justify-center">
                        <p className="text-xs font-mono font-black text-blue-600 uppercase tracking-widest">Target Scenario</p>
                     </div>
-                    <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight leading-tight">{r.need}</h4>
+                    <h4 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-tight text-center">{r.need}</h4>
                     
-                    <div className="pt-6 border-t border-slate-100 space-y-4">
-                  <div className="space-y-2">
+                    <div className="pt-8 border-t border-slate-100 space-y-6">
+                      <div className="space-y-3">
                           <div className="flex items-center justify-between">
-                             <p className="text-sm font-black text-slate-900">1st: {r.model1}</p>
-                             <div className="px-2 py-0.5 rounded bg-blue-50 border border-blue-100 text-[9px] font-black text-blue-600 uppercase tracking-widest">Recommended</div>
-                  </div>
-                          <p className="text-xs text-slate-500 font-bold leading-relaxed">{r.reason1}</p>
-                </div>
+                             <p className="text-base font-black text-slate-900">1st: {r.model1}</p>
+                             <div className="px-3 py-1 rounded bg-blue-50 border border-blue-100 text-[10px] font-black text-blue-600 uppercase tracking-widest">Recommended</div>
+                          </div>
+                          <p className="text-[13px] text-slate-500 font-bold leading-relaxed">{r.reason1}</p>
+                      </div>
 
-                       <div className="pt-4 border-t border-slate-50 space-y-2">
-                          <p className="text-sm font-black text-slate-400">2nd: {r.model2}</p>
-                          <p className="text-xs text-slate-400 font-bold leading-relaxed">{r.reason2}</p>
-                </div>
+                      <div className="pt-6 border-t border-slate-50 space-y-3">
+                          <p className="text-base font-black text-slate-400">2nd: {r.model2}</p>
+                          <p className="text-[13px] text-slate-400 font-bold leading-relaxed">{r.reason2}</p>
+                      </div>
                     </div>
                 </div>
               </div>

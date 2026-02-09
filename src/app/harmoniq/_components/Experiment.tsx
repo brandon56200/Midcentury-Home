@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { HARMONIQ_DATA } from "../data";
 import { 
   Ear,
@@ -15,7 +15,10 @@ import {
   Plus,
   Layers,
   Database,
-  ShieldCheck
+  ShieldCheck,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import ProfessionalArticleSection from "./ProfessionalArticleSection";
 import BrandIcon from "./BrandIcon";
@@ -27,7 +30,11 @@ const THEME = {
   cyan: { bg: "bg-cyan-600", lightBg: "bg-cyan-50", border: "border-cyan-100", text: "text-cyan-600" },
 };
 
-export default function Experiment() {
+interface ExperimentProps {
+  onNavigate?: (stageId: string, sectionId?: string) => void;
+}
+
+export default function Experiment({ onNavigate }: ExperimentProps) {
   const { tasks, models, sttProviders } = HARMONIQ_DATA;
 
   const containerVariants: Variants = {
@@ -47,7 +54,7 @@ export default function Experiment() {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#fcfcfc] selection:bg-blue-600/10">
+    <div className="flex-1 flex flex-col bg-white selection:bg-blue-600/10">
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -56,7 +63,7 @@ export default function Experiment() {
       >
         
         {/* --- BLOCK 1: EXECUTIVE OVERVIEW --- */}
-        <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[500px] flex flex-col justify-center border-b border-slate-100 bg-white text-pretty">
+        <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[500px] flex flex-col justify-center text-pretty">
            <div className="absolute inset-0 pointer-events-none opacity-40">
               <div 
                 className="absolute inset-0" 
@@ -81,65 +88,65 @@ export default function Experiment() {
                 <p className="text-lg md:text-xl text-slate-500 font-bold leading-relaxed max-w-2xl">
                   A rigorous protocol built to evaluate the next generation of native voice AI. We move beyond objective metrics to measure true model intelligence, paralinguistic nuance, and production-grade reliability.
                 </p>
-             </div>
+              </div>
            </div>
         </section>
 
         {/* --- BLOCK 2: THE GAP --- */}
-        <section className="max-w-6xl mx-auto px-6 py-24 md:py-32 border-b border-slate-100">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center text-pretty">
-            {/* Left Column: Narrative */}
-            <div className="lg:col-span-6 space-y-16">
-              <div className="space-y-12">
-                <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono text-sm md:text-base font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100 uppercase">
-                      Section 01
-                    </span>
-                    <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-500">
-                      Primary Thesis
-                    </span>
+        <section>
+          <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center text-pretty">
+              {/* Left Column: Narrative */}
+              <div className="lg:col-span-6 space-y-12">
+                <div className="space-y-12">
+                  <div className="space-y-8">
+                    <div className="flex items-center gap-4">
+                      <span className="font-mono text-sm md:text-base font-black text-blue-600 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100 uppercase">
+                        Section 01
+                      </span>
+                      <span className="font-mono text-[11px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-500">
+                        Primary Thesis
+                      </span>
                   </div>
-                  
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
-                    The Simulation <br /> Paradox
-                  </h2>
+                    
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] text-slate-900 uppercase">
+                      The Simulation <br /> Paradox
+                    </h2>
+                  </div>
+
+                  <div className="space-y-8">
+                    <p className="text-base md:text-lg text-slate-500 leading-tight max-w-xl font-bold border-l-4 border-blue-100 pl-10 py-2">
+                      Benchmark performance often fails to predict real interaction because evaluations frequently bypass the constraints of real-world voice interaction.
+                    </p>
+                    <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-xl font-medium opacity-90">
+                      Our thesis is simple: a benchmark is only useful if it predicts how models will perform in real-world scenarios. There have been many meaningful steps in the right direction regarding voice AI evaluations, but the conditions under which models are tested often differ significantly from the conditions under which they're used. Research environments, synthetic datasets, and text-based shortcuts each introduce distance between evaluation and reality.
+                    </p>
+                    <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-xl font-medium opacity-90">
+                      Closing this gap means making deliberate design choices—testing through production APIs rather than research interfaces, evaluating complete audio-to-audio inference rather than intermediate representations, and using custom datasets built with the intention to effectively evaluate. These constraints make evaluation more difficult, but they make results more predictive.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-8">
-                  <p className="text-lg md:text-2xl text-slate-500 leading-tight max-w-xl font-bold border-l-4 border-blue-100 pl-10 py-2">
-                    Benchmark performance often fails to predict real interaction because it prioritizes isolated metrics over system-wide simulation.
-                  </p>
-                  <p className="text-base md:text-lg text-slate-500 leading-relaxed max-w-xl font-medium">
-                    Most benchmarks evaluate reasoning, perception, and speech generation as independent modules. While this simplifies measurement, it obscures the interaction effects that define real conversation. In practice, failures emerge at the boundaries—when reasoning degrades under expressive speech or perceptual signals fail to shape responses. Evaluating these dimensions in isolation systematically overestimates robustness and misses critical compound failure modes.
-                  </p>
-                  <p className="text-base md:text-lg text-slate-500 leading-relaxed max-w-xl font-medium">
-                    This disconnect is amplified by synthetic data lacking paralinguistic ground truth and text-based shortcuts that diverge from production conditions. As a result, many benchmarks reflect laboratory abstractions rather than behavior under real user interaction. Effective evaluation requires prioritizing contextual fidelity across data, tasks, and modality to ensure metrics translate to production reality.
-                  </p>
-                </div>
-              </div>
-
-              {/* Three Prongs - Highlighted */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                {[
-                  { title: "Fragmented Evals", desc: "Failures at the seams of capability intersections.", color: "blue" },
-                  { title: "Synthetic Proxies", desc: "Lack of paralinguistic ground truth rigor.", color: "indigo" },
-                  { title: "Lab vs. Reality", desc: "Metrics that fail to transfer to production.", color: "cyan" }
-                ].map((prong, idx) => (
-                  <div key={idx} className="bg-white border border-slate-100 rounded-3xl p-6 space-y-4 shadow-sm hover:border-blue-200 hover:shadow-md transition-all group/prong">
-                    <div className="flex items-center justify-between">
-                      <p className={`text-[10px] font-black text-slate-900 uppercase tracking-widest leading-none group-hover/prong:text-blue-600 transition-colors`}>{prong.title}</p>
-                      <div className={`w-1.5 h-1.5 rounded-full bg-${prong.color}-500 opacity-40`} />
+                {/* Link to Results Section */}
+                <div className="pt-0">
+                  <button 
+                    onClick={() => onNavigate?.('results', 'problem-statement')}
+                    className="group flex items-center gap-4 px-8 py-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                      <ArrowRight className="w-5 h-5 text-blue-600 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <p className="text-[11px] text-slate-500 font-bold leading-relaxed">{prong.desc}</p>
-                  </div>
-                ))}
+                    <div className="text-left">
+                      <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest leading-none mb-1">Audit Log</p>
+                      <p className="text-sm font-black text-slate-900 uppercase tracking-tight">View Detailed Problem Statement</p>
+                    </div>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Right Column: Graphic */}
-            <div className="lg:col-span-6">
-              <div className="bg-white border border-slate-200 rounded-4xl p-8 md:p-12 relative overflow-hidden shadow-sm h-full flex flex-col items-center justify-center min-h-[700px] group/circuit">
+              {/* Right Column: Graphic */}
+              <div className="lg:col-span-6">
+                <div className="bg-white border border-slate-200 rounded-4xl p-8 md:p-12 relative overflow-hidden shadow-sm h-full flex flex-col items-center justify-center min-h-[700px] group/circuit">
                 {/* Advanced Circuit Architecture */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice">
                   <defs>
@@ -216,8 +223,8 @@ export default function Experiment() {
                       <div key={i} className="bg-white/90 backdrop-blur-xl border border-slate-100 rounded-3xl p-6 flex items-center gap-5 relative h-24 shadow-xs text-pretty">
                         <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
                           <e.icon className="w-5 h-5 text-slate-400" />
-                        </div>
-                        <div>
+                          </div>
+                          <div>
                           <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest block">{e.label}</span>
                           <span className="text-[8px] text-blue-600 font-bold uppercase tracking-widest mt-1">{e.detail}</span>
                         </div>
@@ -242,7 +249,8 @@ export default function Experiment() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* --- BLOCK 3: THE FRAMEWORK --- */}
         <ProfessionalArticleSection
@@ -288,44 +296,25 @@ export default function Experiment() {
           description="8 granular tasks designed to stress-test every dimension of our capability pillars."
           stacked={true}
         >
-          <div className="space-y-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 border-b border-slate-50 pb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                  <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em]">Speech Understanding</h3>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {tasks.filter(t => t.type === 'speech_understanding').map(task => (
-                    <TaskCard key={task.id} task={task} example={taskExamples[task.id] || ""} />
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 border-b border-slate-50 pb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
-                  <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em]">Voice Understanding</h3>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {tasks.filter(t => t.type === 'voice_understanding').map(task => (
-                    <TaskCard key={task.id} task={task} example={taskExamples[task.id] || ""} />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 border-b border-slate-50 pb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]" />
-                <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em]">Speech Reasoning</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {tasks.filter(t => t.type === 'speech_reasoning').map(task => (
-                  <TaskCard key={task.id} task={task} example={taskExamples[task.id] || ""} />
-                ))}
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <TaskCarousel 
+              title="Speech Understanding"
+              tasks={tasks.filter(t => t.type === 'speech_understanding')}
+              theme={THEME.blue}
+              taskExamples={taskExamples}
+            />
+            <TaskCarousel 
+              title="Voice Understanding"
+              tasks={tasks.filter(t => t.type === 'voice_understanding')}
+              theme={THEME.indigo}
+              taskExamples={taskExamples}
+            />
+            <TaskCarousel 
+              title="Speech Reasoning"
+              tasks={tasks.filter(t => t.type === 'speech_reasoning')}
+              theme={THEME.cyan}
+              taskExamples={taskExamples}
+            />
           </div>
         </ProfessionalArticleSection>
 
@@ -381,15 +370,15 @@ export default function Experiment() {
             {/* 1. Overview Grid (Original Content Restored) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
               <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <DataCard 
-                  title="Midcentury Voice Collection" 
+              <DataCard 
+                title="Midcentury Voice Collection" 
                   badge="Proprietary" 
-                  tasks="ER, GR, SQA"
+                tasks="ER, GR, SQA"
                   desc="Recorded using professional voice actors to capture authentic human inflection and emotional nuances."
                   approach="Authenticity: Diverse speaker profiles, verified labels, and zero synthetic artifacting."
-                />
-                <DataCard 
-                  title="Big Bench Audio" 
+              />
+              <DataCard 
+                title="Big Bench Audio" 
                   badge="External Standard" 
                   tasks="FF, NA, OC, WOL"
                   desc="Landmark reasoning dataset from Artificial Analysis, adapted to test high-level cognitive capability via audio."
@@ -457,7 +446,7 @@ export default function Experiment() {
                         <span className="text-[9px] font-black text-blue-600/60 uppercase tracking-widest">{dataset.stat}</span>
                       </div>
                       
-                      <div className="space-y-2">
+              <div className="space-y-2">
                         <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight">{dataset.name}</h4>
                         <p className="text-blue-600 text-[10px] font-black uppercase tracking-widest">{dataset.tagline}</p>
                       </div>
@@ -510,7 +499,7 @@ export default function Experiment() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col gap-4">
+                <div className="lg:col-span-4 flex flex-col gap-4">
               <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 space-y-4 flex-1 group hover:bg-white hover:border-blue-100 transition-all">
                 <div className="flex items-center gap-3 text-blue-600">
                   <Activity className="w-4 h-4" />
@@ -581,7 +570,7 @@ export default function Experiment() {
                   </p>
                   <p className="text-slate-400 text-xs font-medium leading-relaxed max-w-lg">
                     We also extend our thanks to the research community for the LibriSpeech corpus and the developers behind UTMOSv2 for advancing automated audio quality assessment.
-                  </p>
+                </p>
                 </div>
               </div>
               
@@ -739,6 +728,94 @@ function TaskCard({ task, example }: { task: any, example: string }) {
       <div className="bg-slate-50/50 rounded-2xl p-5 border border-slate-100 mt-auto">
         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3 opacity-60">Example Case</p>
         <p className="text-slate-500 text-[11px] leading-relaxed font-bold italic opacity-80">"{example}"</p>
+      </div>
+    </div>
+  );
+}
+
+function BigTaskCard({ task, example }: { task: any, example: string }) {
+  const colorClass = task.type === 'speech_reasoning' ? 'cyan' : task.type === 'voice_understanding' ? 'indigo' : 'blue';
+  const theme = colorClass === 'blue' ? THEME.blue : colorClass === 'indigo' ? THEME.indigo : THEME.cyan;
+  
+  return (
+    <div className="p-8 md:p-10 rounded-4xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-xl transition-all duration-500 group relative h-full flex flex-col shadow-sm text-pretty overflow-hidden">
+      {/* Decorative background accent */}
+      <div className={`absolute top-0 right-0 w-32 h-32 ${theme.lightBg} opacity-20 blur-3xl -mr-16 -mt-16 rounded-full transition-opacity group-hover:opacity-40`} />
+      
+      <div className="flex justify-between items-start mb-6 relative z-10">
+        <div className="space-y-1">
+          <p className="text-[10px] font-black text-slate-900 uppercase tracking-widest opacity-60">Task Identity</p>
+          <span className={`${theme.text} font-mono text-xs font-black uppercase tracking-[0.3em]`}>{task.abbreviation}</span>
+        </div>
+        <div className={`w-12 h-12 rounded-2xl ${theme.lightBg} border ${theme.border} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
+        <TaskIcon type={task.type} />
+        </div>
+      </div>
+      
+      <div className="space-y-3 mb-6 relative z-10">
+        <h4 className={`font-black text-slate-900 text-3xl uppercase tracking-tight leading-[0.9] group-hover:text-blue-600 transition-colors`}>{task.name}</h4>
+        <p className="text-slate-500 text-sm font-bold leading-relaxed max-w-sm">
+          Granular stress-testing of {task.type.replace('_', ' ')} capabilities using verified ground truth audio.
+        </p>
+      </div>
+
+      <div className="bg-slate-50/80 rounded-3xl p-6 border border-slate-100 mt-auto relative z-10">
+        <div className="flex items-center gap-2 mb-3">
+          <div className={`w-1.5 h-1.5 rounded-full ${theme.bg}`} />
+          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Example Case</p>
+        </div>
+        <p className="text-slate-600 text-[15px] leading-relaxed font-bold italic opacity-90 pr-4">"{example}"</p>
+      </div>
+    </div>
+  );
+}
+
+function TaskCarousel({ tasks, title, theme, taskExamples }: any) {
+  const [currentIdx, setCurrentIdx] = React.useState(0);
+
+  const next = () => setCurrentIdx((prev) => (prev + 1) % tasks.length);
+  const prev = () => setCurrentIdx((prev) => (prev - 1 + tasks.length) % tasks.length);
+
+  return (
+    <div className="space-y-6 flex flex-col h-full">
+      <div className="flex items-center justify-between border-b border-slate-50 pb-4 px-2 shrink-0">
+        <div className="flex items-center gap-4">
+          <span className={`w-1.5 h-1.5 rounded-full ${theme.bg} shadow-[0_0_10px_rgba(59,130,246,0.5)]`} />
+          <h3 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em]">{title}</h3>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={prev} className="p-2 rounded-lg bg-white border border-slate-100 hover:bg-slate-50 transition-all shadow-xs group/nav">
+            <ChevronLeft className="w-3.5 h-3.5 text-slate-400 group-hover/nav:text-blue-600 transition-colors" />
+          </button>
+          <button onClick={next} className="p-2 rounded-lg bg-white border border-slate-100 hover:bg-slate-50 transition-all shadow-xs group/nav">
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover/nav:text-blue-600 transition-colors" />
+          </button>
+        </div>
+      </div>
+      
+      <div className="relative h-[520px] w-full shrink-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tasks[currentIdx].id}
+            initial={{ opacity: 0, x: 15 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -15 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="absolute inset-0 h-full w-full"
+          >
+            <BigTaskCard task={tasks[currentIdx]} example={taskExamples[tasks[currentIdx].id]} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      
+      {/* Dots Indicator */}
+      <div className="flex justify-center gap-1.5 pt-2 shrink-0">
+        {tasks.map((_: any, idx: number) => (
+          <div 
+            key={idx} 
+            className={`h-1 rounded-full transition-all duration-300 ${idx === currentIdx ? `w-6 ${theme.bg}` : 'w-1.5 bg-slate-200'}`} 
+          />
+        ))}
       </div>
     </div>
   );

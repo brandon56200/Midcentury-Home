@@ -34,8 +34,7 @@ export default function ProfessionalStatCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      animate={{ opacity: 1, y: 0 }}
       className="bg-white border border-slate-100 p-8 rounded-3xl group relative overflow-hidden flex flex-col justify-between h-full shadow-sm transition-all hover:bg-slate-50 hover:border-slate-200"
     >
       <div className="space-y-6 relative z-10">

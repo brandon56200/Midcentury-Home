@@ -21,11 +21,26 @@ const stages = [
 export default function HarmoniqPage() {
   const [currentStage, setCurrentStage] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [targetSection, setTargetSection] = useState<string | null>(null);
 
   const paginate = (newDirection: number) => {
     if (currentStage + newDirection >= 0 && currentStage + newDirection < stages.length) {
       setDirection(newDirection);
       setCurrentStage(prev => prev + newDirection);
+      setTargetSection(null); // Reset when paginating
+    }
+  };
+
+  const navigateToStage = (stageId: string, sectionId?: string) => {
+    const index = stages.findIndex(s => s.id === stageId);
+    if (index !== -1) {
+      setDirection(index > currentStage ? 1 : -1);
+      setCurrentStage(index);
+      if (sectionId) {
+        setTargetSection(sectionId);
+      } else {
+        setTargetSection(null);
+      }
     }
   };
 
@@ -54,7 +69,7 @@ export default function HarmoniqPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#fcfcfc] text-slate-900 selection:bg-blue-600/10 overflow-hidden font-sans">
+    <main className="min-h-screen bg-white text-slate-900 selection:bg-blue-600/10 overflow-hidden font-sans">
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="flex items-center gap-3">
@@ -75,10 +90,7 @@ export default function HarmoniqPage() {
             return (
               <button
                 key={stage.id}
-                onClick={() => {
-                  setDirection(idx > currentStage ? 1 : -1);
-                  setCurrentStage(idx);
-                }}
+                onClick={() => navigateToStage(stage.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold tracking-widest transition-all duration-300 relative group ${
                   isActive 
                     ? "text-slate-900" 
@@ -113,10 +125,7 @@ export default function HarmoniqPage() {
             return (
               <button
                 key={stage.id}
-                onClick={() => {
-                  setDirection(idx > currentStage ? 1 : -1);
-                  setCurrentStage(idx);
-                }}
+                onClick={() => navigateToStage(stage.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-[9px] font-bold tracking-widest transition-all shrink-0 ${
                   isActive 
                     ? "bg-slate-900 text-white shadow-md" 
@@ -159,15 +168,9 @@ export default function HarmoniqPage() {
             className="absolute inset-0 w-full h-full overflow-y-auto custom-scrollbar flex flex-col pt-40 md:pt-24 z-10"
           >
             {currentStage === 0 && <Hero onNext={() => paginate(1)} />}
-            {currentStage === 1 && <Results onNavigate={(stageId: string) => {
-              const index = stages.findIndex(s => s.id === stageId);
-              if (index !== -1) {
-                setDirection(index > currentStage ? 1 : -1);
-                setCurrentStage(index);
-              }
-            }} />}
+            {currentStage === 1 && <Results onNavigate={navigateToStage} scrollToSection={targetSection} />}
             {currentStage === 2 && <Analysis />}
-            {currentStage === 3 && <Experiment />}
+            {currentStage === 3 && <Experiment onNavigate={navigateToStage} />}
             {currentStage === 4 && <Future />}
           </motion.div>
         </AnimatePresence>

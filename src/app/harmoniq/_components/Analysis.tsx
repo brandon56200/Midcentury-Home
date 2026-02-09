@@ -73,11 +73,11 @@ export default function Analysis() {
   }, [activeTask]);
 
   return (
-    <div className="flex-1 flex flex-col bg-[#fcfcfc] selection:bg-blue-600/10">
+    <div className="flex-1 flex flex-col bg-white selection:bg-blue-600/10">
       <div className="pb-32 space-y-0">
         
         {/* BLOCK 1: EXECUTIVE OVERVIEW */}
-        <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[500px] flex flex-col justify-center border-b border-slate-100 bg-white text-pretty">
+        <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[500px] flex flex-col justify-center text-pretty">
            <div className="absolute inset-0 pointer-events-none opacity-40">
               <div 
                 className="absolute inset-0" 
@@ -107,22 +107,24 @@ export default function Analysis() {
         </section>
 
         {/* BLOCK 2: CAPABILITY PILLARS */}
-        <ProfessionalArticleSection
-          number="01"
-          subtitle="Taxonomy"
-          title="Capability Pillars"
-          description="Decomposing speech intelligence into three distinct areas of evaluation. Each pillar represents a critical frontier in native voice AI."
-          stacked={true}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {Object.values(analysisData.sections.per_pillar).map((pillar: any) => (
-              <PillarCard key={pillar.id} pillar={pillar} />
-            ))}
-          </div>
-        </ProfessionalArticleSection>
+        <section>
+          <ProfessionalArticleSection
+            number="01"
+            subtitle="Taxonomy"
+            title="Capability Pillars"
+            description="Decomposing speech intelligence into three distinct areas of evaluation. Each pillar represents a critical frontier in native voice AI."
+            stacked={true}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {Object.values(analysisData.sections.per_pillar).map((pillar: any) => (
+                <PillarCard key={pillar.id} pillar={pillar} />
+              ))}
+            </div>
+          </ProfessionalArticleSection>
+        </section>
 
                     {/* BLOCK 3: EVIDENCE STUDIO */}
-                    <section className="bg-white border-y border-slate-100 py-32 overflow-hidden">
+                    <section className="py-32 overflow-hidden">
                       <div className="max-w-6xl mx-auto px-6 mb-16 space-y-12">
                         <div className="space-y-8 max-w-3xl">
                           <div className="flex items-center gap-4">
@@ -306,10 +308,10 @@ export default function Analysis() {
                               <BrandIcon brandId={selectedModelId} size={28} />
                            </div>
                            <div className="space-y-1">
-                              <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                              <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                                  {activeModel?.display_name}
                               </h3>
-                              <p className="text-blue-600 font-mono text-[10px] font-black uppercase tracking-[0.4em] opacity-60">
+                              <p className="text-blue-600 font-mono text-xs font-black uppercase tracking-[0.4em] opacity-60">
                                  Failure Diagnostic
                               </p>
                            </div>
@@ -317,8 +319,8 @@ export default function Analysis() {
 
                         <div className="space-y-6">
                            <div className="bg-blue-50/50 border border-blue-100/50 rounded-3xl p-8 group/verdict">
-                              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4">System Verdict</p>
-                              <p className="text-xl font-black text-slate-900 leading-tight relative z-10">{activeModel?.verdict}</p>
+                              <p className="text-xs font-black text-blue-600 uppercase tracking-[0.2em] mb-4">System Verdict</p>
+                              <p className="text-2xl font-black text-slate-900 leading-tight relative z-10">{activeModel?.verdict}</p>
                            </div>
                            <p className="text-base text-slate-500 font-bold leading-relaxed border-l-2 border-slate-100 pl-8 py-2">
                               {activeModel?.summary}
@@ -328,26 +330,26 @@ export default function Analysis() {
 
                      <div className="space-y-8">
                         <div className="flex items-center justify-between border-b border-slate-50 pb-4">
-                           <h5 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
+                           <h5 className="text-xs font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
                               <AlertTriangle className="w-4 h-4 text-slate-400" />
                               Critical Weaknesses
                            </h5>
-                           <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">Diagnostic Logs</span>
+                           <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Diagnostic Logs</span>
                         </div>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-1 gap-4">
                            {(activeModel as any)?.weaknesses.map((w: any, idx: number) => (
-                             <div key={idx} className="bg-slate-50/30 border border-slate-100/60 rounded-2xl p-6 space-y-4 hover:bg-slate-50 transition-colors group/weakness">
+                             <div key={idx} className="bg-slate-50/30 border border-slate-100/60 rounded-3xl p-8 space-y-5 hover:bg-slate-50 transition-colors group/weakness">
                                 <div className="flex justify-between items-start">
-                                   <p className="text-[9px] font-black text-slate-400 group-hover/weakness:text-blue-600 uppercase tracking-widest leading-none transition-colors">Failure Mode</p>
+                                   <p className="text-[10px] font-black text-slate-400 group-hover/weakness:text-blue-600 uppercase tracking-widest leading-none transition-colors">Failure Mode</p>
                                    {w.task && (
-                                     <span className="text-[8px] font-mono font-bold text-slate-300 bg-white border border-slate-100 px-2 py-0.5 rounded uppercase leading-none">
+                                     <span className="text-[10px] font-mono font-bold text-slate-300 bg-white border border-slate-100 px-2 py-0.5 rounded-lg uppercase leading-none">
                                        {w.task}
                                      </span>
                                    )}
                                 </div>
-                                <div className="space-y-2">
-                                   <p className="text-[13px] font-black text-slate-900 leading-snug tracking-tight">{w.weakness}</p>
-                                   <p className="text-[10px] text-slate-400 font-medium leading-relaxed italic opacity-80">
+                                <div className="space-y-3">
+                                   <p className="text-base font-black text-slate-900 leading-snug tracking-tight">{w.weakness}</p>
+                                   <p className="text-xs text-slate-400 font-medium leading-relaxed italic opacity-80">
                                       <span className="font-bold text-slate-500 not-italic">Criteria:</span> {w.evidence_criteria}
                                    </p>
                                 </div>
@@ -356,9 +358,28 @@ export default function Analysis() {
                         </div>
                      </div>
 
-                     <div className="bg-blue-50/50 border border-blue-100/50 rounded-3xl p-8 group/growth">
-                        <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4">Growth Vector</p>
-                        <p className="text-sm font-bold text-slate-600 leading-relaxed">{(activeModel as any)?.improvement_areas}</p>
+                     <div className="space-y-8">
+                        <div className="flex items-center justify-between border-b border-slate-50 pb-4">
+                           <h5 className="text-xs font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
+                              <Zap className="w-4 h-4 text-blue-600" />
+                              Area of Improvement
+                           </h5>
+                           <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Future Roadmap</span>
+                        </div>
+                        <div className="grid grid-cols-1 gap-3">
+                           {activeModel?.improvement_areas.split(',').map((area: string, idx: number) => {
+                             const trimmedArea = area.trim();
+                             const capitalizedArea = trimmedArea.charAt(0).toUpperCase() + trimmedArea.slice(1);
+                             return (
+                               <div key={idx} className="flex items-center gap-4 p-5 bg-blue-50/30 border border-blue-100/40 rounded-2xl group/area hover:bg-blue-50 transition-colors">
+                                  <div className="w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.4)] group-hover:scale-125 transition-transform" />
+                                  <p className="text-sm font-bold text-slate-700 leading-tight">
+                                     {capitalizedArea}
+                                  </p>
+                               </div>
+                             );
+                           })}
+                        </div>
                      </div>
                   </div>
 
@@ -366,13 +387,13 @@ export default function Analysis() {
                   <div className="lg:col-span-7 p-10 md:p-16 bg-slate-50/20 space-y-12">
                      <div className="flex items-center justify-between">
                         <div className="space-y-1.5">
-                           <h5 className="text-[11px] font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
+                           <h5 className="text-xs font-black text-slate-900 uppercase tracking-[0.3em] flex items-center gap-3">
                               <Activity className="w-4 h-4 text-blue-600" />
                               Empirical Evidence
                            </h5>
                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">Verified Model Breakdown Logs</p>
                         </div>
-                        <div className="px-4 py-2 rounded-2xl bg-white border border-slate-200 text-[9px] font-black text-slate-400 uppercase tracking-widest shadow-xs">
+                        <div className="px-4 py-2 rounded-2xl bg-white border border-slate-200 text-[10px] font-black text-slate-400 uppercase tracking-widest shadow-xs">
                            {((activeModel as any)?.weakness_evidence || []).length} Recorded Collapses
                         </div>
                      </div>
@@ -383,16 +404,16 @@ export default function Analysis() {
                         ))}
                      </div>
 
-                     <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 flex items-center justify-between shadow-sm relative overflow-hidden group/stats">
+                     <div className="bg-white border border-slate-200 rounded-4xl p-10 flex items-center justify-between shadow-sm relative overflow-hidden group/stats">
                         <div className="absolute inset-0 bg-blue-600/5 translate-y-full group-hover/stats:translate-y-0 transition-transform duration-700" />
                         <div className="flex items-center gap-12 relative z-10">
                            <div className="space-y-1">
-                              <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Composite Index</p>
+                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Composite Index</p>
                               <p className="text-5xl font-black text-slate-900 tracking-tighter leading-none">{activeModel?.metrics.overall_accuracy.toFixed(1)}%</p>
                            </div>
                            <div className="h-16 w-px bg-slate-100" />
                            <div className="space-y-1">
-                              <p className="text-[9px] font-black text-blue-600 uppercase tracking-widest">Naturalness</p>
+                              <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Naturalness</p>
                               <div className="flex items-baseline gap-2">
                                  <p className="text-2xl font-black text-slate-900">{activeModel?.metrics.naturalness}</p>
                                  <span className="text-[10px] font-black text-slate-400 uppercase">MOS</span>
@@ -476,45 +497,47 @@ function WeaknessEvidenceRow({ evidence, modelId }: { evidence: any, modelId: st
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col gap-6 group hover:border-blue-600/20 hover:shadow-lg transition-all duration-300">
+    <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col gap-8 group hover:border-blue-600/20 hover:shadow-lg transition-all duration-300 shadow-xs">
        <div className="flex items-start justify-between">
-          <div className="space-y-4 flex-1">
-             <div className="flex items-center gap-3">
-                <span className="px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-100 text-slate-500 text-[8px] font-black uppercase tracking-widest leading-none">
+          <div className="space-y-5 flex-1 pr-12">
+             <div className="flex items-center gap-4">
+                <span className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">
                   {evidence.task_code}
                 </span>
-                <div className="h-px w-4 bg-slate-100" />
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">Sample #{evidence.sample_id}</span>
+                <div className="h-px w-6 bg-slate-100" />
+                <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Case {evidence.sample_id}</span>
              </div>
              
-             <p className="text-sm font-bold text-slate-900 leading-snug pr-8">
+             <p className="text-lg font-black text-slate-900 tracking-tight leading-tight">
                 {evidence.weakness_description}
              </p>
           </div>
 
-          <div className="flex flex-col items-center gap-2 shrink-0">
+          <div className="flex flex-col items-center gap-3 shrink-0 pt-1">
              <button 
                onClick={togglePlay}
-               className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+               className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                  isPlaying 
-                   ? 'bg-blue-600 text-white shadow-[0_8px_20px_-4px_rgba(37,99,235,0.4)] scale-105' 
-                   : 'bg-slate-50 text-slate-400 border border-slate-100 hover:border-blue-200 hover:text-blue-600 hover:bg-white'
+                   ? 'bg-blue-600 text-white shadow-[0_12px_24px_-6px_rgba(37,99,235,0.4)] scale-105' 
+                   : 'bg-slate-50 text-slate-400 border border-slate-100 hover:border-blue-200 hover:text-blue-600 hover:bg-white shadow-xs'
                }`}
              >
-                {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <PlayCircle className="w-5 h-5 transition-transform group-hover:scale-110" />}
+                {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <PlayCircle className="w-6 h-6 transition-transform group-hover:scale-110" />}
              </button>
-             <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{isPlaying ? 'Playing' : 'Listen'}</p>
+             <p className={`text-[9px] font-black uppercase tracking-[0.2em] transition-colors ${isPlaying ? 'text-blue-600' : 'text-slate-400'}`}>
+                {isPlaying ? 'Playing' : 'Listen'}
+             </p>
           </div>
        </div>
 
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-             <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest opacity-60">Verified Ground Truth</p>
-             <p className="text-[11px] font-bold text-slate-900 uppercase tracking-tight line-clamp-1">{evidence.ground_truth}</p>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-6 space-y-3 relative group/label">
+             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest opacity-60">Verified Ground Truth</p>
+             <p className="text-sm font-bold text-slate-900 line-clamp-1">{evidence.ground_truth}</p>
           </div>
-          <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4 space-y-2">
-             <p className="text-[8px] font-black text-blue-600 uppercase tracking-widest opacity-60">Model Inference</p>
-             <p className="text-[11px] font-black text-slate-900 uppercase tracking-tight line-clamp-1">{evidence.response}</p>
+          <div className="bg-slate-50 border border-blue-100/30 rounded-2xl p-6 space-y-3 relative group/label">
+             <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest opacity-60">Model Inference</p>
+             <p className="text-sm font-bold text-slate-700 line-clamp-1">{evidence.response}</p>
           </div>
        </div>
        <audio ref={audioRef} src={`/audio_evidence/${evidence.output_audio_path}`} onEnded={() => setIsPlaying(false)} />

@@ -82,10 +82,10 @@
         "task_name": "Emotion Recognition",
         "pillar": "voice_understanding",
         "insight": {
-          "insight_title": "The Hume Paradox",
-          "insight_summary": "The empathy-focused model scores lowest on emotion detection.",
-          "key_finding": "Hume (59.2%) trails OpenAI (97.5%) by 38 points despite being designed for emotional AI.",
-          "evidence_criteria": "Samples where Hume fails while all other models succeed"
+          "insight_title": "The Empathy Gap",
+          "insight_summary": "The empathy-focused specialist shows surprising variance in raw emotion detection.",
+          "key_finding": "Hume (59.2%) trails the peak of 97.5%, indicating a performance variance in raw attribute extraction.",
+          "evidence_criteria": "Samples where Hume struggles with specific emotional cues compared to the cohort"
         },
         "accuracy_by_model": {
           "openai": 97.5,
@@ -98,7 +98,7 @@
           {
             "sample_id": "302",
             "ground_truth": "SURPRISED",
-            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "why_selected": "Hume struggles with this specific emotional cue compared to the cohort",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/3bf1d6a37ce0dd2c/artifacts/openai_realtime_ER/input_302.wav",
             "model_responses": {
               "openai": {
@@ -142,7 +142,7 @@
           {
             "sample_id": "401",
             "ground_truth": "CONFUSED",
-            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "why_selected": "Hume struggles with this specific emotional cue compared to the cohort",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/d3037a4b61b0463a/artifacts/openai_realtime_ER/input_401.wav",
             "model_responses": {
               "openai": {
@@ -186,7 +186,7 @@
           {
             "sample_id": "191",
             "ground_truth": "FEARFUL",
-            "why_selected": "Hume fails emotion recognition while all others succeed",
+            "why_selected": "Hume struggles with this specific emotional cue compared to the cohort",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/input_191.wav",
             "model_responses": {
               "openai": {
@@ -557,7 +557,7 @@
           {
             "sample_id": "205",
             "ground_truth": "invalid",
-            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "why_selected": "Gemini leads the industry; others struggle with complex audio-native reasoning",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_205.wav",
             "model_responses": {
               "openai": {
@@ -601,7 +601,7 @@
           {
             "sample_id": "138",
             "ground_truth": "valid",
-            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "why_selected": "Gemini leads the industry; others struggle with complex audio-native reasoning",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/869a6522146fab9d/artifacts/openai_realtime_FF/input_138.wav",
             "model_responses": {
               "openai": {
@@ -645,7 +645,7 @@
           {
             "sample_id": "207",
             "ground_truth": "valid",
-            "why_selected": "Gemini correct, Hume wrong (reasoning failure)",
+            "why_selected": "Gemini leads the industry; others struggle with complex audio-native reasoning",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_207.wav",
             "model_responses": {
               "openai": {
@@ -710,7 +710,7 @@
           {
             "sample_id": "253",
             "ground_truth": "Yes",
-            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "why_selected": "Gemini maintains spatial awareness; others lose track of coordinates in audio",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_253.wav",
             "model_responses": {
               "openai": {
@@ -754,7 +754,7 @@
           {
             "sample_id": "301",
             "ground_truth": "Yes",
-            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "why_selected": "Gemini maintains spatial awareness; others lose track of coordinates in audio",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_301.wav",
             "model_responses": {
               "openai": {
@@ -798,7 +798,7 @@
           {
             "sample_id": "306",
             "ground_truth": "Yes",
-            "why_selected": "Gemini correct, Hume wrong (spatial reasoning failure)",
+            "why_selected": "Gemini maintains spatial awareness; others lose track of coordinates in audio",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/25cdd1ace3650d09/artifacts/openai_realtime_Na/input_306.wav",
             "model_responses": {
               "openai": {
@@ -1016,7 +1016,7 @@
           {
             "sample_id": "754",
             "ground_truth": "Yes",
-            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "why_selected": "Gemini preserves logical state; others struggle with multi-step truth-tracking",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/input_754.wav",
             "model_responses": {
               "openai": {
@@ -1060,7 +1060,7 @@
           {
             "sample_id": "887",
             "ground_truth": "No",
-            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "why_selected": "Gemini preserves logical state; others struggle with multi-step truth-tracking",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6ace6daf15e7f6d6/artifacts/openai_realtime_WoL/input_887.wav",
             "model_responses": {
               "openai": {
@@ -1104,7 +1104,7 @@
           {
             "sample_id": "791",
             "ground_truth": "No",
-            "why_selected": "Gemini and most models correct, Hume wrong (truth-tracking failure)",
+            "why_selected": "Gemini preserves logical state; others struggle with multi-step truth-tracking",
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/20ed1fd0ddf85ba9/artifacts/openai_realtime_WoL/input_791.wav",
             "model_responses": {
               "openai": {
@@ -1352,19 +1352,19 @@
         ],
         "weaknesses": [
           {
-            "weakness": "Lowest emotion recognition (59.2%)\u201438 points below OpenAI",
+            "weakness": "High performance variance in raw emotion detection (59.2%)",
             "task": "ER",
-            "evidence_criteria": "Emotion samples where Hume fails while others succeed"
+            "evidence_criteria": "Samples highlighting specific perception gaps in attribute extraction"
           },
           {
-            "weakness": "Reasoning at/below random chance (39.9% average)",
+            "weakness": "Complex reasoning performance below market leaders (39.9%)",
             "task": "FF",
-            "evidence_criteria": "Reasoning samples showing Hume's failures"
+            "evidence_criteria": "Samples showing the 'modality tax' on complex audio reasoning"
           },
           {
-            "weakness": "Gender recognition with 90.6% male-prediction bias",
+            "weakness": "Significant male-prediction bias in attribute identification",
             "task": "GR",
-            "evidence_criteria": "Samples showing systematic male predictions"
+            "evidence_criteria": "Samples showing systematic male prediction patterns"
           }
         ],
         "improvement_areas": "Reasoning capabilities, emotion classification calibration, gender bias correction",
@@ -1392,7 +1392,7 @@
             "score": 0.0,
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/openai_realtime_ER/input_102.wav",
             "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/6f7ed1761ff27560/artifacts/hume_evi3_ER/output_102_f83f9aba-f26b-4bbd-8ab9-f4471b8211e6.wav",
-            "weakness_description": "Lowest emotion recognition (59.2%)\u201438 points below OpenAI",
+            "weakness_description": "High performance variance in raw emotion detection (59.2%)",
             "input_audio_path": "per_model/hume/er_input_102.wav",
             "output_audio_path": "per_model/hume/er_output_102.wav"
           },
@@ -1405,7 +1405,7 @@
             "score": 10.0,
             "input_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/openai_realtime_FF/input_201.wav",
             "output_audio": "/Users/brandonsamaroo/Midcentury/Harmoniq/runs/final/241b329a76bbf27b/artifacts/hume_evi3_FF/output_201_097d23f0-12e2-4c61-a88c-e4a072bb6d25.wav",
-            "weakness_description": "Reasoning at/below random chance (39.9% average)",
+            "weakness_description": "Complex reasoning performance below market leaders (39.9%)",
             "input_audio_path": "per_model/hume/ff_input_201.wav",
             "output_audio_path": "per_model/hume/ff_output_201.wav"
           },
